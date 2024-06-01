@@ -321,6 +321,39 @@ async function fetchProject(id: string): Promise<Project> {
   return project
 }
 
+async function fetchProjectCount() {
+  const cacheKey = 'projectCount';
+  const cachedData = mainCache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData;
+  }
+
+  const projects = await fetchProjects();
+
+  const countMap = projects.reduce((result, currentItem) => {
+    const groupKey = currentItem.impactCategory[0];
+    if (!result[groupKey]) {
+      result[groupKey] = 0;
+    }
+    result[groupKey] += 1;
+    return result;
+  }, {} as Record<string, number>);
+
+  const categories = Object.entries(countMap)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+
+  const result = {
+    total: projects.length,
+    categories,
+  }
+
+  mainCache.set(cacheKey, result);
+
+  return result
+}
+
 // Create an Express app
 const app = express();
 const port = 4201;
@@ -337,6 +370,15 @@ app.get('/attestations', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch attestations' });
   }
 });
+
+app.get('/projects/count', async (req, res) => {
+  try {
+    const count = await fetchProjectCount();
+    res.json(count);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch project count' });
+  }
+})
 
 app.get('/projects/:id', async (req, res) => {
   try {
