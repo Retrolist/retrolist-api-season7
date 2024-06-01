@@ -5,7 +5,8 @@ import cors from 'cors';
 import NodeCache from 'node-cache';
 import fs from 'fs';
 import path from 'path';
-import { RawAttestation } from './types';
+import { ProcessedAttestation, RawAttestation } from './types/attestations';
+import { Project, ProjectFundingSource, ProjectMetadata } from './types/projects';
 
 // Define the GraphQL endpoint
 const url = "https://optimism.easscan.org/graphql";
@@ -92,18 +93,19 @@ async function fetchMetadata(url: string) {
 }
 
 // Function to fetch and process data
-async function fetchAndProcessData() {
+async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
   const cacheKey = 'attestations';
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
-    return cachedData;
+    return cachedData as ProcessedAttestation[];
   }
 
   try {
     const data: { attestations: RawAttestation[] } = await request(url, query, variables);
 
     const attestations = data.attestations;
+    attestations.sort((a, b) => b.time - a.time)
 
     // Map to store the latest attestation for each projectRefUID
     const latestAttestationsMap: { [key: string]: any } = {};
@@ -151,7 +153,8 @@ async function fetchAndProcessData() {
       });
     });
 
-    const processedData = Object.values(latestAttestationsMap);
+    const processedData: ProcessedAttestation[] = Object.values(latestAttestationsMap);
+    processedData.sort((a, b) => b.time - a.time)
     mainCache.set(cacheKey, processedData);
     return processedData;
   } catch (error) {
@@ -160,9 +163,167 @@ async function fetchAndProcessData() {
   }
 }
 
+async function fetchProjects(): Promise<ProjectMetadata[]> {
+  const cacheKey = 'projects';
+  const cachedData = mainCache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData as ProjectMetadata[];
+  }
+
+  const attestations = await fetchAndProcessData()
+
+  const projects = attestations.map(attestation => ({
+    id: attestation.id,
+    name: attestation.parsedData.name,
+    displayName: attestation.parsedData.name,
+    description: attestation.body?.description || '',
+    bio: attestation.body?.description || '',
+    address: attestation.parsedData.farcasterID.hex,
+    bannerImageUrl: attestation.body?.proejctCoverImageUrl || '',
+    profileImageUrl: attestation.body?.projectAvatarUrl || '',
+    impactCategory: [ attestation.parsedData.category ],
+    primaryCategory: attestation.parsedData.category,
+    recategorization: attestation.parsedData.category,
+    prelimResult: 'Keep',
+    reportReason: '',
+    includedInBallots: 0,
+  }))
+
+  mainCache.set(cacheKey, projects);
+
+  return projects
+}
+
+function parseGrantType(grantType: string): [string, string] {
+  switch (grantType) {
+    case 'venture-funding': return ['Fundraising', 'USD']
+    case 'revenue': return ['Revenue', 'USD']
+    case 'foundation-grant': return ['Foundation Grant', 'OP']
+    case 'token-house-mission': return ['Token House Mission', 'OP']
+    default: return [grantType, 'USD']
+  }
+}
+
+function etherscanUrl(address: string, chainId: number): string {
+  switch (chainId) {
+    case 10: return `https://optimistic.etherscan.io/address/${address}`
+    case 8453: return `https://basescan.org/address/${address}`
+    case 34443: return `https://explorer.mode.network/address/${address}`
+    case 7777777: return `https://explorer.zora.energy/address/${address}`
+    case 252: return `https://fraxscan.com/address/${address}`
+    default: return 'https://retrolist.app'
+  }
+}
+
+function hyphenToCapitalize(input: string): string {
+  // Split the input string by "-"
+  let words = input.split('-');
+
+  // Capitalize the first letter of the first word
+  words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+
+  // Join the words with a space
+  let result = words.join(' ');
+
+  return result;
+}
+
+async function fetchProject(id: string): Promise<Project> {
+  const cacheKey = 'project-' + id;
+  const cachedData = mainCache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData as Project;
+  }
+
+  const attestations = await fetchAndProcessData()
+  const attestation = attestations.find(attestation => attestation.id === id)
+  if (!attestation) {
+    throw new Error(`Project not found`)
+  }
+
+  const fundingSources: ProjectFundingSource[] = []
+
+  if (attestation.body?.grantsAndFunding) {
+    for (const grant of attestation.body.grantsAndFunding.ventureFunding) {
+      const [ type, currency ] = parseGrantType('venture-funding')
+      fundingSources.push({
+        type,
+        currency,
+        amount: hyphenToCapitalize(grant.amount),
+        description: grant.details,
+      })
+    }
+
+    for (const grant of attestation.body.grantsAndFunding.grants) {
+      const [ type, currency ] = parseGrantType(grant.grant)
+      fundingSources.push({
+        type,
+        currency,
+        amount: hyphenToCapitalize(grant.amount),
+        description: grant.details,
+        url: grant.link || undefined,
+      })
+    }
+
+    for (const grant of attestation.body.grantsAndFunding.revenue) {
+      const [ type, currency ] = parseGrantType('revenue')
+      fundingSources.push({
+        type,
+        currency,
+        amount: hyphenToCapitalize(grant.amount),
+        description: grant.details,
+      })
+    }
+  }
+
+  const project = {
+    id: attestation.id,
+    displayName: attestation.parsedData.name,
+    contributionDescription: attestation.body?.description || '',
+    impactDescription: '',
+    bio: attestation.body?.description || '',
+    profile: {
+      bannerImageUrl: attestation.body?.proejctCoverImageUrl || '',
+      profileImageUrl: attestation.body?.projectAvatarUrl || '',
+      id: attestation.id,
+    },
+    websiteUrl: attestation.body?.socialLinks.website[0] || '',
+    applicant: {
+      address: {
+        address: attestation.parsedData.farcasterID.hex,
+        resolvedName: {
+          address: attestation.parsedData.farcasterID.hex,
+          name: '',
+        }
+      },
+      id: attestation.parsedData.farcasterID.hex,
+    },
+    applicantType: "PROJECT",
+    impactCategory: [ attestation.parsedData.category ],
+    prelimResult: 'Keep',
+    reportReason: '',
+    includedInBallots: 0,
+    lists: [],
+
+    contributionLinks: attestation.body?.contracts.map(contract => ({
+      description: contract.address,
+      type: contract.chainId.toString(),
+      url: etherscanUrl(contract.address, contract.chainId),
+    })) || [],
+    fundingSources,
+    impactMetrics: [],
+  }
+
+  mainCache.set(cacheKey, project);
+
+  return project
+}
+
 // Create an Express app
 const app = express();
-const port = 4200;
+const port = 4201;
 
 // Use CORS middleware
 app.use(cors());
@@ -174,6 +335,28 @@ app.get('/attestations', async (req, res) => {
     res.json(attestations);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch attestations' });
+  }
+});
+
+app.get('/projects/:id', async (req, res) => {
+  try {
+    const project = await fetchProject(req.params.id);
+    res.json(project);
+  } catch (error: any) {
+    if (error.message == 'Project not found') {
+      res.status(404).json({ error: 'Project not found' });
+    } else {
+      res.status(500).json({ error: 'Failed to fetch project' });
+    }
+  }
+});
+
+app.get('/projects', async (req, res) => {
+  try {
+    const projects = await fetchProjects();
+    res.json(projects);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch projects' });
   }
 });
 

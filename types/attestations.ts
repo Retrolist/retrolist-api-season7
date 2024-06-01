@@ -1,3 +1,5 @@
+import { AttestationBody } from "./attestationBody";
+
 export interface RawAttestation {
   id: string;
   decodedDataJson: string;
@@ -6,16 +8,15 @@ export interface RawAttestation {
 
 export interface DecodedData {
   projectRefUID: string;
-  farcasterID: string;
+  farcasterID: {
+    type: string
+    hex: string
+  };
   name: string;
   category: string;
   parentProjectRefUID: string;
   metadataType: number;
   metadataUrl: string;
-}
-
-export interface AttestationBody {
-  [key: string]: any;
 }
 
 export interface ProcessedAttestation {
