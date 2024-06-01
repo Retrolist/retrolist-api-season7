@@ -224,7 +224,7 @@ function hyphenToCapitalize(input: string): string {
   words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
 
   // Join the words with a space
-  let result = words.join(' ');
+  let result = parseFloat(words[0]) ? words.join(' - ') : words.join(' ');
 
   return result;
 }
