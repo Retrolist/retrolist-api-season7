@@ -49,6 +49,9 @@ export interface Project {
   prelimResult: string
   reportReason: string
   includedInBallots?: number
+
+  github: string[]
+  packages: string[]
 }
 
 export interface ProjectApplicant {

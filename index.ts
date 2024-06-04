@@ -314,6 +314,9 @@ async function fetchProject(id: string): Promise<Project> {
     })) || [],
     fundingSources,
     impactMetrics: [],
+
+    github: attestation.body?.github || [],
+    packages: attestation.body?.packages || [],
   }
 
   mainCache.set(cacheKey, project);
