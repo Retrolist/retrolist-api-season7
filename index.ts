@@ -1,3 +1,6 @@
+import { config as dotenv } from 'dotenv'
+dotenv()
+
 import express from 'express';
 import axios from 'axios';
 import { gql, request } from 'graphql-request'
@@ -7,6 +10,16 @@ import fs from 'fs';
 import path from 'path';
 import { ProcessedAttestation, RawAttestation } from './types/attestations';
 import { Project, ProjectFundingSource, ProjectMetadata } from './types/projects';
+import { Pool } from 'pg';
+
+// PostgreSQL connection setup
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: 5432, // Default PostgreSQL port
+});
 
 // Define the GraphQL endpoint
 const url = "https://optimism.easscan.org/graphql";
@@ -406,6 +419,7 @@ const app = express();
 const port = 4201;
 
 // Use CORS middleware
+app.use(express.json())
 app.use(cors());
 
 // Define the endpoint
@@ -446,6 +460,91 @@ app.get('/projects', async (req, res) => {
     res.json(projects);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch projects' });
+  }
+});
+
+// Cloudflare Turnstile site and secret keys
+const TURNSTILE_SECRET_KEY = 'your_turnstile_secret_key';
+
+// Verify Turnstile token
+const verifyTurnstileToken = async (token: string): Promise<boolean> => {
+  const response = await axios.post(
+    `https://challenges.cloudflare.com/turnstile/v0/siteverify`,
+    {},
+    {
+      params: {
+        secret: TURNSTILE_SECRET_KEY,
+        response: token,
+      },
+    }
+  );
+
+  return response.data.success;
+};
+
+// Endpoint to post a message
+app.post('/report', async (req, res) => {
+  try {
+    const { reason, projectId } = req.body;
+
+    if (!reason || !projectId) {
+      return res.status(400).json({ error: 'Reason, Project ID and Turnstile token are required.' });
+    }
+
+    // Verify Turnstile token
+    // const isTokenValid = await verifyTurnstileToken(turnstileToken);
+
+    // if (!isTokenValid) {
+    //   return res.status(403).json({ error: 'Invalid Turnstile token.' });
+    // }
+
+    // Insert message into PostgreSQL database
+    const client = await pool.connect();
+    try {
+      await client.query("INSERT INTO reports (round, project_id, reason) VALUES ('retro-4', $1, $2)", [projectId, reason]);
+      res.status(201).json({ message: 'Report posted successfully.' });
+    } finally {
+      client.release();
+    }
+  } catch (error) {
+    console.error('Error posting report:', error);
+    res.status(500).json({ error: 'Internal server error.' });
+  }
+});
+
+// Endpoint to get all reports
+app.get('/report/:round', async (req, res) => {
+  const { round } = req.params;
+
+  try {
+    const client = await pool.connect();
+    try {
+      const result = await client.query('SELECT * FROM reports WHERE round = $1', [round]);
+      res.status(200).json(result.rows);
+    } finally {
+      client.release();
+    }
+  } catch (error) {
+    console.error('Error retrieving reports:', error);
+    res.status(500).json({ error: 'Internal server error.' });
+  }
+});
+
+// Endpoint to get reports by project_id
+app.get('/report/:round/:projectId', async (req, res) => {
+  const { projectId, round } = req.params;
+
+  try {
+    const client = await pool.connect();
+    try {
+      const result = await client.query('SELECT * FROM reports WHERE round = $1 AND project_id = $2', [round, projectId]);
+      res.status(200).json(result.rows);
+    } finally {
+      client.release();
+    }
+  } catch (error) {
+    console.error('Error retrieving reports:', error);
+    res.status(500).json({ error: 'Internal server error.' });
   }
 });
 
