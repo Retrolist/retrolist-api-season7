@@ -12,6 +12,8 @@ import { ProcessedAttestation, RawAttestation } from './types/attestations';
 import { Project, ProjectFundingSource, ProjectMetadata } from './types/projects';
 import { Pool } from 'pg';
 
+const eligibility = JSON.parse(fs.readFileSync("data/eligibility.json", "utf-8"))
+
 // PostgreSQL connection setup
 const pool = new Pool({
   user: process.env.DB_USER,
@@ -59,7 +61,8 @@ const variablesR4 = {
 };
 
 // Initialize caches
-const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
+// const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
+const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
 
 const CACHE_DIR = './cache/projects';
@@ -217,6 +220,17 @@ async function fetchAndProcessR4Submissions(): Promise<Set<string>> {
   }
 }
 
+function getPrelimResult(projectId: string): string {
+  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+
+  if (!project) return 'Missing'
+
+  if (project.status == 'pass') return 'Keep'
+  if (project.status == 'fail') return 'Remove'
+
+  return '#N/A'
+}
+
 async function fetchProjects(): Promise<ProjectMetadata[]> {
   const cacheKey = 'projects';
   const cachedData = mainCache.get(cacheKey);
@@ -229,7 +243,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
   const submissions = await fetchAndProcessR4Submissions()
 
   const projects = attestations.map(attestation => ({
-    id: attestation.id,
+    id: attestation.parsedData.projectRefUID,
     name: attestation.parsedData.name,
     displayName: attestation.parsedData.name,
     description: attestation.body?.description || '',
@@ -240,7 +254,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     impactCategory: [ attestation.parsedData.category ],
     primaryCategory: attestation.parsedData.category,
     recategorization: attestation.parsedData.category,
-    prelimResult: submissions.has(attestation.parsedData.projectRefUID) ? 'Keep' : 'Missing',
+    prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: '',
     includedInBallots: 0,
   }))
@@ -293,7 +307,7 @@ async function fetchProject(id: string): Promise<Project> {
   }
 
   const attestations = await fetchAndProcessData()
-  const attestation = attestations.find(attestation => attestation.id === id)
+  const attestation = attestations.find(attestation => attestation.id === id || attestation.parsedData?.projectRefUID === id)
   if (!attestation) {
     throw new Error(`Project not found`)
   }
@@ -336,7 +350,7 @@ async function fetchProject(id: string): Promise<Project> {
   }
 
   const project = {
-    id: attestation.id,
+    id: attestation.parsedData.projectRefUID,
     displayName: attestation.parsedData.name,
     contributionDescription: attestation.body?.description || '',
     impactDescription: '',
@@ -359,7 +373,7 @@ async function fetchProject(id: string): Promise<Project> {
     },
     applicantType: "PROJECT",
     impactCategory: [ attestation.parsedData.category ],
-    prelimResult: submissions.has(attestation.parsedData.projectRefUID) ? 'Keep' : 'Missing',
+    prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: '',
     includedInBallots: 0,
     lists: [],
@@ -374,6 +388,8 @@ async function fetchProject(id: string): Promise<Project> {
 
     github: attestation.body?.github || [],
     packages: attestation.body?.packages || [],
+
+    osoSlug: attestation.body?.osoSlug || "",
   }
 
   mainCache.set(cacheKey, project);
@@ -406,6 +422,7 @@ async function fetchProjectCount() {
 
   const result = {
     total: projects.length,
+    eligible: projects.filter(x => x.prelimResult == 'Keep').length,
     categories,
   }
 

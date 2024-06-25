@@ -52,6 +52,8 @@ export interface Project {
 
   github: string[]
   packages: string[]
+
+  osoSlug: string
 }
 
 export interface ProjectApplicant {
