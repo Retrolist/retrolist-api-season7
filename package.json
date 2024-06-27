@@ -16,11 +16,13 @@
     "fs": "^0.0.1-security",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
+    "lodash": "^4.17.21",
     "node-cache": "^5.1.2",
     "pg": "^8.12.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.5",
     "@types/pg": "^8.11.6"
   }
 }

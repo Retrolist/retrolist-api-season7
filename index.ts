@@ -11,6 +11,14 @@ import path from 'path';
 import { ProcessedAttestation, RawAttestation } from './types/attestations';
 import { Project, ProjectFundingSource, ProjectMetadata } from './types/projects';
 import { Pool } from 'pg';
+import { uniq } from 'lodash';
+
+interface FarcasterComment {
+  fid: number
+  timestamp: number
+  username: string
+  hash: string
+}
 
 const eligibility = JSON.parse(fs.readFileSync("data/eligibility.json", "utf-8"))
 
@@ -431,6 +439,65 @@ async function fetchProjectCount() {
   return result
 }
 
+// Fetch comments hash
+async function fetchFarcasterComments(fid: number, hash: string) {
+  const cacheKey = `COMMENTS_${fid}_${hash}`;
+  const cachedData = mainCache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData;
+  }
+
+  const response = await axios.get('https://hub-api.neynar.com/v1/castsByParent', {
+    params: {
+      fid,
+      hash,
+    },
+    headers: {
+      'api_key': process.env.NEYNAR_API_KEY,
+    }
+  })
+
+  const fids = uniq(response.data.messages.map((x: any) => x.data.fid))
+
+  const usersResponse = await axios.get('https://api.neynar.com/v2/farcaster/user/bulk', {
+    params: {
+      fids: fids.join(','),
+    },
+    headers: {
+      'api_key': process.env.NEYNAR_API_KEY,
+    }
+  })
+
+  const usernameMap: {[fid: number]: string} = {}
+  for (const user of usersResponse.data.users) {
+    usernameMap[user.fid] = user.username
+  }
+
+  const comments: FarcasterComment[] = response.data.messages.map((x: any) => ({
+    fid: x.data.fid,
+    timestamp: x.data.timestamp,
+    username: usernameMap[x.data.fid],
+    hash: x.hash
+  }))
+
+  comments.sort((a, b) => b.timestamp - a.timestamp)
+
+  mainCache.set(cacheKey, comments)
+
+  return comments
+}
+
+async function fetchProjectComments(projectId: string) {
+  // TODO: Get project farcaster thread hash
+  const hash = '0x5e1d985aa9a9969af96d0a4d45a12ccaf55f4db3'
+
+  return {
+    hash,
+    comments: await fetchFarcasterComments(702265, hash),
+  }
+}
+
 // Create an Express app
 const app = express();
 const port = 4201;
@@ -457,6 +524,19 @@ app.get('/projects/count', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch project count' });
   }
 })
+
+app.get('/projects/:id/comments', async (req, res) => {
+  try {
+    const comments = await fetchProjectComments(req.params.id);
+    res.json(comments);
+  } catch (error: any) {
+    if (error.message == 'Project not found') {
+      res.status(404).json({ error: 'Project not found' });
+    } else {
+      res.status(500).json({ error: 'Failed to fetch project' });
+    }
+  }
+});
 
 app.get('/projects/:id', async (req, res) => {
   try {

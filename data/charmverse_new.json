@@ -491,22 +491,6 @@
         "authors": [
             {
                 "proposalId": "05b3f863-a4e2-4f75-9edd-e31c5793fb0b",
-                "userId": "36a0b18f-d583-473e-a792-880b08b4d8ed",
-                "author": {
-                    "id": "36a0b18f-d583-473e-a792-880b08b4d8ed",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "cecda8fe-b642-4362-87be-e9c7704bead9",
-                            "address": "0xd1b856ee12bd00922cae8dd86ab068f8c0f95224",
-                            "userId": "36a0b18f-d583-473e-a792-880b08b4d8ed",
-                            "ensname": "0x42069.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "05b3f863-a4e2-4f75-9edd-e31c5793fb0b",
                 "userId": "5f76992b-53d6-4ce0-a684-3a812bc2257e",
                 "author": {
                     "id": "5f76992b-53d6-4ce0-a684-3a812bc2257e",
@@ -517,6 +501,22 @@
                             "address": "0x01f002740821e47fc6eb38f2ba168d3e47d064f1",
                             "userId": "5f76992b-53d6-4ce0-a684-3a812bc2257e",
                             "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "05b3f863-a4e2-4f75-9edd-e31c5793fb0b",
+                "userId": "36a0b18f-d583-473e-a792-880b08b4d8ed",
+                "author": {
+                    "id": "36a0b18f-d583-473e-a792-880b08b4d8ed",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "cecda8fe-b642-4362-87be-e9c7704bead9",
+                            "address": "0xd1b856ee12bd00922cae8dd86ab068f8c0f95224",
+                            "userId": "36a0b18f-d583-473e-a792-880b08b4d8ed",
+                            "ensname": "0x42069.eth"
                         }
                     ]
                 }
@@ -752,7 +752,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "fail",
+            "result": "in_progress",
             "id": "2cdcceb2-9bde-417c-8153-9904f9ec7936",
             "index": 3,
             "requiredReviews": 5,
@@ -820,6 +820,22 @@
         "authors": [
             {
                 "proposalId": "06833efd-230a-4491-96d0-b1780d10f47a",
+                "userId": "ad0d3397-01d0-47f4-b39a-ead80abc4dd7",
+                "author": {
+                    "id": "ad0d3397-01d0-47f4-b39a-ead80abc4dd7",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "cef31eb5-0ea4-4f27-9f83-45d80b3f9d15",
+                            "address": "0xd50a234082c1cea12a7a9dd6f37a85fcc55ed459",
+                            "userId": "ad0d3397-01d0-47f4-b39a-ead80abc4dd7",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "06833efd-230a-4491-96d0-b1780d10f47a",
                 "userId": "993b5392-b075-484c-ad2b-026fd7144df8",
                 "author": {
                     "id": "993b5392-b075-484c-ad2b-026fd7144df8",
@@ -835,22 +851,6 @@
                             "id": "49627e49-f161-4e00-a024-f75d75742da6",
                             "address": "9QSwZxMTgrcS9iup4YcjQouWhJfeGVKCMbjmSweXmEY9",
                             "userId": "993b5392-b075-484c-ad2b-026fd7144df8",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "06833efd-230a-4491-96d0-b1780d10f47a",
-                "userId": "ad0d3397-01d0-47f4-b39a-ead80abc4dd7",
-                "author": {
-                    "id": "ad0d3397-01d0-47f4-b39a-ead80abc4dd7",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "cef31eb5-0ea4-4f27-9f83-45d80b3f9d15",
-                            "address": "0xd50a234082c1cea12a7a9dd6f37a85fcc55ed459",
-                            "userId": "ad0d3397-01d0-47f4-b39a-ead80abc4dd7",
                             "ensname": null
                         }
                     ]
@@ -1002,6 +1002,28 @@
         "authors": [
             {
                 "proposalId": "07281beb-5594-4d9c-a2d6-bbc903310263",
+                "userId": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
+                "author": {
+                    "id": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "1b1ccae5-6f7f-4a8b-8622-035fb735eed0",
+                            "address": "0xa49958fa14309f3720159c83cd92c5f38b1e3306",
+                            "userId": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
+                            "ensname": null
+                        },
+                        {
+                            "id": "723d59ac-2309-4db0-bc9c-fe069ce2711c",
+                            "address": "0x9d58a7c79ceaee5dffb1962b4e5518e93b11401e",
+                            "userId": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "07281beb-5594-4d9c-a2d6-bbc903310263",
                 "userId": "a6ba6c32-148c-494d-9b4c-0cafc49c7912",
                 "author": {
                     "id": "a6ba6c32-148c-494d-9b4c-0cafc49c7912",
@@ -1029,28 +1051,6 @@
                             "id": "50d591e7-9f16-4378-872b-8a3a73e406fa",
                             "address": "0x75764bd139a725f43698fd3a9710f4984d845ffa",
                             "userId": "a6ba6c32-148c-494d-9b4c-0cafc49c7912",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "07281beb-5594-4d9c-a2d6-bbc903310263",
-                "userId": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
-                "author": {
-                    "id": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "1b1ccae5-6f7f-4a8b-8622-035fb735eed0",
-                            "address": "0xa49958fa14309f3720159c83cd92c5f38b1e3306",
-                            "userId": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
-                            "ensname": null
-                        },
-                        {
-                            "id": "723d59ac-2309-4db0-bc9c-fe069ce2711c",
-                            "address": "0x9d58a7c79ceaee5dffb1962b4e5518e93b11401e",
-                            "userId": "f3326378-9029-4a8b-90fa-ca8fb7bf9665",
                             "ensname": null
                         }
                     ]
@@ -1288,22 +1288,6 @@
         "authors": [
             {
                 "proposalId": "0800d4e7-74b9-421a-ad32-7c583f62d529",
-                "userId": "a40d72ba-3849-49d0-97b2-6f7b020cf576",
-                "author": {
-                    "id": "a40d72ba-3849-49d0-97b2-6f7b020cf576",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "2c91da92-f1b6-4b8e-813b-10315026ca2f",
-                            "address": "0xf0ae4f60a4dc379ae25371a34b4b699dee8d530f",
-                            "userId": "a40d72ba-3849-49d0-97b2-6f7b020cf576",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "0800d4e7-74b9-421a-ad32-7c583f62d529",
                 "userId": "f889d1c4-4239-49b9-b5d8-53700dd106cb",
                 "author": {
                     "id": "f889d1c4-4239-49b9-b5d8-53700dd106cb",
@@ -1313,6 +1297,22 @@
                             "id": "827a680c-5a6d-49af-9904-d9a2b11d6a18",
                             "address": "0xa65eef5d0566ef2ed242d8719111e3116333278d",
                             "userId": "f889d1c4-4239-49b9-b5d8-53700dd106cb",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "0800d4e7-74b9-421a-ad32-7c583f62d529",
+                "userId": "a40d72ba-3849-49d0-97b2-6f7b020cf576",
+                "author": {
+                    "id": "a40d72ba-3849-49d0-97b2-6f7b020cf576",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "2c91da92-f1b6-4b8e-813b-10315026ca2f",
+                            "address": "0xf0ae4f60a4dc379ae25371a34b4b699dee8d530f",
+                            "userId": "a40d72ba-3849-49d0-97b2-6f7b020cf576",
                             "ensname": null
                         }
                     ]
@@ -2032,15 +2032,6 @@
         "authors": [
             {
                 "proposalId": "0bc0564a-d59a-4a6a-979e-82ee6f3c688b",
-                "userId": "16efba1e-a0d8-4138-90e5-995df41827ac",
-                "author": {
-                    "id": "16efba1e-a0d8-4138-90e5-995df41827ac",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "0bc0564a-d59a-4a6a-979e-82ee6f3c688b",
                 "userId": "6ca71feb-0a35-4451-ad3b-679b9e4635b5",
                 "author": {
                     "id": "6ca71feb-0a35-4451-ad3b-679b9e4635b5",
@@ -2053,6 +2044,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "0bc0564a-d59a-4a6a-979e-82ee6f3c688b",
+                "userId": "16efba1e-a0d8-4138-90e5-995df41827ac",
+                "author": {
+                    "id": "16efba1e-a0d8-4138-90e5-995df41827ac",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -2153,6 +2153,15 @@
         "authors": [
             {
                 "proposalId": "0c12eff6-f2f0-403e-afb8-15fc2f8b2916",
+                "userId": "a64e188b-27d3-4187-a744-a585f5ba7441",
+                "author": {
+                    "id": "a64e188b-27d3-4187-a744-a585f5ba7441",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "0c12eff6-f2f0-403e-afb8-15fc2f8b2916",
                 "userId": "3dcf4bd0-d4aa-4e89-affe-fc9c17fb96ee",
                 "author": {
                     "id": "3dcf4bd0-d4aa-4e89-affe-fc9c17fb96ee",
@@ -2165,15 +2174,6 @@
                             "ensname": "legac.eth"
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "0c12eff6-f2f0-403e-afb8-15fc2f8b2916",
-                "userId": "a64e188b-27d3-4187-a744-a585f5ba7441",
-                "author": {
-                    "id": "a64e188b-27d3-4187-a744-a585f5ba7441",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -2290,6 +2290,22 @@
             },
             {
                 "proposalId": "0c662df8-a1a3-45d2-a5df-cd4215ba8541",
+                "userId": "bcd53b28-8f8d-4500-9b36-e3850854cbae",
+                "author": {
+                    "id": "bcd53b28-8f8d-4500-9b36-e3850854cbae",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "8aced9f6-80f9-4ce0-8cf2-438e87700f9c",
+                            "address": "0x3980a73f4159f867e6eec7555d26622e53d356b9",
+                            "userId": "bcd53b28-8f8d-4500-9b36-e3850854cbae",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "0c662df8-a1a3-45d2-a5df-cd4215ba8541",
                 "userId": "2b49e125-6d35-4d65-86c4-40940e57f6fc",
                 "author": {
                     "id": "2b49e125-6d35-4d65-86c4-40940e57f6fc",
@@ -2299,22 +2315,6 @@
                             "id": "e2d91942-1332-45e0-80d1-fb4cf68e1288",
                             "address": "0x5b53c0a95e3c537ed7d42cde854e6049dc6599b3",
                             "userId": "2b49e125-6d35-4d65-86c4-40940e57f6fc",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "0c662df8-a1a3-45d2-a5df-cd4215ba8541",
-                "userId": "3cabf980-2327-4d03-9294-2d3cef1b72ed",
-                "author": {
-                    "id": "3cabf980-2327-4d03-9294-2d3cef1b72ed",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "b393a74e-eee5-4c32-bbe6-a919730d7658",
-                            "address": "0x921272a7b552b76719b9dbeb5a8157a302d7ba0f",
-                            "userId": "3cabf980-2327-4d03-9294-2d3cef1b72ed",
                             "ensname": null
                         }
                     ]
@@ -2347,15 +2347,15 @@
             },
             {
                 "proposalId": "0c662df8-a1a3-45d2-a5df-cd4215ba8541",
-                "userId": "bcd53b28-8f8d-4500-9b36-e3850854cbae",
+                "userId": "3cabf980-2327-4d03-9294-2d3cef1b72ed",
                 "author": {
-                    "id": "bcd53b28-8f8d-4500-9b36-e3850854cbae",
+                    "id": "3cabf980-2327-4d03-9294-2d3cef1b72ed",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "8aced9f6-80f9-4ce0-8cf2-438e87700f9c",
-                            "address": "0x3980a73f4159f867e6eec7555d26622e53d356b9",
-                            "userId": "bcd53b28-8f8d-4500-9b36-e3850854cbae",
+                            "id": "b393a74e-eee5-4c32-bbe6-a919730d7658",
+                            "address": "0x921272a7b552b76719b9dbeb5a8157a302d7ba0f",
+                            "userId": "3cabf980-2327-4d03-9294-2d3cef1b72ed",
                             "ensname": null
                         }
                     ]
@@ -2459,15 +2459,6 @@
         "authors": [
             {
                 "proposalId": "0ccfa040-0928-4dd5-a0c5-fac9c78971cb",
-                "userId": "3b47ca10-4f6a-4109-bc45-8b6e770a3684",
-                "author": {
-                    "id": "3b47ca10-4f6a-4109-bc45-8b6e770a3684",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "0ccfa040-0928-4dd5-a0c5-fac9c78971cb",
                 "userId": "49c70d4b-14d7-4989-b6a3-174e8b204044",
                 "author": {
                     "id": "49c70d4b-14d7-4989-b6a3-174e8b204044",
@@ -2480,15 +2471,6 @@
                 "userId": "4ecb695b-1435-4a65-af4f-63fa1d6b815a",
                 "author": {
                     "id": "4ecb695b-1435-4a65-af4f-63fa1d6b815a",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "0ccfa040-0928-4dd5-a0c5-fac9c78971cb",
-                "userId": "80495261-0cc9-487d-8d6a-64b6750cc34d",
-                "author": {
-                    "id": "80495261-0cc9-487d-8d6a-64b6750cc34d",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -2516,6 +2498,24 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "0ccfa040-0928-4dd5-a0c5-fac9c78971cb",
+                "userId": "3b47ca10-4f6a-4109-bc45-8b6e770a3684",
+                "author": {
+                    "id": "3b47ca10-4f6a-4109-bc45-8b6e770a3684",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "0ccfa040-0928-4dd5-a0c5-fac9c78971cb",
+                "userId": "80495261-0cc9-487d-8d6a-64b6750cc34d",
+                "author": {
+                    "id": "80495261-0cc9-487d-8d6a-64b6750cc34d",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -2616,6 +2616,15 @@
         "authors": [
             {
                 "proposalId": "0e190c8c-9406-4fec-9179-24e747bd5039",
+                "userId": "a80aac23-a66d-4428-9dae-1cd6e98a2b9f",
+                "author": {
+                    "id": "a80aac23-a66d-4428-9dae-1cd6e98a2b9f",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "0e190c8c-9406-4fec-9179-24e747bd5039",
                 "userId": "4f218112-ab71-4eac-a5d6-f6efee51a300",
                 "author": {
                     "id": "4f218112-ab71-4eac-a5d6-f6efee51a300",
@@ -2628,15 +2637,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "0e190c8c-9406-4fec-9179-24e747bd5039",
-                "userId": "a80aac23-a66d-4428-9dae-1cd6e98a2b9f",
-                "author": {
-                    "id": "a80aac23-a66d-4428-9dae-1cd6e98a2b9f",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -3283,6 +3283,28 @@
         "authors": [
             {
                 "proposalId": "111054b1-d1b0-485a-9ab1-1631604dafba",
+                "userId": "9203d106-32a6-4f44-81dc-689aecae56c1",
+                "author": {
+                    "id": "9203d106-32a6-4f44-81dc-689aecae56c1",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "935298a7-3454-4d3e-a782-c9a68bcd83a6",
+                            "address": "0xdbe77272ba3b4393c4bd554f26d1ce7a392142b7",
+                            "userId": "9203d106-32a6-4f44-81dc-689aecae56c1",
+                            "ensname": null
+                        },
+                        {
+                            "id": "1df67caa-53bd-4e5d-be5b-0f812819f605",
+                            "address": "0x342a0bb50d40230c2003bb3b7d57e9ba17775bb6",
+                            "userId": "9203d106-32a6-4f44-81dc-689aecae56c1",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "111054b1-d1b0-485a-9ab1-1631604dafba",
                 "userId": "03d16f85-f56b-4ab1-8d26-04526b91f816",
                 "author": {
                     "id": "03d16f85-f56b-4ab1-8d26-04526b91f816",
@@ -3333,28 +3355,6 @@
                             "id": "148cc100-7398-4303-bc7f-3ffb1f74e854",
                             "address": "0xbd020867cebdad3bf9f31480e4b01e9bbeff7552",
                             "userId": "6739d356-a449-46d0-a503-9eeee8ce5655",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "111054b1-d1b0-485a-9ab1-1631604dafba",
-                "userId": "9203d106-32a6-4f44-81dc-689aecae56c1",
-                "author": {
-                    "id": "9203d106-32a6-4f44-81dc-689aecae56c1",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "935298a7-3454-4d3e-a782-c9a68bcd83a6",
-                            "address": "0xdbe77272ba3b4393c4bd554f26d1ce7a392142b7",
-                            "userId": "9203d106-32a6-4f44-81dc-689aecae56c1",
-                            "ensname": null
-                        },
-                        {
-                            "id": "1df67caa-53bd-4e5d-be5b-0f812819f605",
-                            "address": "0x342a0bb50d40230c2003bb3b7d57e9ba17775bb6",
-                            "userId": "9203d106-32a6-4f44-81dc-689aecae56c1",
                             "ensname": null
                         }
                     ]
@@ -3627,18 +3627,36 @@
         "authors": [
             {
                 "proposalId": "120aae6c-f1d3-4dd2-8409-7ac1610e9b35",
-                "userId": "2b88359e-badd-4a8e-abfb-aae80839975d",
+                "userId": "e5a7e3ad-28de-4bfc-a6ef-778d90660358",
                 "author": {
-                    "id": "2b88359e-badd-4a8e-abfb-aae80839975d",
+                    "id": "e5a7e3ad-28de-4bfc-a6ef-778d90660358",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "9d7b002f-9e07-419c-bdfc-420560fa4325",
-                            "address": "0xf4bb53efcfd49fe036fdcc8f46d981203ae3bab8",
-                            "userId": "2b88359e-badd-4a8e-abfb-aae80839975d",
+                            "id": "8830962d-3b86-4969-ba1e-3a83ddbd3607",
+                            "address": "0x02cdd55bea4d8ef7e7dda6a60305a03dfab0c128",
+                            "userId": "e5a7e3ad-28de-4bfc-a6ef-778d90660358",
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "120aae6c-f1d3-4dd2-8409-7ac1610e9b35",
+                "userId": "9d1323de-6103-4a2f-8369-2a2faec77ec2",
+                "author": {
+                    "id": "9d1323de-6103-4a2f-8369-2a2faec77ec2",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "120aae6c-f1d3-4dd2-8409-7ac1610e9b35",
+                "userId": "9be3b10f-d6a9-4920-b19e-ceb7fa6bfa7d",
+                "author": {
+                    "id": "9be3b10f-d6a9-4920-b19e-ceb7fa6bfa7d",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             },
             {
@@ -3661,33 +3679,15 @@
             },
             {
                 "proposalId": "120aae6c-f1d3-4dd2-8409-7ac1610e9b35",
-                "userId": "9be3b10f-d6a9-4920-b19e-ceb7fa6bfa7d",
+                "userId": "2b88359e-badd-4a8e-abfb-aae80839975d",
                 "author": {
-                    "id": "9be3b10f-d6a9-4920-b19e-ceb7fa6bfa7d",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "120aae6c-f1d3-4dd2-8409-7ac1610e9b35",
-                "userId": "9d1323de-6103-4a2f-8369-2a2faec77ec2",
-                "author": {
-                    "id": "9d1323de-6103-4a2f-8369-2a2faec77ec2",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "120aae6c-f1d3-4dd2-8409-7ac1610e9b35",
-                "userId": "e5a7e3ad-28de-4bfc-a6ef-778d90660358",
-                "author": {
-                    "id": "e5a7e3ad-28de-4bfc-a6ef-778d90660358",
+                    "id": "2b88359e-badd-4a8e-abfb-aae80839975d",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "8830962d-3b86-4969-ba1e-3a83ddbd3607",
-                            "address": "0x02cdd55bea4d8ef7e7dda6a60305a03dfab0c128",
-                            "userId": "e5a7e3ad-28de-4bfc-a6ef-778d90660358",
+                            "id": "9d7b002f-9e07-419c-bdfc-420560fa4325",
+                            "address": "0xf4bb53efcfd49fe036fdcc8f46d981203ae3bab8",
+                            "userId": "2b88359e-badd-4a8e-abfb-aae80839975d",
                             "ensname": null
                         }
                     ]
@@ -3839,28 +3839,6 @@
         "authors": [
             {
                 "proposalId": "12557dad-a53f-40a9-9de0-10d775480d69",
-                "userId": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
-                "author": {
-                    "id": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "bc1d9b66-5add-4f05-ad9b-ce176a125630",
-                            "address": "0xac6061feb3452691879b4ba585cca5bbc6bfefb9",
-                            "userId": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
-                            "ensname": null
-                        },
-                        {
-                            "id": "21729aa9-ad79-47c3-b4c8-277f09d9a061",
-                            "address": "0x543d53d6f6d15adb6b6c54ce2c4c28a5f2ccb036",
-                            "userId": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "12557dad-a53f-40a9-9de0-10d775480d69",
                 "userId": "f398a31d-1090-42cc-b16e-472e3806784c",
                 "author": {
                     "id": "f398a31d-1090-42cc-b16e-472e3806784c",
@@ -3876,6 +3854,28 @@
                             "id": "6807a725-db4c-458c-9607-7cfc355aa6b3",
                             "address": "0x73e09de9497f2dfff90b1e97ac0be9ccca1677ec",
                             "userId": "f398a31d-1090-42cc-b16e-472e3806784c",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "12557dad-a53f-40a9-9de0-10d775480d69",
+                "userId": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
+                "author": {
+                    "id": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "bc1d9b66-5add-4f05-ad9b-ce176a125630",
+                            "address": "0xac6061feb3452691879b4ba585cca5bbc6bfefb9",
+                            "userId": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
+                            "ensname": null
+                        },
+                        {
+                            "id": "21729aa9-ad79-47c3-b4c8-277f09d9a061",
+                            "address": "0x543d53d6f6d15adb6b6c54ce2c4c28a5f2ccb036",
+                            "userId": "e86c24ea-4c1a-44a7-942e-91b1e8dd66cf",
                             "ensname": null
                         }
                     ]
@@ -4190,7 +4190,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "fail",
                 "id": "839f8803-1bcd-4625-93e7-73ea72b38e8c",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -4249,8 +4249,8 @@
         },
         "currentEvaluationId": "839f8803-1bcd-4625-93e7-73ea72b38e8c",
         "title": "Juniper",
-        "updatedAt": "2024-06-21T12:30:30.634Z",
-        "updatedBy": "ed01a146-3dad-49a7-b29f-22f5f077e43f",
+        "updatedAt": "2024-06-25T13:28:59.960Z",
+        "updatedBy": "0cefd499-35c4-45cf-88ed-8ab6cfc583ba",
         "pageId": "1355ff5c-b811-4691-9b57-c3c8e6160682",
         "reviewers": [
             {
@@ -4477,22 +4477,6 @@
         "authors": [
             {
                 "proposalId": "1603e9b8-1c0f-4582-8b90-7df60d228cbc",
-                "userId": "3858444b-40b9-4365-8ab0-6dc645e39de6",
-                "author": {
-                    "id": "3858444b-40b9-4365-8ab0-6dc645e39de6",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "90b0cc98-8c42-4083-b08d-9618da0c567d",
-                            "address": "0x2f143cee05f5bb2a15c2db55e31f6a9f9f81a5ea",
-                            "userId": "3858444b-40b9-4365-8ab0-6dc645e39de6",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "1603e9b8-1c0f-4582-8b90-7df60d228cbc",
                 "userId": "f25cd5bf-caeb-4f85-8262-5358019ea620",
                 "author": {
                     "id": "f25cd5bf-caeb-4f85-8262-5358019ea620",
@@ -4502,6 +4486,22 @@
                             "id": "98ec078f-d42b-4ce1-afe6-aa28389324b3",
                             "address": "0x0b776552c1aef1dc33005dd25acda22493b6615d",
                             "userId": "f25cd5bf-caeb-4f85-8262-5358019ea620",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "1603e9b8-1c0f-4582-8b90-7df60d228cbc",
+                "userId": "3858444b-40b9-4365-8ab0-6dc645e39de6",
+                "author": {
+                    "id": "3858444b-40b9-4365-8ab0-6dc645e39de6",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "90b0cc98-8c42-4083-b08d-9618da0c567d",
+                            "address": "0x2f143cee05f5bb2a15c2db55e31f6a9f9f81a5ea",
+                            "userId": "3858444b-40b9-4365-8ab0-6dc645e39de6",
                             "ensname": null
                         }
                     ]
@@ -4780,15 +4780,6 @@
             },
             {
                 "proposalId": "1a48b0a7-112d-4314-9a52-45da22cabbc2",
-                "userId": "447127fb-4a99-4bd5-bb26-e8feca6351df",
-                "author": {
-                    "id": "447127fb-4a99-4bd5-bb26-e8feca6351df",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "1a48b0a7-112d-4314-9a52-45da22cabbc2",
                 "userId": "643dcc54-e9f7-4995-813f-eea105a63530",
                 "author": {
                     "id": "643dcc54-e9f7-4995-813f-eea105a63530",
@@ -4801,6 +4792,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "1a48b0a7-112d-4314-9a52-45da22cabbc2",
+                "userId": "447127fb-4a99-4bd5-bb26-e8feca6351df",
+                "author": {
+                    "id": "447127fb-4a99-4bd5-bb26-e8feca6351df",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -5570,6 +5570,22 @@
         "authors": [
             {
                 "proposalId": "211d7c54-6ced-4ec9-8870-082d63f315e6",
+                "userId": "ba627849-5f51-430a-90a2-c3886ddfa4f9",
+                "author": {
+                    "id": "ba627849-5f51-430a-90a2-c3886ddfa4f9",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "b2d52db9-5de5-456c-a5f4-2c22474c4ade",
+                            "address": "0x141edb16c70307cf2f0f04af2dda75423a0e1bea",
+                            "userId": "ba627849-5f51-430a-90a2-c3886ddfa4f9",
+                            "ensname": "br1an.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "211d7c54-6ced-4ec9-8870-082d63f315e6",
                 "userId": "b863b9f9-0a5a-48de-94fc-df6e794900c8",
                 "author": {
                     "id": "b863b9f9-0a5a-48de-94fc-df6e794900c8",
@@ -5586,22 +5602,6 @@
                             "address": "0x281d479a15b92a87754316ec43d2817ccc2a22f1",
                             "userId": "b863b9f9-0a5a-48de-94fc-df6e794900c8",
                             "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "211d7c54-6ced-4ec9-8870-082d63f315e6",
-                "userId": "ba627849-5f51-430a-90a2-c3886ddfa4f9",
-                "author": {
-                    "id": "ba627849-5f51-430a-90a2-c3886ddfa4f9",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "b2d52db9-5de5-456c-a5f4-2c22474c4ade",
-                            "address": "0x141edb16c70307cf2f0f04af2dda75423a0e1bea",
-                            "userId": "ba627849-5f51-430a-90a2-c3886ddfa4f9",
-                            "ensname": "br1an.eth"
                         }
                     ]
                 }
@@ -5634,7 +5634,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "pass",
                 "id": "24240872-55a1-4208-b64f-1ccf4abcd991",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -5693,8 +5693,8 @@
         },
         "currentEvaluationId": "24240872-55a1-4208-b64f-1ccf4abcd991",
         "title": "Unlonely",
-        "updatedAt": "2024-06-24T16:27:35.861Z",
-        "updatedBy": "1e530166-2a3e-4aee-9d86-cfa199784d28",
+        "updatedAt": "2024-06-25T13:03:48.289Z",
+        "updatedBy": "267af839-073d-4b75-8487-b7ccfc5eceec",
         "pageId": "211d7c54-6ced-4ec9-8870-082d63f315e6",
         "reviewers": [
             {
@@ -5864,6 +5864,15 @@
         "authors": [
             {
                 "proposalId": "23d8c59d-2e1c-4ef8-98e2-b05ee5e2404a",
+                "userId": "73739882-bdaa-4c2d-afe2-044cead5f031",
+                "author": {
+                    "id": "73739882-bdaa-4c2d-afe2-044cead5f031",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "23d8c59d-2e1c-4ef8-98e2-b05ee5e2404a",
                 "userId": "08f7a243-26a8-4bfa-9c1c-cfa93785bd4e",
                 "author": {
                     "id": "08f7a243-26a8-4bfa-9c1c-cfa93785bd4e",
@@ -5876,24 +5885,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "23d8c59d-2e1c-4ef8-98e2-b05ee5e2404a",
-                "userId": "12cd99a2-e162-4ad2-87d2-2f58db753286",
-                "author": {
-                    "id": "12cd99a2-e162-4ad2-87d2-2f58db753286",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "23d8c59d-2e1c-4ef8-98e2-b05ee5e2404a",
-                "userId": "73739882-bdaa-4c2d-afe2-044cead5f031",
-                "author": {
-                    "id": "73739882-bdaa-4c2d-afe2-044cead5f031",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             },
             {
@@ -5916,6 +5907,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "23d8c59d-2e1c-4ef8-98e2-b05ee5e2404a",
+                "userId": "12cd99a2-e162-4ad2-87d2-2f58db753286",
+                "author": {
+                    "id": "12cd99a2-e162-4ad2-87d2-2f58db753286",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -6222,7 +6222,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "fail",
+            "result": "in_progress",
             "id": "817a2a7c-3aba-40c8-96e5-99d580094ca3",
             "index": 3,
             "requiredReviews": 5,
@@ -6306,6 +6306,22 @@
             },
             {
                 "proposalId": "28a7ac79-f30b-4f8d-855b-ed458c7ed61a",
+                "userId": "ea3b58ec-8cb3-451c-9b4c-9c221c2ea789",
+                "author": {
+                    "id": "ea3b58ec-8cb3-451c-9b4c-9c221c2ea789",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "4fdca377-567d-4e0e-a00e-b8d163ee985e",
+                            "address": "0x62c99874c6873e5b2533e5d1eb703b755ac93739",
+                            "userId": "ea3b58ec-8cb3-451c-9b4c-9c221c2ea789",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "28a7ac79-f30b-4f8d-855b-ed458c7ed61a",
                 "userId": "e9e02fe3-ae48-4717-8e2b-5b250d80d486",
                 "author": {
                     "id": "e9e02fe3-ae48-4717-8e2b-5b250d80d486",
@@ -6321,22 +6337,6 @@
                             "id": "fe427c3b-c42d-45bb-b3f0-78ef26512e40",
                             "address": "0x1e79b045dc29eae9fdc69673c9dcd7c53e5e159d",
                             "userId": "e9e02fe3-ae48-4717-8e2b-5b250d80d486",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "28a7ac79-f30b-4f8d-855b-ed458c7ed61a",
-                "userId": "ea3b58ec-8cb3-451c-9b4c-9c221c2ea789",
-                "author": {
-                    "id": "ea3b58ec-8cb3-451c-9b4c-9c221c2ea789",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "4fdca377-567d-4e0e-a00e-b8d163ee985e",
-                            "address": "0x62c99874c6873e5b2533e5d1eb703b755ac93739",
-                            "userId": "ea3b58ec-8cb3-451c-9b4c-9c221c2ea789",
                             "ensname": null
                         }
                     ]
@@ -6440,38 +6440,6 @@
         "authors": [
             {
                 "proposalId": "295e864e-7692-4a11-8b5a-cf702e92a0aa",
-                "userId": "204e15f3-5c02-446b-aca4-c3b1ea28dcbe",
-                "author": {
-                    "id": "204e15f3-5c02-446b-aca4-c3b1ea28dcbe",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "7cdc50cb-f34d-4e84-8da7-e8bf92f59f42",
-                            "address": "0x5d98609f4a43ed4d36dae38a58365b352109c7a6",
-                            "userId": "204e15f3-5c02-446b-aca4-c3b1ea28dcbe",
-                            "ensname": "royalaid.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "295e864e-7692-4a11-8b5a-cf702e92a0aa",
-                "userId": "83b3a044-74b8-4ff0-887c-7185306310a7",
-                "author": {
-                    "id": "83b3a044-74b8-4ff0-887c-7185306310a7",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "352706f0-4371-4a97-84e3-35b53db57209",
-                            "address": "0x1d12c9fec45746823861176ce05bdecda06f2115",
-                            "userId": "83b3a044-74b8-4ff0-887c-7185306310a7",
-                            "ensname": "publu.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "295e864e-7692-4a11-8b5a-cf702e92a0aa",
                 "userId": "e3727264-9818-4b65-8aa8-745fccad75b9",
                 "author": {
                     "id": "e3727264-9818-4b65-8aa8-745fccad75b9",
@@ -6488,11 +6456,43 @@
             },
             {
                 "proposalId": "295e864e-7692-4a11-8b5a-cf702e92a0aa",
+                "userId": "204e15f3-5c02-446b-aca4-c3b1ea28dcbe",
+                "author": {
+                    "id": "204e15f3-5c02-446b-aca4-c3b1ea28dcbe",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "7cdc50cb-f34d-4e84-8da7-e8bf92f59f42",
+                            "address": "0x5d98609f4a43ed4d36dae38a58365b352109c7a6",
+                            "userId": "204e15f3-5c02-446b-aca4-c3b1ea28dcbe",
+                            "ensname": "royalaid.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "295e864e-7692-4a11-8b5a-cf702e92a0aa",
                 "userId": "ffb4c86e-c7fd-47bf-a6f7-f4ef68b12221",
                 "author": {
                     "id": "ffb4c86e-c7fd-47bf-a6f7-f4ef68b12221",
                     "primaryWallet": null,
                     "wallets": []
+                }
+            },
+            {
+                "proposalId": "295e864e-7692-4a11-8b5a-cf702e92a0aa",
+                "userId": "83b3a044-74b8-4ff0-887c-7185306310a7",
+                "author": {
+                    "id": "83b3a044-74b8-4ff0-887c-7185306310a7",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "352706f0-4371-4a97-84e3-35b53db57209",
+                            "address": "0x1d12c9fec45746823861176ce05bdecda06f2115",
+                            "userId": "83b3a044-74b8-4ff0-887c-7185306310a7",
+                            "ensname": "publu.eth"
+                        }
+                    ]
                 }
             }
         ],
@@ -6593,6 +6593,15 @@
         "authors": [
             {
                 "proposalId": "2ac8cbb5-5d74-445b-a4bf-102bf91ec5a7",
+                "userId": "8b37a852-a659-4907-bd2b-e721cfe78ecd",
+                "author": {
+                    "id": "8b37a852-a659-4907-bd2b-e721cfe78ecd",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "2ac8cbb5-5d74-445b-a4bf-102bf91ec5a7",
                 "userId": "6246b5a4-e0cf-419d-acf2-914daa2e5399",
                 "author": {
                     "id": "6246b5a4-e0cf-419d-acf2-914daa2e5399",
@@ -6605,15 +6614,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "2ac8cbb5-5d74-445b-a4bf-102bf91ec5a7",
-                "userId": "8b37a852-a659-4907-bd2b-e721cfe78ecd",
-                "author": {
-                    "id": "8b37a852-a659-4907-bd2b-e721cfe78ecd",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -6714,9 +6714,9 @@
         "authors": [
             {
                 "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
-                "userId": "01831b37-764d-4e7d-ae7b-73f4a4a6e82d",
+                "userId": "b87c731c-2d0f-4dd5-8f33-1291f2392f63",
                 "author": {
-                    "id": "01831b37-764d-4e7d-ae7b-73f4a4a6e82d",
+                    "id": "b87c731c-2d0f-4dd5-8f33-1291f2392f63",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -6732,49 +6732,6 @@
                             "id": "7c1e2389-1a45-49c6-a3eb-407dd0e1ae95",
                             "address": "0x69da95d6a8139508c2053e7bd07628f83d3f9d60",
                             "userId": "0f5a4fa5-9a01-4bab-a392-16fff1581adb",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
-                "userId": "9d9f4381-47ca-4561-8299-297b53d8a77d",
-                "author": {
-                    "id": "9d9f4381-47ca-4561-8299-297b53d8a77d",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
-                "userId": "a2aa081c-8655-47ad-a27d-6eb270f2374e",
-                "author": {
-                    "id": "a2aa081c-8655-47ad-a27d-6eb270f2374e",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
-                "userId": "b87c731c-2d0f-4dd5-8f33-1291f2392f63",
-                "author": {
-                    "id": "b87c731c-2d0f-4dd5-8f33-1291f2392f63",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
-                "userId": "c3cf6d60-f3f4-4141-ac06-0e1917fbee32",
-                "author": {
-                    "id": "c3cf6d60-f3f4-4141-ac06-0e1917fbee32",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "cb2b468b-08da-4aa5-8717-258ca084f26a",
-                            "address": "0x2210dc066aacb03c9676c4f1b36084af14ccd02e",
-                            "userId": "c3cf6d60-f3f4-4141-ac06-0e1917fbee32",
                             "ensname": null
                         }
                     ]
@@ -6803,6 +6760,49 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
+                "userId": "9d9f4381-47ca-4561-8299-297b53d8a77d",
+                "author": {
+                    "id": "9d9f4381-47ca-4561-8299-297b53d8a77d",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
+                "userId": "c3cf6d60-f3f4-4141-ac06-0e1917fbee32",
+                "author": {
+                    "id": "c3cf6d60-f3f4-4141-ac06-0e1917fbee32",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "cb2b468b-08da-4aa5-8717-258ca084f26a",
+                            "address": "0x2210dc066aacb03c9676c4f1b36084af14ccd02e",
+                            "userId": "c3cf6d60-f3f4-4141-ac06-0e1917fbee32",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
+                "userId": "01831b37-764d-4e7d-ae7b-73f4a4a6e82d",
+                "author": {
+                    "id": "01831b37-764d-4e7d-ae7b-73f4a4a6e82d",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "2b6e5ee0-2ba1-4b48-9e4e-aa0595b2adf6",
+                "userId": "a2aa081c-8655-47ad-a27d-6eb270f2374e",
+                "author": {
+                    "id": "a2aa081c-8655-47ad-a27d-6eb270f2374e",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -7337,18 +7337,18 @@
         "authors": [
             {
                 "proposalId": "2df4ca19-baf5-4f4a-a025-aae25cba31a1",
-                "userId": "17404a3d-2cd6-4c32-b43c-5bab719a1425",
+                "userId": "568669be-349d-4e7d-9462-b29535179136",
                 "author": {
-                    "id": "17404a3d-2cd6-4c32-b43c-5bab719a1425",
+                    "id": "568669be-349d-4e7d-9462-b29535179136",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "2df4ca19-baf5-4f4a-a025-aae25cba31a1",
-                "userId": "568669be-349d-4e7d-9462-b29535179136",
+                "userId": "17404a3d-2cd6-4c32-b43c-5bab719a1425",
                 "author": {
-                    "id": "568669be-349d-4e7d-9462-b29535179136",
+                    "id": "17404a3d-2cd6-4c32-b43c-5bab719a1425",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -7451,22 +7451,6 @@
         "authors": [
             {
                 "proposalId": "2f157a6f-0286-41f9-8a43-40be89fa61ae",
-                "userId": "66e39cb6-f969-42c4-b313-b68bb3b36510",
-                "author": {
-                    "id": "66e39cb6-f969-42c4-b313-b68bb3b36510",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "6d3d5b87-d1b6-4379-a8f5-409b148cb7ff",
-                            "address": "0x71ff7433579ec84560b6ad42aae0c311da841ee0",
-                            "userId": "66e39cb6-f969-42c4-b313-b68bb3b36510",
-                            "ensname": "hot.neokry.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "2f157a6f-0286-41f9-8a43-40be89fa61ae",
                 "userId": "c5265d31-5cc9-40a2-be9a-55a3b488d86b",
                 "author": {
                     "id": "c5265d31-5cc9-40a2-be9a-55a3b488d86b",
@@ -7477,6 +7461,22 @@
                             "address": "0x01503dc708ce3c55017194847a07acb679d49f47",
                             "userId": "c5265d31-5cc9-40a2-be9a-55a3b488d86b",
                             "ensname": "lilac.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "2f157a6f-0286-41f9-8a43-40be89fa61ae",
+                "userId": "66e39cb6-f969-42c4-b313-b68bb3b36510",
+                "author": {
+                    "id": "66e39cb6-f969-42c4-b313-b68bb3b36510",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "6d3d5b87-d1b6-4379-a8f5-409b148cb7ff",
+                            "address": "0x71ff7433579ec84560b6ad42aae0c311da841ee0",
+                            "userId": "66e39cb6-f969-42c4-b313-b68bb3b36510",
+                            "ensname": "hot.neokry.eth"
                         }
                     ]
                 }
@@ -7691,6 +7691,22 @@
         "authors": [
             {
                 "proposalId": "321bd6c4-2443-4159-a192-fd8166014266",
+                "userId": "ac0a6040-ff2e-467b-9968-a29ba7f7abbf",
+                "author": {
+                    "id": "ac0a6040-ff2e-467b-9968-a29ba7f7abbf",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "8ff8444d-dec6-41be-8161-7fc1e4230c27",
+                            "address": "0xb918f149e75250ea48838ffe6d3b20402fc4750a",
+                            "userId": "ac0a6040-ff2e-467b-9968-a29ba7f7abbf",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "321bd6c4-2443-4159-a192-fd8166014266",
                 "userId": "3095b3b5-d4e8-4d59-b1e3-4dd4312c1c8b",
                 "author": {
                     "id": "3095b3b5-d4e8-4d59-b1e3-4dd4312c1c8b",
@@ -7705,22 +7721,6 @@
                     "id": "4f828721-a1a5-416f-a1a5-129639e6f756",
                     "primaryWallet": null,
                     "wallets": []
-                }
-            },
-            {
-                "proposalId": "321bd6c4-2443-4159-a192-fd8166014266",
-                "userId": "ac0a6040-ff2e-467b-9968-a29ba7f7abbf",
-                "author": {
-                    "id": "ac0a6040-ff2e-467b-9968-a29ba7f7abbf",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "8ff8444d-dec6-41be-8161-7fc1e4230c27",
-                            "address": "0xb918f149e75250ea48838ffe6d3b20402fc4750a",
-                            "userId": "ac0a6040-ff2e-467b-9968-a29ba7f7abbf",
-                            "ensname": null
-                        }
-                    ]
                 }
             }
         ],
@@ -8360,16 +8360,38 @@
         "authors": [
             {
                 "proposalId": "352eb766-6d64-492c-8e9b-fcbc8722d86b",
-                "userId": "49186861-f9fa-4b5b-a03f-a370de002c4c",
+                "userId": "b1caf3a2-0896-4a17-922f-0125fe3a2934",
                 "author": {
-                    "id": "49186861-f9fa-4b5b-a03f-a370de002c4c",
+                    "id": "b1caf3a2-0896-4a17-922f-0125fe3a2934",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "4b771387-ce6b-411f-b2ac-897f30360dea",
-                            "address": "0x05a1ff0a32bc24265bcb39499d0c5d9a6cb2011c",
-                            "userId": "49186861-f9fa-4b5b-a03f-a370de002c4c",
-                            "ensname": "willywonka.eth"
+                            "id": "a9bb73ee-0122-4201-a865-dd2e67db4dd3",
+                            "address": "0x51603c7059f369ab04b16addfb7bb6c4e34b8523",
+                            "userId": "b1caf3a2-0896-4a17-922f-0125fe3a2934",
+                            "ensname": "realitycrafter.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "352eb766-6d64-492c-8e9b-fcbc8722d86b",
+                "userId": "a99551c8-c8e7-45a0-8dde-2325783d743b",
+                "author": {
+                    "id": "a99551c8-c8e7-45a0-8dde-2325783d743b",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "5bc75d8c-2e09-4a28-b41f-31db6d7c84fb",
+                            "address": "0x3bec6a181d6ef7239f699daf2faa5fe3a5f01edf",
+                            "userId": "a99551c8-c8e7-45a0-8dde-2325783d743b",
+                            "ensname": null
+                        },
+                        {
+                            "id": "62ac5d91-aaa4-440f-8a85-b593fc3f7820",
+                            "address": "0x9c59245b715a8aebdce385b28dbd84b02dacae03",
+                            "userId": "a99551c8-c8e7-45a0-8dde-2325783d743b",
+                            "ensname": null
                         }
                     ]
                 }
@@ -8408,38 +8430,16 @@
             },
             {
                 "proposalId": "352eb766-6d64-492c-8e9b-fcbc8722d86b",
-                "userId": "a99551c8-c8e7-45a0-8dde-2325783d743b",
+                "userId": "49186861-f9fa-4b5b-a03f-a370de002c4c",
                 "author": {
-                    "id": "a99551c8-c8e7-45a0-8dde-2325783d743b",
+                    "id": "49186861-f9fa-4b5b-a03f-a370de002c4c",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "5bc75d8c-2e09-4a28-b41f-31db6d7c84fb",
-                            "address": "0x3bec6a181d6ef7239f699daf2faa5fe3a5f01edf",
-                            "userId": "a99551c8-c8e7-45a0-8dde-2325783d743b",
-                            "ensname": null
-                        },
-                        {
-                            "id": "62ac5d91-aaa4-440f-8a85-b593fc3f7820",
-                            "address": "0x9c59245b715a8aebdce385b28dbd84b02dacae03",
-                            "userId": "a99551c8-c8e7-45a0-8dde-2325783d743b",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "352eb766-6d64-492c-8e9b-fcbc8722d86b",
-                "userId": "b1caf3a2-0896-4a17-922f-0125fe3a2934",
-                "author": {
-                    "id": "b1caf3a2-0896-4a17-922f-0125fe3a2934",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "a9bb73ee-0122-4201-a865-dd2e67db4dd3",
-                            "address": "0x51603c7059f369ab04b16addfb7bb6c4e34b8523",
-                            "userId": "b1caf3a2-0896-4a17-922f-0125fe3a2934",
-                            "ensname": "realitycrafter.eth"
+                            "id": "4b771387-ce6b-411f-b2ac-897f30360dea",
+                            "address": "0x05a1ff0a32bc24265bcb39499d0c5d9a6cb2011c",
+                            "userId": "49186861-f9fa-4b5b-a03f-a370de002c4c",
+                            "ensname": "willywonka.eth"
                         }
                     ]
                 }
@@ -8775,22 +8775,6 @@
             },
             {
                 "proposalId": "37823e62-de8c-4aca-99c5-8568099e4882",
-                "userId": "3fe90ff1-25fc-4aee-9473-b17ab8992f96",
-                "author": {
-                    "id": "3fe90ff1-25fc-4aee-9473-b17ab8992f96",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "7450eaf6-b1cd-4313-9372-8045c83ec3f3",
-                            "address": "0xc4798b79d22630cee83b4ecb0fd98cd5ff0fbb62",
-                            "userId": "3fe90ff1-25fc-4aee-9473-b17ab8992f96",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "37823e62-de8c-4aca-99c5-8568099e4882",
                 "userId": "a027d691-3136-4966-a4c8-f42235e5b922",
                 "author": {
                     "id": "a027d691-3136-4966-a4c8-f42235e5b922",
@@ -8801,6 +8785,22 @@
                             "address": "0x333d0ebc54707c0a9d92cac749b3094c28a0e111",
                             "userId": "a027d691-3136-4966-a4c8-f42235e5b922",
                             "ensname": "0xenex0.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "37823e62-de8c-4aca-99c5-8568099e4882",
+                "userId": "3fe90ff1-25fc-4aee-9473-b17ab8992f96",
+                "author": {
+                    "id": "3fe90ff1-25fc-4aee-9473-b17ab8992f96",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "7450eaf6-b1cd-4313-9372-8045c83ec3f3",
+                            "address": "0xc4798b79d22630cee83b4ecb0fd98cd5ff0fbb62",
+                            "userId": "3fe90ff1-25fc-4aee-9473-b17ab8992f96",
+                            "ensname": null
                         }
                     ]
                 }
@@ -9796,11 +9796,18 @@
         "authors": [
             {
                 "proposalId": "4092f5ff-9df7-4df1-ad70-5baf75abcec0",
-                "userId": "714bbd8b-e28d-44e1-927e-184f6485bbf9",
+                "userId": "ff9553f5-bf9b-4701-bc47-e201294f7d0f",
                 "author": {
-                    "id": "714bbd8b-e28d-44e1-927e-184f6485bbf9",
+                    "id": "ff9553f5-bf9b-4701-bc47-e201294f7d0f",
                     "primaryWallet": null,
-                    "wallets": []
+                    "wallets": [
+                        {
+                            "id": "e7ae35f3-da3f-4b40-9361-d40858fcafb6",
+                            "address": "0x814b1b9d07c3b471dbf6e8b8bac91954921aec64",
+                            "userId": "ff9553f5-bf9b-4701-bc47-e201294f7d0f",
+                            "ensname": null
+                        }
+                    ]
                 }
             },
             {
@@ -9814,18 +9821,11 @@
             },
             {
                 "proposalId": "4092f5ff-9df7-4df1-ad70-5baf75abcec0",
-                "userId": "ff9553f5-bf9b-4701-bc47-e201294f7d0f",
+                "userId": "714bbd8b-e28d-44e1-927e-184f6485bbf9",
                 "author": {
-                    "id": "ff9553f5-bf9b-4701-bc47-e201294f7d0f",
+                    "id": "714bbd8b-e28d-44e1-927e-184f6485bbf9",
                     "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "e7ae35f3-da3f-4b40-9361-d40858fcafb6",
-                            "address": "0x814b1b9d07c3b471dbf6e8b8bac91954921aec64",
-                            "userId": "ff9553f5-bf9b-4701-bc47-e201294f7d0f",
-                            "ensname": null
-                        }
-                    ]
+                    "wallets": []
                 }
             }
         ],
@@ -10992,6 +10992,15 @@
         "authors": [
             {
                 "proposalId": "4cc2b011-af34-414e-8c23-b406761515cf",
+                "userId": "9a894f2a-d191-46b5-a41a-41b527c43f8b",
+                "author": {
+                    "id": "9a894f2a-d191-46b5-a41a-41b527c43f8b",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "4cc2b011-af34-414e-8c23-b406761515cf",
                 "userId": "498b42e7-630c-47d7-b510-f6c4fd29e6c1",
                 "author": {
                     "id": "498b42e7-630c-47d7-b510-f6c4fd29e6c1",
@@ -11022,15 +11031,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "4cc2b011-af34-414e-8c23-b406761515cf",
-                "userId": "9a894f2a-d191-46b5-a41a-41b527c43f8b",
-                "author": {
-                    "id": "9a894f2a-d191-46b5-a41a-41b527c43f8b",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -11188,6 +11188,15 @@
             },
             {
                 "proposalId": "4d5354e5-4b15-4635-9ce9-10daa720c33a",
+                "userId": "f678bf72-1582-4df8-b14d-2078f4129587",
+                "author": {
+                    "id": "f678bf72-1582-4df8-b14d-2078f4129587",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "4d5354e5-4b15-4635-9ce9-10daa720c33a",
                 "userId": "b3aba441-0d96-4db1-ad4e-e61917d04e03",
                 "author": {
                     "id": "b3aba441-0d96-4db1-ad4e-e61917d04e03",
@@ -11200,15 +11209,6 @@
                             "ensname": "austingriffith.eth"
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "4d5354e5-4b15-4635-9ce9-10daa720c33a",
-                "userId": "f678bf72-1582-4df8-b14d-2078f4129587",
-                "author": {
-                    "id": "f678bf72-1582-4df8-b14d-2078f4129587",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -11309,6 +11309,15 @@
         "authors": [
             {
                 "proposalId": "51552a29-1ca3-4216-aeb8-6fa7be7dbf0a",
+                "userId": "92a24257-fe79-4ebe-816a-acdedd544878",
+                "author": {
+                    "id": "92a24257-fe79-4ebe-816a-acdedd544878",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "51552a29-1ca3-4216-aeb8-6fa7be7dbf0a",
                 "userId": "043133b9-58ef-4b1e-b878-579550cf34ad",
                 "author": {
                     "id": "043133b9-58ef-4b1e-b878-579550cf34ad",
@@ -11328,15 +11337,6 @@
                 "userId": "6af796c0-974c-433c-8467-75bccd87b050",
                 "author": {
                     "id": "6af796c0-974c-433c-8467-75bccd87b050",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "51552a29-1ca3-4216-aeb8-6fa7be7dbf0a",
-                "userId": "92a24257-fe79-4ebe-816a-acdedd544878",
-                "author": {
-                    "id": "92a24257-fe79-4ebe-816a-acdedd544878",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -11601,15 +11601,6 @@
             },
             {
                 "proposalId": "545a7c09-09c8-4cd2-8fc0-b048051db764",
-                "userId": "91301cdf-1c5c-4082-ada5-19bf968ce40e",
-                "author": {
-                    "id": "91301cdf-1c5c-4082-ada5-19bf968ce40e",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "545a7c09-09c8-4cd2-8fc0-b048051db764",
                 "userId": "963633c5-cba7-4e45-8346-bdf53a57b195",
                 "author": {
                     "id": "963633c5-cba7-4e45-8346-bdf53a57b195",
@@ -11622,6 +11613,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "545a7c09-09c8-4cd2-8fc0-b048051db764",
+                "userId": "91301cdf-1c5c-4082-ada5-19bf968ce40e",
+                "author": {
+                    "id": "91301cdf-1c5c-4082-ada5-19bf968ce40e",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -11722,16 +11722,16 @@
         "authors": [
             {
                 "proposalId": "5472d720-93af-4385-9be9-a4127d18c5d1",
-                "userId": "a8a91d01-b6bb-4e6f-b0d6-57737a9c8ca9",
+                "userId": "f1184eeb-0ef9-489e-8154-950bd343de33",
                 "author": {
-                    "id": "a8a91d01-b6bb-4e6f-b0d6-57737a9c8ca9",
+                    "id": "f1184eeb-0ef9-489e-8154-950bd343de33",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "5ce2ee06-5ecc-410e-ac24-2a671b5b6cb0",
-                            "address": "0x2cbd785ae43f796e29d4f15c5f16502de6292361",
-                            "userId": "a8a91d01-b6bb-4e6f-b0d6-57737a9c8ca9",
-                            "ensname": "mmaz.eth"
+                            "id": "37456f0c-2616-4d52-88f4-b791c5851f92",
+                            "address": "0xb38b6c236347603e0705f912b877d6308ec10f13",
+                            "userId": "f1184eeb-0ef9-489e-8154-950bd343de33",
+                            "ensname": "crowdmuse.eth"
                         }
                     ]
                 }
@@ -11754,16 +11754,16 @@
             },
             {
                 "proposalId": "5472d720-93af-4385-9be9-a4127d18c5d1",
-                "userId": "f1184eeb-0ef9-489e-8154-950bd343de33",
+                "userId": "a8a91d01-b6bb-4e6f-b0d6-57737a9c8ca9",
                 "author": {
-                    "id": "f1184eeb-0ef9-489e-8154-950bd343de33",
+                    "id": "a8a91d01-b6bb-4e6f-b0d6-57737a9c8ca9",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "37456f0c-2616-4d52-88f4-b791c5851f92",
-                            "address": "0xb38b6c236347603e0705f912b877d6308ec10f13",
-                            "userId": "f1184eeb-0ef9-489e-8154-950bd343de33",
-                            "ensname": "crowdmuse.eth"
+                            "id": "5ce2ee06-5ecc-410e-ac24-2a671b5b6cb0",
+                            "address": "0x2cbd785ae43f796e29d4f15c5f16502de6292361",
+                            "userId": "a8a91d01-b6bb-4e6f-b0d6-57737a9c8ca9",
+                            "ensname": "mmaz.eth"
                         }
                     ]
                 }
@@ -11980,6 +11980,15 @@
         "authors": [
             {
                 "proposalId": "579f63a6-e033-4682-b858-68877eec7f44",
+                "userId": "d9830677-fc6f-45d1-9392-46358dd5ea15",
+                "author": {
+                    "id": "d9830677-fc6f-45d1-9392-46358dd5ea15",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "579f63a6-e033-4682-b858-68877eec7f44",
                 "userId": "22e2410e-d7c2-4334-b84b-a2379df4ad05",
                 "author": {
                     "id": "22e2410e-d7c2-4334-b84b-a2379df4ad05",
@@ -11992,15 +12001,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "579f63a6-e033-4682-b858-68877eec7f44",
-                "userId": "d9830677-fc6f-45d1-9392-46358dd5ea15",
-                "author": {
-                    "id": "d9830677-fc6f-45d1-9392-46358dd5ea15",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -12031,7 +12031,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "fail",
                 "id": "14bdcbff-e5cd-4aa8-95d7-14f9a376e7ae",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -12090,8 +12090,8 @@
         },
         "currentEvaluationId": "14bdcbff-e5cd-4aa8-95d7-14f9a376e7ae",
         "title": "Galxe",
-        "updatedAt": "2024-06-20T20:08:30.347Z",
-        "updatedBy": "47ac3b4b-5f9e-44f7-b792-54cb303811a6",
+        "updatedAt": "2024-06-25T15:18:23.088Z",
+        "updatedBy": "11f3dd59-fbf4-4e4e-8436-34bf06c528d7",
         "pageId": "579f63a6-e033-4682-b858-68877eec7f44",
         "reviewers": [
             {
@@ -12296,7 +12296,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "fail",
                 "id": "ec2ad41f-7884-4e2e-a77e-3e6df7f4cb53",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -12346,7 +12346,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "fail",
             "id": "ec2ad41f-7884-4e2e-a77e-3e6df7f4cb53",
             "index": 3,
             "requiredReviews": 5,
@@ -12355,8 +12355,8 @@
         },
         "currentEvaluationId": "ec2ad41f-7884-4e2e-a77e-3e6df7f4cb53",
         "title": "Ambire",
-        "updatedAt": "2024-06-21T07:53:23.464Z",
-        "updatedBy": "267af839-073d-4b75-8487-b7ccfc5eceec",
+        "updatedAt": "2024-06-25T18:18:09.443Z",
+        "updatedBy": "0b2860bc-6673-4f3d-9664-09c74d38786b",
         "pageId": "5903e16d-3420-4b82-b524-76a3b28c8c61",
         "reviewers": [
             {
@@ -12590,9 +12590,9 @@
         "authors": [
             {
                 "proposalId": "5ad03337-0eb3-445e-8b4f-6cbc36d9abb5",
-                "userId": "a16e94c4-8b0b-4b1d-8ca2-73a57a57fe17",
+                "userId": "ddda587b-03d6-47b5-8cbf-24d227fca339",
                 "author": {
-                    "id": "a16e94c4-8b0b-4b1d-8ca2-73a57a57fe17",
+                    "id": "ddda587b-03d6-47b5-8cbf-24d227fca339",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -12608,9 +12608,9 @@
             },
             {
                 "proposalId": "5ad03337-0eb3-445e-8b4f-6cbc36d9abb5",
-                "userId": "ddda587b-03d6-47b5-8cbf-24d227fca339",
+                "userId": "a16e94c4-8b0b-4b1d-8ca2-73a57a57fe17",
                 "author": {
-                    "id": "ddda587b-03d6-47b5-8cbf-24d227fca339",
+                    "id": "a16e94c4-8b0b-4b1d-8ca2-73a57a57fe17",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -12713,18 +12713,18 @@
         "authors": [
             {
                 "proposalId": "5cc40c63-2118-4225-adde-b115b171b4eb",
-                "userId": "1934d656-f0a0-41a3-a3f2-e6fbdf10f2fd",
+                "userId": "a0454c76-5e2e-44c0-98e4-306d7e6a7413",
                 "author": {
-                    "id": "1934d656-f0a0-41a3-a3f2-e6fbdf10f2fd",
+                    "id": "a0454c76-5e2e-44c0-98e4-306d7e6a7413",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "5cc40c63-2118-4225-adde-b115b171b4eb",
-                "userId": "a0454c76-5e2e-44c0-98e4-306d7e6a7413",
+                "userId": "1934d656-f0a0-41a3-a3f2-e6fbdf10f2fd",
                 "author": {
-                    "id": "a0454c76-5e2e-44c0-98e4-306d7e6a7413",
+                    "id": "1934d656-f0a0-41a3-a3f2-e6fbdf10f2fd",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -12925,7 +12925,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "in_progress",
             "id": "9080a4a1-c622-4aea-8d42-682933543eb5",
             "index": 3,
             "requiredReviews": 5,
@@ -12993,22 +12993,6 @@
         "authors": [
             {
                 "proposalId": "5d99c1d8-b894-46f3-9fff-decf80846561",
-                "userId": "10136bdb-ce1c-46c5-81ad-a6165f094708",
-                "author": {
-                    "id": "10136bdb-ce1c-46c5-81ad-a6165f094708",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "789be6b1-b3e3-452a-a6e8-08a162459969",
-                            "address": "0xe7ad5a0fcdfefce6cf203f94a1bf7ca01fdcb060",
-                            "userId": "10136bdb-ce1c-46c5-81ad-a6165f094708",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "5d99c1d8-b894-46f3-9fff-decf80846561",
                 "userId": "f825be57-1fdd-4a27-abc2-5b815ee20e4b",
                 "author": {
                     "id": "f825be57-1fdd-4a27-abc2-5b815ee20e4b",
@@ -13018,6 +13002,22 @@
                             "id": "f80b3e4b-403a-4311-9ab1-a685f040328b",
                             "address": "0xeb1c22baacafac7836f20f684c946228401ff01c",
                             "userId": "f825be57-1fdd-4a27-abc2-5b815ee20e4b",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "5d99c1d8-b894-46f3-9fff-decf80846561",
+                "userId": "10136bdb-ce1c-46c5-81ad-a6165f094708",
+                "author": {
+                    "id": "10136bdb-ce1c-46c5-81ad-a6165f094708",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "789be6b1-b3e3-452a-a6e8-08a162459969",
+                            "address": "0xe7ad5a0fcdfefce6cf203f94a1bf7ca01fdcb060",
+                            "userId": "10136bdb-ce1c-46c5-81ad-a6165f094708",
                             "ensname": null
                         }
                     ]
@@ -13121,15 +13121,6 @@
         "authors": [
             {
                 "proposalId": "5dda5ec7-549d-4cf2-a724-9e82f732b323",
-                "userId": "2fa48136-dbe4-4405-9d24-478c5083147d",
-                "author": {
-                    "id": "2fa48136-dbe4-4405-9d24-478c5083147d",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "5dda5ec7-549d-4cf2-a724-9e82f732b323",
                 "userId": "c73e3c03-1583-4554-af4f-c64c7d6304ac",
                 "author": {
                     "id": "c73e3c03-1583-4554-af4f-c64c7d6304ac",
@@ -13142,6 +13133,15 @@
                             "ensname": "kwenta.eth"
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "5dda5ec7-549d-4cf2-a724-9e82f732b323",
+                "userId": "2fa48136-dbe4-4405-9d24-478c5083147d",
+                "author": {
+                    "id": "2fa48136-dbe4-4405-9d24-478c5083147d",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -13710,22 +13710,6 @@
         "authors": [
             {
                 "proposalId": "66784b55-05ee-4d38-b00c-b754ff5fd501",
-                "userId": "287f492e-3cfb-4652-acfc-80e2962e8fa9",
-                "author": {
-                    "id": "287f492e-3cfb-4652-acfc-80e2962e8fa9",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "a1b0256c-4f9c-4fb7-aae3-ca550ae89178",
-                            "address": "0xb0623c91c65621df716ab8afe5f66656b21a9108",
-                            "userId": "287f492e-3cfb-4652-acfc-80e2962e8fa9",
-                            "ensname": "johnpalmer.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "66784b55-05ee-4d38-b00c-b754ff5fd501",
                 "userId": "3de845d7-7453-4330-a54d-2bfda079f41e",
                 "author": {
                     "id": "3de845d7-7453-4330-a54d-2bfda079f41e",
@@ -13752,6 +13736,22 @@
                             "address": "0xb4005db54adecf669babc3efb19b9b7e3978ebc2",
                             "userId": "68ebda7a-dd05-452e-878a-d43f27dfe6ec",
                             "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "66784b55-05ee-4d38-b00c-b754ff5fd501",
+                "userId": "287f492e-3cfb-4652-acfc-80e2962e8fa9",
+                "author": {
+                    "id": "287f492e-3cfb-4652-acfc-80e2962e8fa9",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "a1b0256c-4f9c-4fb7-aae3-ca550ae89178",
+                            "address": "0xb0623c91c65621df716ab8afe5f66656b21a9108",
+                            "userId": "287f492e-3cfb-4652-acfc-80e2962e8fa9",
+                            "ensname": "johnpalmer.eth"
                         }
                     ]
                 }
@@ -13870,18 +13870,18 @@
         "authors": [
             {
                 "proposalId": "6732677e-95d2-47c0-a5a2-6fcad6d966b5",
-                "userId": "6ecfdc5f-ea6e-4978-9fd1-066ede978528",
+                "userId": "c728b049-b175-455c-be5d-4154fc1942d4",
                 "author": {
-                    "id": "6ecfdc5f-ea6e-4978-9fd1-066ede978528",
+                    "id": "c728b049-b175-455c-be5d-4154fc1942d4",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "6732677e-95d2-47c0-a5a2-6fcad6d966b5",
-                "userId": "c728b049-b175-455c-be5d-4154fc1942d4",
+                "userId": "6ecfdc5f-ea6e-4978-9fd1-066ede978528",
                 "author": {
-                    "id": "c728b049-b175-455c-be5d-4154fc1942d4",
+                    "id": "6ecfdc5f-ea6e-4978-9fd1-066ede978528",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -14256,18 +14256,18 @@
         "authors": [
             {
                 "proposalId": "697d778b-a57f-4027-8498-177d05f8af93",
-                "userId": "468ad9a5-bf23-4522-8285-4f2cbce1e544",
+                "userId": "a40a91c0-2d3a-4fe9-bc4b-75d00c89bd75",
                 "author": {
-                    "id": "468ad9a5-bf23-4522-8285-4f2cbce1e544",
+                    "id": "a40a91c0-2d3a-4fe9-bc4b-75d00c89bd75",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "697d778b-a57f-4027-8498-177d05f8af93",
-                "userId": "a40a91c0-2d3a-4fe9-bc4b-75d00c89bd75",
+                "userId": "468ad9a5-bf23-4522-8285-4f2cbce1e544",
                 "author": {
-                    "id": "a40a91c0-2d3a-4fe9-bc4b-75d00c89bd75",
+                    "id": "468ad9a5-bf23-4522-8285-4f2cbce1e544",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -14817,22 +14817,6 @@
         "authors": [
             {
                 "proposalId": "6cf1e708-0ef9-474f-a21c-12b79fd2b2a5",
-                "userId": "3c285036-7e2a-4892-a2a6-cd1dcc48987f",
-                "author": {
-                    "id": "3c285036-7e2a-4892-a2a6-cd1dcc48987f",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "b553ad77-d351-4d0b-a659-2841eda12e76",
-                            "address": "0x35a71545f81920a76af325c2546044bed8c88681",
-                            "userId": "3c285036-7e2a-4892-a2a6-cd1dcc48987f",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "6cf1e708-0ef9-474f-a21c-12b79fd2b2a5",
                 "userId": "ff5d9cfa-6fff-4c0c-9ce8-16fb7f4baa96",
                 "author": {
                     "id": "ff5d9cfa-6fff-4c0c-9ce8-16fb7f4baa96",
@@ -14842,6 +14826,22 @@
                             "id": "7471d869-465e-407b-8c12-1d0234121ce7",
                             "address": "0x55838273feec9d8be6f5ba091dae5b5b9c6f00d9",
                             "userId": "ff5d9cfa-6fff-4c0c-9ce8-16fb7f4baa96",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "6cf1e708-0ef9-474f-a21c-12b79fd2b2a5",
+                "userId": "3c285036-7e2a-4892-a2a6-cd1dcc48987f",
+                "author": {
+                    "id": "3c285036-7e2a-4892-a2a6-cd1dcc48987f",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "b553ad77-d351-4d0b-a659-2841eda12e76",
+                            "address": "0x35a71545f81920a76af325c2546044bed8c88681",
+                            "userId": "3c285036-7e2a-4892-a2a6-cd1dcc48987f",
                             "ensname": null
                         }
                     ]
@@ -15324,28 +15324,6 @@
         "authors": [
             {
                 "proposalId": "73e75458-7872-4782-b20b-3a6aef762f65",
-                "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                "author": {
-                    "id": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "05bb28be-1f23-42b0-abe2-2a0466bc5bcd",
-                            "address": "0x3dbf55729abcf55f3b4f7cebfe88b7d59be3f23f",
-                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                            "ensname": null
-                        },
-                        {
-                            "id": "f4f1fa05-bf0b-4af6-a96d-52e5fa82d159",
-                            "address": "0xf9342d70a2a6eb46afd7b81138dee01d73b2e419",
-                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "73e75458-7872-4782-b20b-3a6aef762f65",
                 "userId": "600a7ade-4a01-41b2-b233-84d72605ba11",
                 "author": {
                     "id": "600a7ade-4a01-41b2-b233-84d72605ba11",
@@ -15355,22 +15333,6 @@
                             "id": "a9a03050-1cd5-4db9-a380-9d9a59290b1a",
                             "address": "0xf924efc8830bfa1029fa0cd7a51901a5ec03de3d",
                             "userId": "600a7ade-4a01-41b2-b233-84d72605ba11",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "73e75458-7872-4782-b20b-3a6aef762f65",
-                "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
-                "author": {
-                    "id": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "9a290191-b0bb-44c7-861e-daa6653cbadc",
-                            "address": "0x33041027dd8f4dc82b6e825fb37adf8f15d44053",
-                            "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
                             "ensname": null
                         }
                     ]
@@ -15407,6 +15369,44 @@
                         }
                     ]
                 }
+            },
+            {
+                "proposalId": "73e75458-7872-4782-b20b-3a6aef762f65",
+                "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
+                "author": {
+                    "id": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "9a290191-b0bb-44c7-861e-daa6653cbadc",
+                            "address": "0x33041027dd8f4dc82b6e825fb37adf8f15d44053",
+                            "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "73e75458-7872-4782-b20b-3a6aef762f65",
+                "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                "author": {
+                    "id": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "05bb28be-1f23-42b0-abe2-2a0466bc5bcd",
+                            "address": "0x3dbf55729abcf55f3b4f7cebfe88b7d59be3f23f",
+                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                            "ensname": null
+                        },
+                        {
+                            "id": "f4f1fa05-bf0b-4af6-a96d-52e5fa82d159",
+                            "address": "0xf9342d70a2a6eb46afd7b81138dee01d73b2e419",
+                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                            "ensname": null
+                        }
+                    ]
+                }
             }
         ],
         "selectedCredentialTemplates": [],
@@ -15436,7 +15436,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "pass",
                 "id": "f9c274f2-cc8d-4f32-a4de-8c175f3fa847",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -15495,8 +15495,8 @@
         },
         "currentEvaluationId": "f9c274f2-cc8d-4f32-a4de-8c175f3fa847",
         "title": "Talent Protocol",
-        "updatedAt": "2024-06-21T09:05:54.384Z",
-        "updatedBy": "1e530166-2a3e-4aee-9d86-cfa199784d28",
+        "updatedAt": "2024-06-26T10:05:03.742Z",
+        "updatedBy": "e4fa2baa-61e2-48a5-98e3-355bae0e924c",
         "pageId": "73e75458-7872-4782-b20b-3a6aef762f65",
         "reviewers": [
             {
@@ -16447,36 +16447,9 @@
         "authors": [
             {
                 "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
-                "userId": "0eafe57f-8196-4d19-95b5-08f7b16a39f1",
-                "author": {
-                    "id": "0eafe57f-8196-4d19-95b5-08f7b16a39f1",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
                 "userId": "4d74d69a-c58d-4b4a-9bad-6d1758abf3ad",
                 "author": {
                     "id": "4d74d69a-c58d-4b4a-9bad-6d1758abf3ad",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
-                "userId": "665c723d-7bdb-451c-b18c-29242ae6e80b",
-                "author": {
-                    "id": "665c723d-7bdb-451c-b18c-29242ae6e80b",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
-                "userId": "7f3f251e-c762-41cd-8c07-717ff0dff851",
-                "author": {
-                    "id": "7f3f251e-c762-41cd-8c07-717ff0dff851",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -16495,6 +16468,33 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
+                "userId": "665c723d-7bdb-451c-b18c-29242ae6e80b",
+                "author": {
+                    "id": "665c723d-7bdb-451c-b18c-29242ae6e80b",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
+                "userId": "0eafe57f-8196-4d19-95b5-08f7b16a39f1",
+                "author": {
+                    "id": "0eafe57f-8196-4d19-95b5-08f7b16a39f1",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "7a72308a-044e-411e-bc32-0b8e1fc984e5",
+                "userId": "7f3f251e-c762-41cd-8c07-717ff0dff851",
+                "author": {
+                    "id": "7f3f251e-c762-41cd-8c07-717ff0dff851",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -16716,22 +16716,6 @@
         "authors": [
             {
                 "proposalId": "7a8d11b9-a70c-4a63-a350-b2ed9bda49ab",
-                "userId": "2f82cec5-416c-4e26-a71c-81e7038f3d0f",
-                "author": {
-                    "id": "2f82cec5-416c-4e26-a71c-81e7038f3d0f",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "2115d449-7c41-437f-a6fc-263932c55766",
-                            "address": "0x3c55364b886d5ea7477cc181341d8ae2ef0d3edc",
-                            "userId": "2f82cec5-416c-4e26-a71c-81e7038f3d0f",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "7a8d11b9-a70c-4a63-a350-b2ed9bda49ab",
                 "userId": "2f86bb8e-dd14-49f2-ae7f-1832f1af8d23",
                 "author": {
                     "id": "2f86bb8e-dd14-49f2-ae7f-1832f1af8d23",
@@ -16741,6 +16725,22 @@
                             "id": "803e38ba-7e46-4ede-9aab-cf67470b068e",
                             "address": "0x43634222b4202014e1f47d8eddd5c99b79fe4e9a",
                             "userId": "2f86bb8e-dd14-49f2-ae7f-1832f1af8d23",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "7a8d11b9-a70c-4a63-a350-b2ed9bda49ab",
+                "userId": "2f82cec5-416c-4e26-a71c-81e7038f3d0f",
+                "author": {
+                    "id": "2f82cec5-416c-4e26-a71c-81e7038f3d0f",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "2115d449-7c41-437f-a6fc-263932c55766",
+                            "address": "0x3c55364b886d5ea7477cc181341d8ae2ef0d3edc",
+                            "userId": "2f82cec5-416c-4e26-a71c-81e7038f3d0f",
                             "ensname": null
                         }
                     ]
@@ -17257,7 +17257,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "in_progress",
             "id": "974710bf-d53d-45c1-8732-9a0bcf3f64ef",
             "index": 3,
             "requiredReviews": 5,
@@ -17317,20 +17317,18 @@
         "authors": [
             {
                 "proposalId": "80e98ecb-0667-40fe-b44c-f274281ff3bd",
-                "userId": "40a77649-1d1a-47df-8cea-838c159ad0f1",
+                "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
                 "author": {
-                    "id": "40a77649-1d1a-47df-8cea-838c159ad0f1",
+                    "id": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
                     "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "80e98ecb-0667-40fe-b44c-f274281ff3bd",
-                "userId": "a3f744c8-c8e0-425a-9ad5-30cd635f1161",
-                "author": {
-                    "id": "a3f744c8-c8e0-425a-9ad5-30cd635f1161",
-                    "primaryWallet": null,
-                    "wallets": []
+                    "wallets": [
+                        {
+                            "id": "993e3413-81fa-4427-b4db-7cb885b38d10",
+                            "address": "0x16745c40dde19754ee354b67858271373b0ac43e",
+                            "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
+                            "ensname": null
+                        }
+                    ]
                 }
             },
             {
@@ -17351,18 +17349,20 @@
             },
             {
                 "proposalId": "80e98ecb-0667-40fe-b44c-f274281ff3bd",
-                "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
+                "userId": "a3f744c8-c8e0-425a-9ad5-30cd635f1161",
                 "author": {
-                    "id": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
+                    "id": "a3f744c8-c8e0-425a-9ad5-30cd635f1161",
                     "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "993e3413-81fa-4427-b4db-7cb885b38d10",
-                            "address": "0x16745c40dde19754ee354b67858271373b0ac43e",
-                            "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
-                            "ensname": null
-                        }
-                    ]
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "80e98ecb-0667-40fe-b44c-f274281ff3bd",
+                "userId": "40a77649-1d1a-47df-8cea-838c159ad0f1",
+                "author": {
+                    "id": "40a77649-1d1a-47df-8cea-838c159ad0f1",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -17820,6 +17820,15 @@
         "authors": [
             {
                 "proposalId": "8818b9d9-3f5d-446d-b8e7-496b9a2ef836",
+                "userId": "969b7034-3eab-4463-a97c-dd951717313e",
+                "author": {
+                    "id": "969b7034-3eab-4463-a97c-dd951717313e",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "8818b9d9-3f5d-446d-b8e7-496b9a2ef836",
                 "userId": "44a9a24b-db27-42dc-9fed-3edb1a45c09c",
                 "author": {
                     "id": "44a9a24b-db27-42dc-9fed-3edb1a45c09c",
@@ -17832,15 +17841,6 @@
                 "userId": "93ea0e56-a095-4881-ade4-0044491f38d5",
                 "author": {
                     "id": "93ea0e56-a095-4881-ade4-0044491f38d5",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "8818b9d9-3f5d-446d-b8e7-496b9a2ef836",
-                "userId": "969b7034-3eab-4463-a97c-dd951717313e",
-                "author": {
-                    "id": "969b7034-3eab-4463-a97c-dd951717313e",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -17943,15 +17943,6 @@
         "authors": [
             {
                 "proposalId": "898aaf78-2fbe-48aa-93d9-98c9fac45630",
-                "userId": "aa5a9472-10ca-43b0-a282-74a8091f7236",
-                "author": {
-                    "id": "aa5a9472-10ca-43b0-a282-74a8091f7236",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "898aaf78-2fbe-48aa-93d9-98c9fac45630",
                 "userId": "ac54132d-f57e-4cce-9ed7-2bc63766129c",
                 "author": {
                     "id": "ac54132d-f57e-4cce-9ed7-2bc63766129c",
@@ -17964,6 +17955,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "898aaf78-2fbe-48aa-93d9-98c9fac45630",
+                "userId": "aa5a9472-10ca-43b0-a282-74a8091f7236",
+                "author": {
+                    "id": "aa5a9472-10ca-43b0-a282-74a8091f7236",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -18208,22 +18208,6 @@
             },
             {
                 "proposalId": "8e09f6a8-6ea0-484f-a665-4c4a5f5f1caa",
-                "userId": "5a695213-6f65-4e08-a21a-5837b7d391a1",
-                "author": {
-                    "id": "5a695213-6f65-4e08-a21a-5837b7d391a1",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "0a98a912-d0d3-42b0-addb-2639ee778f7d",
-                            "address": "0xccf41738aa36ec14ad1b496c50a7a987c844edf5",
-                            "userId": "5a695213-6f65-4e08-a21a-5837b7d391a1",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "8e09f6a8-6ea0-484f-a665-4c4a5f5f1caa",
                 "userId": "f61afa05-9e59-457a-85fb-b7ea18604199",
                 "author": {
                     "id": "f61afa05-9e59-457a-85fb-b7ea18604199",
@@ -18234,6 +18218,22 @@
                             "address": "0x1f5d295778796a8b9f29600a585ab73d452acb1c",
                             "userId": "f61afa05-9e59-457a-85fb-b7ea18604199",
                             "ensname": "vectorized.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "8e09f6a8-6ea0-484f-a665-4c4a5f5f1caa",
+                "userId": "5a695213-6f65-4e08-a21a-5837b7d391a1",
+                "author": {
+                    "id": "5a695213-6f65-4e08-a21a-5837b7d391a1",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "0a98a912-d0d3-42b0-addb-2639ee778f7d",
+                            "address": "0xccf41738aa36ec14ad1b496c50a7a987c844edf5",
+                            "userId": "5a695213-6f65-4e08-a21a-5837b7d391a1",
+                            "ensname": null
                         }
                     ]
                 }
@@ -18594,15 +18594,6 @@
         "authors": [
             {
                 "proposalId": "914d281e-4bd3-4029-a740-8ab62ea9a405",
-                "userId": "1bc589f3-aa00-4f5a-8d74-5d13054b6af7",
-                "author": {
-                    "id": "1bc589f3-aa00-4f5a-8d74-5d13054b6af7",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "914d281e-4bd3-4029-a740-8ab62ea9a405",
                 "userId": "78a055e1-4817-4f1f-9566-db6dd2f12a48",
                 "author": {
                     "id": "78a055e1-4817-4f1f-9566-db6dd2f12a48",
@@ -18625,9 +18616,9 @@
             },
             {
                 "proposalId": "914d281e-4bd3-4029-a740-8ab62ea9a405",
-                "userId": "7af7325e-288f-450b-94ea-3f213c1ab032",
+                "userId": "1bc589f3-aa00-4f5a-8d74-5d13054b6af7",
                 "author": {
-                    "id": "7af7325e-288f-450b-94ea-3f213c1ab032",
+                    "id": "1bc589f3-aa00-4f5a-8d74-5d13054b6af7",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -18646,6 +18637,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "914d281e-4bd3-4029-a740-8ab62ea9a405",
+                "userId": "7af7325e-288f-450b-94ea-3f213c1ab032",
+                "author": {
+                    "id": "7af7325e-288f-450b-94ea-3f213c1ab032",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -18794,22 +18794,6 @@
         "authors": [
             {
                 "proposalId": "92afd85f-d720-487e-b11c-4a967760ae8b",
-                "userId": "46eb5245-eb64-4005-a0b8-f20ef2c089e5",
-                "author": {
-                    "id": "46eb5245-eb64-4005-a0b8-f20ef2c089e5",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "b994b7ab-1ed5-41eb-bcb8-d8a8615d1570",
-                            "address": "0x3a6372b2013f9876a84761187d933dee0653e377",
-                            "userId": "46eb5245-eb64-4005-a0b8-f20ef2c089e5",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "92afd85f-d720-487e-b11c-4a967760ae8b",
                 "userId": "e9e02fe3-ae48-4717-8e2b-5b250d80d486",
                 "author": {
                     "id": "e9e02fe3-ae48-4717-8e2b-5b250d80d486",
@@ -18825,6 +18809,22 @@
                             "id": "fe427c3b-c42d-45bb-b3f0-78ef26512e40",
                             "address": "0x1e79b045dc29eae9fdc69673c9dcd7c53e5e159d",
                             "userId": "e9e02fe3-ae48-4717-8e2b-5b250d80d486",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "92afd85f-d720-487e-b11c-4a967760ae8b",
+                "userId": "46eb5245-eb64-4005-a0b8-f20ef2c089e5",
+                "author": {
+                    "id": "46eb5245-eb64-4005-a0b8-f20ef2c089e5",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "b994b7ab-1ed5-41eb-bcb8-d8a8615d1570",
+                            "address": "0x3a6372b2013f9876a84761187d933dee0653e377",
+                            "userId": "46eb5245-eb64-4005-a0b8-f20ef2c089e5",
                             "ensname": null
                         }
                     ]
@@ -19090,22 +19090,6 @@
         "authors": [
             {
                 "proposalId": "92ebc26f-9b44-4a6f-a62c-39c944c6bf85",
-                "userId": "c37520dc-29d7-4733-a003-fda0c3939bb6",
-                "author": {
-                    "id": "c37520dc-29d7-4733-a003-fda0c3939bb6",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "c5e39bf2-6b82-4580-90c4-f72693335a69",
-                            "address": "0x64ff33b653b26edcb4644e27d3720f3c653f8371",
-                            "userId": "c37520dc-29d7-4733-a003-fda0c3939bb6",
-                            "ensname": "benadamsky.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "92ebc26f-9b44-4a6f-a62c-39c944c6bf85",
                 "userId": "e19af193-3bff-44d9-a85c-05a48842f09d",
                 "author": {
                     "id": "e19af193-3bff-44d9-a85c-05a48842f09d",
@@ -19116,6 +19100,22 @@
                             "address": "0xe943ca883ef3294e0fc55a1a14591abead1b5927",
                             "userId": "e19af193-3bff-44d9-a85c-05a48842f09d",
                             "ensname": "cojo.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "92ebc26f-9b44-4a6f-a62c-39c944c6bf85",
+                "userId": "c37520dc-29d7-4733-a003-fda0c3939bb6",
+                "author": {
+                    "id": "c37520dc-29d7-4733-a003-fda0c3939bb6",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "c5e39bf2-6b82-4580-90c4-f72693335a69",
+                            "address": "0x64ff33b653b26edcb4644e27d3720f3c653f8371",
+                            "userId": "c37520dc-29d7-4733-a003-fda0c3939bb6",
+                            "ensname": "benadamsky.eth"
                         }
                     ]
                 }
@@ -19148,7 +19148,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "fail",
                 "id": "4f6c1ac4-aa5f-425a-a7c6-5f522c77a707",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -19207,8 +19207,8 @@
         },
         "currentEvaluationId": "4f6c1ac4-aa5f-425a-a7c6-5f522c77a707",
         "title": "Ponder",
-        "updatedAt": "2024-06-20T21:40:58.022Z",
-        "updatedBy": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
+        "updatedAt": "2024-06-25T13:28:28.624Z",
+        "updatedBy": "0cefd499-35c4-45cf-88ed-8ab6cfc583ba",
         "pageId": "92ebc26f-9b44-4a6f-a62c-39c944c6bf85",
         "reviewers": [
             {
@@ -19266,22 +19266,6 @@
         "authors": [
             {
                 "proposalId": "935d2804-2638-4391-8ab1-296bb9959458",
-                "userId": "4a33b1ac-5e4e-4c00-b0b6-1d8bee4597c9",
-                "author": {
-                    "id": "4a33b1ac-5e4e-4c00-b0b6-1d8bee4597c9",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "c5721078-c6da-4b10-bf5a-af0bd680070f",
-                            "address": "0x749d0937670205f4fbdd288f7bd8f1bc638755e3",
-                            "userId": "4a33b1ac-5e4e-4c00-b0b6-1d8bee4597c9",
-                            "ensname": "ehsanomics.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "935d2804-2638-4391-8ab1-296bb9959458",
                 "userId": "87145f43-30d0-4e70-a8f7-a43f220d50f3",
                 "author": {
                     "id": "87145f43-30d0-4e70-a8f7-a43f220d50f3",
@@ -19292,6 +19276,22 @@
                             "address": "0x50f17063acdb1924866fbe8e31e72a32a5209d73",
                             "userId": "87145f43-30d0-4e70-a8f7-a43f220d50f3",
                             "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "935d2804-2638-4391-8ab1-296bb9959458",
+                "userId": "4a33b1ac-5e4e-4c00-b0b6-1d8bee4597c9",
+                "author": {
+                    "id": "4a33b1ac-5e4e-4c00-b0b6-1d8bee4597c9",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "c5721078-c6da-4b10-bf5a-af0bd680070f",
+                            "address": "0x749d0937670205f4fbdd288f7bd8f1bc638755e3",
+                            "userId": "4a33b1ac-5e4e-4c00-b0b6-1d8bee4597c9",
+                            "ensname": "ehsanomics.eth"
                         }
                     ]
                 }
@@ -20548,22 +20548,6 @@
         "authors": [
             {
                 "proposalId": "99125bf5-817a-49d1-a317-b55d922c6e15",
-                "userId": "106f7c5f-cd09-4b25-971e-ed77a27de5e3",
-                "author": {
-                    "id": "106f7c5f-cd09-4b25-971e-ed77a27de5e3",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "6d61029b-2243-4aab-9350-03d6e9b1480e",
-                            "address": "0x07a145dbbc7e425d0f1b3b9982f955e97abad7a2",
-                            "userId": "106f7c5f-cd09-4b25-971e-ed77a27de5e3",
-                            "ensname": "z80.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "99125bf5-817a-49d1-a317-b55d922c6e15",
                 "userId": "9f1a342c-d088-45f1-b021-fa358491b3ae",
                 "author": {
                     "id": "9f1a342c-d088-45f1-b021-fa358491b3ae",
@@ -20574,6 +20558,22 @@
                             "address": "0xc80fdc84d1a2565ebca1e1b978e38a2777616e76",
                             "userId": "9f1a342c-d088-45f1-b021-fa358491b3ae",
                             "ensname": "j.eth.id"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "99125bf5-817a-49d1-a317-b55d922c6e15",
+                "userId": "106f7c5f-cd09-4b25-971e-ed77a27de5e3",
+                "author": {
+                    "id": "106f7c5f-cd09-4b25-971e-ed77a27de5e3",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "6d61029b-2243-4aab-9350-03d6e9b1480e",
+                            "address": "0x07a145dbbc7e425d0f1b3b9982f955e97abad7a2",
+                            "userId": "106f7c5f-cd09-4b25-971e-ed77a27de5e3",
+                            "ensname": "z80.eth"
                         }
                     ]
                 }
@@ -20884,15 +20884,15 @@
         "authors": [
             {
                 "proposalId": "9aa41b7d-b3ac-4a90-a046-5fdd64e347a5",
-                "userId": "1d3f973b-4fd2-4619-9014-8f4464c15183",
+                "userId": "b2b54caa-752c-4046-9149-7b35cf39e528",
                 "author": {
-                    "id": "1d3f973b-4fd2-4619-9014-8f4464c15183",
+                    "id": "b2b54caa-752c-4046-9149-7b35cf39e528",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "5f3b53df-e54d-422e-8626-1510cf7b8cda",
-                            "address": "0x232e02988970e8ab920c83964cc7922d9c282dca",
-                            "userId": "1d3f973b-4fd2-4619-9014-8f4464c15183",
+                            "id": "3ea51d85-5dc7-4b05-8355-efcf5f1be010",
+                            "address": "0x1014f9499259988e35f1c45f6ae6aa9fba011e80",
+                            "userId": "b2b54caa-752c-4046-9149-7b35cf39e528",
                             "ensname": null
                         }
                     ]
@@ -20909,15 +20909,15 @@
             },
             {
                 "proposalId": "9aa41b7d-b3ac-4a90-a046-5fdd64e347a5",
-                "userId": "b2b54caa-752c-4046-9149-7b35cf39e528",
+                "userId": "1d3f973b-4fd2-4619-9014-8f4464c15183",
                 "author": {
-                    "id": "b2b54caa-752c-4046-9149-7b35cf39e528",
+                    "id": "1d3f973b-4fd2-4619-9014-8f4464c15183",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "3ea51d85-5dc7-4b05-8355-efcf5f1be010",
-                            "address": "0x1014f9499259988e35f1c45f6ae6aa9fba011e80",
-                            "userId": "b2b54caa-752c-4046-9149-7b35cf39e528",
+                            "id": "5f3b53df-e54d-422e-8626-1510cf7b8cda",
+                            "address": "0x232e02988970e8ab920c83964cc7922d9c282dca",
+                            "userId": "1d3f973b-4fd2-4619-9014-8f4464c15183",
                             "ensname": null
                         }
                     ]
@@ -21126,15 +21126,6 @@
         "authors": [
             {
                 "proposalId": "9cc4afb6-f783-4c7c-b84f-ab79ce2abbda",
-                "userId": "13c9fb9a-8810-42b2-9e0b-72dc250106aa",
-                "author": {
-                    "id": "13c9fb9a-8810-42b2-9e0b-72dc250106aa",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "9cc4afb6-f783-4c7c-b84f-ab79ce2abbda",
                 "userId": "1ba91347-7c05-461e-a853-248f4b8eabb8",
                 "author": {
                     "id": "1ba91347-7c05-461e-a853-248f4b8eabb8",
@@ -21147,6 +21138,15 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "9cc4afb6-f783-4c7c-b84f-ab79ce2abbda",
+                "userId": "13c9fb9a-8810-42b2-9e0b-72dc250106aa",
+                "author": {
+                    "id": "13c9fb9a-8810-42b2-9e0b-72dc250106aa",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -22274,7 +22274,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "fail",
+            "result": "in_progress",
             "id": "a2e0f96f-4e92-4676-988d-16d8c4e538e9",
             "index": 3,
             "requiredReviews": 5,
@@ -22655,18 +22655,18 @@
         "authors": [
             {
                 "proposalId": "aa35e2b8-06a3-43d4-8de4-6d3dbe9c7975",
-                "userId": "9f7207ab-2f52-4c06-be1d-7e710a5d3710",
+                "userId": "f1f9880f-8ade-4925-86ac-9ea3b8a1f23b",
                 "author": {
-                    "id": "9f7207ab-2f52-4c06-be1d-7e710a5d3710",
+                    "id": "f1f9880f-8ade-4925-86ac-9ea3b8a1f23b",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "aa35e2b8-06a3-43d4-8de4-6d3dbe9c7975",
-                "userId": "f1f9880f-8ade-4925-86ac-9ea3b8a1f23b",
+                "userId": "9f7207ab-2f52-4c06-be1d-7e710a5d3710",
                 "author": {
-                    "id": "f1f9880f-8ade-4925-86ac-9ea3b8a1f23b",
+                    "id": "9f7207ab-2f52-4c06-be1d-7e710a5d3710",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -22769,16 +22769,16 @@
         "authors": [
             {
                 "proposalId": "ac5233f6-0a5b-4e30-9005-93dc655e2409",
-                "userId": "355f6807-b7bb-4902-ab5a-3ea948030e90",
+                "userId": "e7089e82-450f-4615-8d6f-82015d353805",
                 "author": {
-                    "id": "355f6807-b7bb-4902-ab5a-3ea948030e90",
+                    "id": "e7089e82-450f-4615-8d6f-82015d353805",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "cce26917-a992-4905-a93a-3a3e0db01e6c",
-                            "address": "0x0cf97e9c28c5b45c9dc20dd8c9d683e0265190cb",
-                            "userId": "355f6807-b7bb-4902-ab5a-3ea948030e90",
-                            "ensname": null
+                            "id": "942850a3-f3ac-4361-ae3a-38c2702321dd",
+                            "address": "0xa6bcb89f21e0bf71e08ded426c142757791e17cf",
+                            "userId": "e7089e82-450f-4615-8d6f-82015d353805",
+                            "ensname": "cybershakti.eth"
                         }
                     ]
                 }
@@ -22823,16 +22823,16 @@
             },
             {
                 "proposalId": "ac5233f6-0a5b-4e30-9005-93dc655e2409",
-                "userId": "e7089e82-450f-4615-8d6f-82015d353805",
+                "userId": "355f6807-b7bb-4902-ab5a-3ea948030e90",
                 "author": {
-                    "id": "e7089e82-450f-4615-8d6f-82015d353805",
+                    "id": "355f6807-b7bb-4902-ab5a-3ea948030e90",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "942850a3-f3ac-4361-ae3a-38c2702321dd",
-                            "address": "0xa6bcb89f21e0bf71e08ded426c142757791e17cf",
-                            "userId": "e7089e82-450f-4615-8d6f-82015d353805",
-                            "ensname": "cybershakti.eth"
+                            "id": "cce26917-a992-4905-a93a-3a3e0db01e6c",
+                            "address": "0x0cf97e9c28c5b45c9dc20dd8c9d683e0265190cb",
+                            "userId": "355f6807-b7bb-4902-ab5a-3ea948030e90",
+                            "ensname": null
                         }
                     ]
                 }
@@ -22865,7 +22865,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "pass",
                 "id": "9665201b-9eff-49b9-a119-5789a54b874c",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -22924,8 +22924,8 @@
         },
         "currentEvaluationId": "9665201b-9eff-49b9-a119-5789a54b874c",
         "title": "Poster",
-        "updatedAt": "2024-06-20T10:29:56.773Z",
-        "updatedBy": "da725403-684f-4576-967a-4ea0d2c3a36c",
+        "updatedAt": "2024-06-25T15:17:28.920Z",
+        "updatedBy": "11f3dd59-fbf4-4e4e-8436-34bf06c528d7",
         "pageId": "ac5233f6-0a5b-4e30-9005-93dc655e2409",
         "reviewers": [
             {
@@ -22983,22 +22983,6 @@
         "authors": [
             {
                 "proposalId": "aeaf5b91-82ed-4def-863d-9d58c06e85f0",
-                "userId": "2433b805-8ca4-4272-a0f3-7e6a22fb8657",
-                "author": {
-                    "id": "2433b805-8ca4-4272-a0f3-7e6a22fb8657",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "d05ef880-21df-4d19-94d3-b7ff2810819f",
-                            "address": "0xeb78334dfde3afbc2b904f06153f59cc80ee07fa",
-                            "userId": "2433b805-8ca4-4272-a0f3-7e6a22fb8657",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "aeaf5b91-82ed-4def-863d-9d58c06e85f0",
                 "userId": "4da7b91c-f349-47b8-9083-586bc0b1edd6",
                 "author": {
                     "id": "4da7b91c-f349-47b8-9083-586bc0b1edd6",
@@ -23008,6 +22992,22 @@
                             "id": "6c47c96a-2326-4a7d-8698-f271eaf26a67",
                             "address": "0x18ffad7fec51119c55368607e43e6a986edaa831",
                             "userId": "4da7b91c-f349-47b8-9083-586bc0b1edd6",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "aeaf5b91-82ed-4def-863d-9d58c06e85f0",
+                "userId": "2433b805-8ca4-4272-a0f3-7e6a22fb8657",
+                "author": {
+                    "id": "2433b805-8ca4-4272-a0f3-7e6a22fb8657",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "d05ef880-21df-4d19-94d3-b7ff2810819f",
+                            "address": "0xeb78334dfde3afbc2b904f06153f59cc80ee07fa",
+                            "userId": "2433b805-8ca4-4272-a0f3-7e6a22fb8657",
                             "ensname": null
                         }
                     ]
@@ -23127,18 +23127,18 @@
         "authors": [
             {
                 "proposalId": "afd6fbe8-33bc-4992-ba26-6cca5af45586",
-                "userId": "346dbe91-ac72-43f1-9b50-428a75c60d99",
+                "userId": "de0e2127-c582-454c-9dc2-d69946472c16",
                 "author": {
-                    "id": "346dbe91-ac72-43f1-9b50-428a75c60d99",
+                    "id": "de0e2127-c582-454c-9dc2-d69946472c16",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "afd6fbe8-33bc-4992-ba26-6cca5af45586",
-                "userId": "de0e2127-c582-454c-9dc2-d69946472c16",
+                "userId": "346dbe91-ac72-43f1-9b50-428a75c60d99",
                 "author": {
-                    "id": "de0e2127-c582-454c-9dc2-d69946472c16",
+                    "id": "346dbe91-ac72-43f1-9b50-428a75c60d99",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -23346,6 +23346,40 @@
         "authors": [
             {
                 "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
+                "userId": "b2cde081-843b-456c-8254-9a823b2319c2",
+                "author": {
+                    "id": "b2cde081-843b-456c-8254-9a823b2319c2",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "1b2d93d5-4038-4cfb-b7ac-bcad249c3e8f",
+                            "address": "0x839d36595175e1f678110d52d8265a2fea9607ba",
+                            "userId": "b2cde081-843b-456c-8254-9a823b2319c2",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
+                "userId": "6b6fdd20-3042-4cf0-b830-230fc5274c0d",
+                "author": {
+                    "id": "6b6fdd20-3042-4cf0-b830-230fc5274c0d",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
+                "userId": "1acdab62-2627-414b-8fe5-8ca4675b300e",
+                "author": {
+                    "id": "1acdab62-2627-414b-8fe5-8ca4675b300e",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
                 "userId": "04cd9030-4116-47f9-a985-091a9d9b8063",
                 "author": {
                     "id": "04cd9030-4116-47f9-a985-091a9d9b8063",
@@ -23364,45 +23398,11 @@
             },
             {
                 "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
-                "userId": "1acdab62-2627-414b-8fe5-8ca4675b300e",
-                "author": {
-                    "id": "1acdab62-2627-414b-8fe5-8ca4675b300e",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
                 "userId": "4eabb490-d725-4ad2-a7f9-f5d309e37ebf",
                 "author": {
                     "id": "4eabb490-d725-4ad2-a7f9-f5d309e37ebf",
                     "primaryWallet": null,
                     "wallets": []
-                }
-            },
-            {
-                "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
-                "userId": "6b6fdd20-3042-4cf0-b830-230fc5274c0d",
-                "author": {
-                    "id": "6b6fdd20-3042-4cf0-b830-230fc5274c0d",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "b188c246-f8bf-4c14-9a1e-e0573703644a",
-                "userId": "b2cde081-843b-456c-8254-9a823b2319c2",
-                "author": {
-                    "id": "b2cde081-843b-456c-8254-9a823b2319c2",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "1b2d93d5-4038-4cfb-b7ac-bcad249c3e8f",
-                            "address": "0x839d36595175e1f678110d52d8265a2fea9607ba",
-                            "userId": "b2cde081-843b-456c-8254-9a823b2319c2",
-                            "ensname": null
-                        }
-                    ]
                 }
             },
             {
@@ -23512,15 +23512,6 @@
         "authors": [
             {
                 "proposalId": "b3b4663e-f48f-4046-a0af-956ff9f7fd9f",
-                "userId": "3b2b3217-7b1d-47f4-92a6-c67141f631e8",
-                "author": {
-                    "id": "3b2b3217-7b1d-47f4-92a6-c67141f631e8",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "b3b4663e-f48f-4046-a0af-956ff9f7fd9f",
                 "userId": "81d6b5ae-7ad4-4244-915f-1a2ca4219b2c",
                 "author": {
                     "id": "81d6b5ae-7ad4-4244-915f-1a2ca4219b2c",
@@ -23540,6 +23531,15 @@
                 "userId": "9eac779a-c309-412d-980a-a10c6f6e94c7",
                 "author": {
                     "id": "9eac779a-c309-412d-980a-a10c6f6e94c7",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "b3b4663e-f48f-4046-a0af-956ff9f7fd9f",
+                "userId": "3b2b3217-7b1d-47f4-92a6-c67141f631e8",
+                "author": {
+                    "id": "3b2b3217-7b1d-47f4-92a6-c67141f631e8",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -23676,6 +23676,15 @@
             },
             {
                 "proposalId": "b4272d29-a460-4e6b-bce5-1846729ddc1c",
+                "userId": "f9708d4a-b38c-41c9-b9c3-311830841d78",
+                "author": {
+                    "id": "f9708d4a-b38c-41c9-b9c3-311830841d78",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "b4272d29-a460-4e6b-bce5-1846729ddc1c",
                 "userId": "5a4408c3-679a-49a1-8e8c-fa2baf7775b9",
                 "author": {
                     "id": "5a4408c3-679a-49a1-8e8c-fa2baf7775b9",
@@ -23688,15 +23697,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "b4272d29-a460-4e6b-bce5-1846729ddc1c",
-                "userId": "f9708d4a-b38c-41c9-b9c3-311830841d78",
-                "author": {
-                    "id": "f9708d4a-b38c-41c9-b9c3-311830841d78",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -23797,6 +23797,15 @@
         "authors": [
             {
                 "proposalId": "b48f5f73-0469-4132-9e19-0009afb245ef",
+                "userId": "3ead2c3f-9d42-414a-acce-b9b58c6232f4",
+                "author": {
+                    "id": "3ead2c3f-9d42-414a-acce-b9b58c6232f4",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "b48f5f73-0469-4132-9e19-0009afb245ef",
                 "userId": "2dd0e9fd-ba45-444b-9c89-c1cbfa539f65",
                 "author": {
                     "id": "2dd0e9fd-ba45-444b-9c89-c1cbfa539f65",
@@ -23809,15 +23818,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "b48f5f73-0469-4132-9e19-0009afb245ef",
-                "userId": "3ead2c3f-9d42-414a-acce-b9b58c6232f4",
-                "author": {
-                    "id": "3ead2c3f-9d42-414a-acce-b9b58c6232f4",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             }
         ],
@@ -24030,9 +24030,9 @@
         "authors": [
             {
                 "proposalId": "b580b014-9981-40ec-9448-24ed2224b3b0",
-                "userId": "80b34e67-2ae1-46a6-b1d7-3a02b7af33cb",
+                "userId": "f22349c3-e376-4ae9-9c0a-c29f189ccc26",
                 "author": {
-                    "id": "80b34e67-2ae1-46a6-b1d7-3a02b7af33cb",
+                    "id": "f22349c3-e376-4ae9-9c0a-c29f189ccc26",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -24055,9 +24055,9 @@
             },
             {
                 "proposalId": "b580b014-9981-40ec-9448-24ed2224b3b0",
-                "userId": "f22349c3-e376-4ae9-9c0a-c29f189ccc26",
+                "userId": "80b34e67-2ae1-46a6-b1d7-3a02b7af33cb",
                 "author": {
-                    "id": "f22349c3-e376-4ae9-9c0a-c29f189ccc26",
+                    "id": "80b34e67-2ae1-46a6-b1d7-3a02b7af33cb",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -24160,38 +24160,6 @@
         "authors": [
             {
                 "proposalId": "b6c5d40f-3759-457c-aed7-19d6ab5688eb",
-                "userId": "3eec9a0c-d183-4623-8522-e5d17ac7cd90",
-                "author": {
-                    "id": "3eec9a0c-d183-4623-8522-e5d17ac7cd90",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "0ed2689e-5b69-4ba1-99c6-4cb9410db34c",
-                            "address": "0x8b2e10bfd9f0c2813905a73ae2acd0468c623082",
-                            "userId": "3eec9a0c-d183-4623-8522-e5d17ac7cd90",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "b6c5d40f-3759-457c-aed7-19d6ab5688eb",
-                "userId": "82998603-5f83-4e11-99ec-dff9e17fd26b",
-                "author": {
-                    "id": "82998603-5f83-4e11-99ec-dff9e17fd26b",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "2c34d90a-8ca9-4dfa-a848-118d8a8708bf",
-                            "address": "0xca2a103d970c0b727812cd67c95cb22f391e7cd1",
-                            "userId": "82998603-5f83-4e11-99ec-dff9e17fd26b",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "b6c5d40f-3759-457c-aed7-19d6ab5688eb",
                 "userId": "a603da1c-96e7-467e-9688-fb9eeb79d244",
                 "author": {
                     "id": "a603da1c-96e7-467e-9688-fb9eeb79d244",
@@ -24239,6 +24207,38 @@
                             "id": "92a1bc95-03ff-47e6-b483-f864fa5862ae",
                             "address": "0x27629b5d175e899a19ed6b3a96016377d5ee4768",
                             "userId": "dbe73578-aa54-4ddf-b9f5-798b6a38897c",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "b6c5d40f-3759-457c-aed7-19d6ab5688eb",
+                "userId": "3eec9a0c-d183-4623-8522-e5d17ac7cd90",
+                "author": {
+                    "id": "3eec9a0c-d183-4623-8522-e5d17ac7cd90",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "0ed2689e-5b69-4ba1-99c6-4cb9410db34c",
+                            "address": "0x8b2e10bfd9f0c2813905a73ae2acd0468c623082",
+                            "userId": "3eec9a0c-d183-4623-8522-e5d17ac7cd90",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "b6c5d40f-3759-457c-aed7-19d6ab5688eb",
+                "userId": "82998603-5f83-4e11-99ec-dff9e17fd26b",
+                "author": {
+                    "id": "82998603-5f83-4e11-99ec-dff9e17fd26b",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "2c34d90a-8ca9-4dfa-a848-118d8a8708bf",
+                            "address": "0xca2a103d970c0b727812cd67c95cb22f391e7cd1",
+                            "userId": "82998603-5f83-4e11-99ec-dff9e17fd26b",
                             "ensname": null
                         }
                     ]
@@ -24657,6 +24657,22 @@
         "authors": [
             {
                 "proposalId": "b9d70b00-5098-434e-92aa-927b21b801ae",
+                "userId": "91a609da-3a45-4752-8ee5-30460e50c010",
+                "author": {
+                    "id": "91a609da-3a45-4752-8ee5-30460e50c010",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "0c0cfe6e-556c-4bb7-b635-e1b4723549ee",
+                            "address": "0xf01dd015bc442d872275a79b9cae84a6ff9b2a27",
+                            "userId": "91a609da-3a45-4752-8ee5-30460e50c010",
+                            "ensname": "chomtana.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "b9d70b00-5098-434e-92aa-927b21b801ae",
                 "userId": "0b810785-e13d-4f91-ba51-154ca2d4e4ce",
                 "author": {
                     "id": "0b810785-e13d-4f91-ba51-154ca2d4e4ce",
@@ -24673,15 +24689,6 @@
             },
             {
                 "proposalId": "b9d70b00-5098-434e-92aa-927b21b801ae",
-                "userId": "42871432-8053-4030-a07c-7c72439509aa",
-                "author": {
-                    "id": "42871432-8053-4030-a07c-7c72439509aa",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "b9d70b00-5098-434e-92aa-927b21b801ae",
                 "userId": "89867308-53df-4de4-a51e-e3162ee57747",
                 "author": {
                     "id": "89867308-53df-4de4-a51e-e3162ee57747",
@@ -24691,18 +24698,11 @@
             },
             {
                 "proposalId": "b9d70b00-5098-434e-92aa-927b21b801ae",
-                "userId": "91a609da-3a45-4752-8ee5-30460e50c010",
+                "userId": "42871432-8053-4030-a07c-7c72439509aa",
                 "author": {
-                    "id": "91a609da-3a45-4752-8ee5-30460e50c010",
+                    "id": "42871432-8053-4030-a07c-7c72439509aa",
                     "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "0c0cfe6e-556c-4bb7-b635-e1b4723549ee",
-                            "address": "0xf01dd015bc442d872275a79b9cae84a6ff9b2a27",
-                            "userId": "91a609da-3a45-4752-8ee5-30460e50c010",
-                            "ensname": "chomtana.eth"
-                        }
-                    ]
+                    "wallets": []
                 }
             }
         ],
@@ -25054,7 +25054,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "in_progress",
             "id": "b6f9bd8d-c269-4642-b286-5746e767ab26",
             "index": 3,
             "requiredReviews": 5,
@@ -26212,22 +26212,6 @@
         "authors": [
             {
                 "proposalId": "c53a242c-e0bb-4f34-92f0-d2f714a93be8",
-                "userId": "78823219-f46d-4f49-b7d7-9480c31c5b90",
-                "author": {
-                    "id": "78823219-f46d-4f49-b7d7-9480c31c5b90",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "614242a0-bd2d-4fce-b22c-8536c53f0980",
-                            "address": "0xf24d6191f84d1c17515e3a26b036e2ab12fe5c39",
-                            "userId": "78823219-f46d-4f49-b7d7-9480c31c5b90",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "c53a242c-e0bb-4f34-92f0-d2f714a93be8",
                 "userId": "f792e847-9fc9-4d6b-9421-29af58ea541d",
                 "author": {
                     "id": "f792e847-9fc9-4d6b-9421-29af58ea541d",
@@ -26237,6 +26221,22 @@
                             "id": "b8a8d357-2263-4c85-a144-57303d05a695",
                             "address": "0x7af4ca674c86ac74d15ae668ae7ffbe4f7ddafbf",
                             "userId": "f792e847-9fc9-4d6b-9421-29af58ea541d",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "c53a242c-e0bb-4f34-92f0-d2f714a93be8",
+                "userId": "78823219-f46d-4f49-b7d7-9480c31c5b90",
+                "author": {
+                    "id": "78823219-f46d-4f49-b7d7-9480c31c5b90",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "614242a0-bd2d-4fce-b22c-8536c53f0980",
+                            "address": "0xf24d6191f84d1c17515e3a26b036e2ab12fe5c39",
+                            "userId": "78823219-f46d-4f49-b7d7-9480c31c5b90",
                             "ensname": null
                         }
                     ]
@@ -26596,7 +26596,7 @@
                 "title": "Full Review",
                 "index": 2,
                 "type": "pass_fail",
-                "result": null,
+                "result": "fail",
                 "id": "4816a533-0b89-442b-b4f2-734254412720",
                 "requiredReviews": 5,
                 "reviewers": [
@@ -26655,8 +26655,8 @@
         },
         "currentEvaluationId": "4816a533-0b89-442b-b4f2-734254412720",
         "title": "Myk Bois",
-        "updatedAt": "2024-06-21T14:04:31.918Z",
-        "updatedBy": "1e530166-2a3e-4aee-9d86-cfa199784d28",
+        "updatedAt": "2024-06-25T11:19:01.439Z",
+        "updatedBy": "ed01a146-3dad-49a7-b29f-22f5f077e43f",
         "pageId": "c6c3689e-b62e-480f-92a1-9806aa317e7a",
         "reviewers": [
             {
@@ -26911,7 +26911,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "fail",
+            "result": "in_progress",
             "id": "c6ec2ac0-77b4-4a73-9676-492982e56d9d",
             "index": 3,
             "requiredReviews": 5,
@@ -27132,6 +27132,47 @@
         "authors": [
             {
                 "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
+                "userId": "7a6d3385-1460-4d86-9150-a37705537983",
+                "author": {
+                    "id": "7a6d3385-1460-4d86-9150-a37705537983",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
+                "userId": "ef418010-ecb4-4c73-a670-ceba9e398d4a",
+                "author": {
+                    "id": "ef418010-ecb4-4c73-a670-ceba9e398d4a",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "deb2fbba-2c9d-4108-b5a3-0ffcf747338a",
+                            "address": "0xd5fb864acfd6bb2f72939f122e89ff7f475924f5",
+                            "userId": "ef418010-ecb4-4c73-a670-ceba9e398d4a",
+                            "ensname": "sio.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
+                "userId": "e90f0a60-0e51-48fb-a317-1a592984fdc6",
+                "author": {
+                    "id": "e90f0a60-0e51-48fb-a317-1a592984fdc6",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "d2754d94-de51-49e2-a123-8a4ae5d70940",
+                            "address": "0x42e6dd8d517abb3e4f6611ca53a8d1243c183fb0",
+                            "userId": "e90f0a60-0e51-48fb-a317-1a592984fdc6",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
                 "userId": "16452210-3eab-4813-947d-9fd241d4db37",
                 "author": {
                     "id": "16452210-3eab-4813-947d-9fd241d4db37",
@@ -27158,47 +27199,6 @@
                             "address": "0x1e8ee48d0621289297693fc98914da2efdce1477",
                             "userId": "692fa547-fca6-4e70-91a8-eb917162ec2a",
                             "ensname": "capitulation.eth"
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
-                "userId": "7a6d3385-1460-4d86-9150-a37705537983",
-                "author": {
-                    "id": "7a6d3385-1460-4d86-9150-a37705537983",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
-                "userId": "e90f0a60-0e51-48fb-a317-1a592984fdc6",
-                "author": {
-                    "id": "e90f0a60-0e51-48fb-a317-1a592984fdc6",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "d2754d94-de51-49e2-a123-8a4ae5d70940",
-                            "address": "0x42e6dd8d517abb3e4f6611ca53a8d1243c183fb0",
-                            "userId": "e90f0a60-0e51-48fb-a317-1a592984fdc6",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "c9ed77c0-8350-436c-a47b-62ee9e1ed1e2",
-                "userId": "ef418010-ecb4-4c73-a670-ceba9e398d4a",
-                "author": {
-                    "id": "ef418010-ecb4-4c73-a670-ceba9e398d4a",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "deb2fbba-2c9d-4108-b5a3-0ffcf747338a",
-                            "address": "0xd5fb864acfd6bb2f72939f122e89ff7f475924f5",
-                            "userId": "ef418010-ecb4-4c73-a670-ceba9e398d4a",
-                            "ensname": "sio.eth"
                         }
                     ]
                 }
@@ -27301,6 +27301,15 @@
         "authors": [
             {
                 "proposalId": "ca301e6b-0d74-46bc-8890-2d6fff46851c",
+                "userId": "71a3978a-2831-43a6-8240-28a48df51539",
+                "author": {
+                    "id": "71a3978a-2831-43a6-8240-28a48df51539",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "ca301e6b-0d74-46bc-8890-2d6fff46851c",
                 "userId": "14885259-a38b-436f-a1c6-8969ff351927",
                 "author": {
                     "id": "14885259-a38b-436f-a1c6-8969ff351927",
@@ -27313,15 +27322,6 @@
                             "ensname": "reza.eth"
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "ca301e6b-0d74-46bc-8890-2d6fff46851c",
-                "userId": "71a3978a-2831-43a6-8240-28a48df51539",
-                "author": {
-                    "id": "71a3978a-2831-43a6-8240-28a48df51539",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             },
             {
@@ -27431,9 +27431,9 @@
         "authors": [
             {
                 "proposalId": "caa80399-e4f5-488c-b74f-e2dbeb5b03ee",
-                "userId": "3f8b99d8-6a4e-4b1c-a9ec-a753b512dc6d",
+                "userId": "e99f1dd5-e466-4111-a862-56bcdfe3e166",
                 "author": {
-                    "id": "3f8b99d8-6a4e-4b1c-a9ec-a753b512dc6d",
+                    "id": "e99f1dd5-e466-4111-a862-56bcdfe3e166",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -27443,31 +27443,6 @@
                 "userId": "72f4d843-5206-4445-ac82-ea6e75f0ecac",
                 "author": {
                     "id": "72f4d843-5206-4445-ac82-ea6e75f0ecac",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "caa80399-e4f5-488c-b74f-e2dbeb5b03ee",
-                "userId": "9add58c6-b5fc-4e1a-8b06-508351054f09",
-                "author": {
-                    "id": "9add58c6-b5fc-4e1a-8b06-508351054f09",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "47ac9825-94b6-4e24-a1bf-91bd0ddb04aa",
-                            "address": "0xc31372db84e456193e72a162928539c8f5999ff6",
-                            "userId": "9add58c6-b5fc-4e1a-8b06-508351054f09",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "caa80399-e4f5-488c-b74f-e2dbeb5b03ee",
-                "userId": "9fff5a3b-c671-45e4-b583-9c4ffdfb8d3c",
-                "author": {
-                    "id": "9fff5a3b-c671-45e4-b583-9c4ffdfb8d3c",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -27490,9 +27465,18 @@
             },
             {
                 "proposalId": "caa80399-e4f5-488c-b74f-e2dbeb5b03ee",
-                "userId": "e99f1dd5-e466-4111-a862-56bcdfe3e166",
+                "userId": "3f8b99d8-6a4e-4b1c-a9ec-a753b512dc6d",
                 "author": {
-                    "id": "e99f1dd5-e466-4111-a862-56bcdfe3e166",
+                    "id": "3f8b99d8-6a4e-4b1c-a9ec-a753b512dc6d",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "caa80399-e4f5-488c-b74f-e2dbeb5b03ee",
+                "userId": "9fff5a3b-c671-45e4-b583-9c4ffdfb8d3c",
+                "author": {
+                    "id": "9fff5a3b-c671-45e4-b583-9c4ffdfb8d3c",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -27504,6 +27488,22 @@
                     "id": "f9a271df-ab6c-444d-8887-9f2ffb8a03c7",
                     "primaryWallet": null,
                     "wallets": []
+                }
+            },
+            {
+                "proposalId": "caa80399-e4f5-488c-b74f-e2dbeb5b03ee",
+                "userId": "9add58c6-b5fc-4e1a-8b06-508351054f09",
+                "author": {
+                    "id": "9add58c6-b5fc-4e1a-8b06-508351054f09",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "47ac9825-94b6-4e24-a1bf-91bd0ddb04aa",
+                            "address": "0xc31372db84e456193e72a162928539c8f5999ff6",
+                            "userId": "9add58c6-b5fc-4e1a-8b06-508351054f09",
+                            "ensname": null
+                        }
+                    ]
                 }
             }
         ],
@@ -28052,18 +28052,18 @@
             },
             {
                 "proposalId": "cbdf98cd-6ac3-49cf-b8a3-fd78489e4d88",
-                "userId": "437601cb-bb9d-4d51-80fb-9aa33fbb8f03",
+                "userId": "6546d801-4f40-4a08-849d-29f0cea537f1",
                 "author": {
-                    "id": "437601cb-bb9d-4d51-80fb-9aa33fbb8f03",
+                    "id": "6546d801-4f40-4a08-849d-29f0cea537f1",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "cbdf98cd-6ac3-49cf-b8a3-fd78489e4d88",
-                "userId": "6546d801-4f40-4a08-849d-29f0cea537f1",
+                "userId": "437601cb-bb9d-4d51-80fb-9aa33fbb8f03",
                 "author": {
-                    "id": "6546d801-4f40-4a08-849d-29f0cea537f1",
+                    "id": "437601cb-bb9d-4d51-80fb-9aa33fbb8f03",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -28146,7 +28146,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "fail",
+            "result": "in_progress",
             "id": "d56aa0e1-4375-401d-b2a0-04979258496f",
             "index": 3,
             "requiredReviews": 5,
@@ -28319,22 +28319,6 @@
         "authors": [
             {
                 "proposalId": "cec2c2ca-3573-4f12-8b0c-6bc3509fab5a",
-                "userId": "acd4ea3c-3710-4c11-96dd-a903cfdd9c3b",
-                "author": {
-                    "id": "acd4ea3c-3710-4c11-96dd-a903cfdd9c3b",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "ad68f4a6-e128-4dd1-8ee3-eac39af3fd3a",
-                            "address": "0xdb83330c3235489439d7ec4f238eac31e7f614ed",
-                            "userId": "acd4ea3c-3710-4c11-96dd-a903cfdd9c3b",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "cec2c2ca-3573-4f12-8b0c-6bc3509fab5a",
                 "userId": "daac2361-55b5-411b-b6b1-0567ccfcccd0",
                 "author": {
                     "id": "daac2361-55b5-411b-b6b1-0567ccfcccd0",
@@ -28345,6 +28329,22 @@
                             "address": "0x0b99c69c2d7a71fb372acf2756e315a18e5150b1",
                             "userId": "daac2361-55b5-411b-b6b1-0567ccfcccd0",
                             "ensname": "zetaswap.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "cec2c2ca-3573-4f12-8b0c-6bc3509fab5a",
+                "userId": "acd4ea3c-3710-4c11-96dd-a903cfdd9c3b",
+                "author": {
+                    "id": "acd4ea3c-3710-4c11-96dd-a903cfdd9c3b",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "ad68f4a6-e128-4dd1-8ee3-eac39af3fd3a",
+                            "address": "0xdb83330c3235489439d7ec4f238eac31e7f614ed",
+                            "userId": "acd4ea3c-3710-4c11-96dd-a903cfdd9c3b",
+                            "ensname": null
                         }
                     ]
                 }
@@ -29454,6 +29454,22 @@
             },
             {
                 "proposalId": "d229c262-dea7-4e1a-a51c-666e22a195df",
+                "userId": "bb9f8bdf-13b1-40b9-9134-f15bdae8a946",
+                "author": {
+                    "id": "bb9f8bdf-13b1-40b9-9134-f15bdae8a946",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "14918670-3dd1-4df2-bd2d-1c947e15bbaf",
+                            "address": "0x4ecffe726461504516b6b0a93ab1ce33793e878b",
+                            "userId": "bb9f8bdf-13b1-40b9-9134-f15bdae8a946",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "d229c262-dea7-4e1a-a51c-666e22a195df",
                 "userId": "9a800e1e-cd3d-4110-98e4-072a74815b4d",
                 "author": {
                     "id": "9a800e1e-cd3d-4110-98e4-072a74815b4d",
@@ -29469,22 +29485,6 @@
                             "id": "005aa694-aeb2-4f2f-bc77-ccd5b3a530cf",
                             "address": "0xe138eee8edfb25e8ee4f12cf8bf1b78acae12fda",
                             "userId": "9a800e1e-cd3d-4110-98e4-072a74815b4d",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "d229c262-dea7-4e1a-a51c-666e22a195df",
-                "userId": "bb9f8bdf-13b1-40b9-9134-f15bdae8a946",
-                "author": {
-                    "id": "bb9f8bdf-13b1-40b9-9134-f15bdae8a946",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "14918670-3dd1-4df2-bd2d-1c947e15bbaf",
-                            "address": "0x4ecffe726461504516b6b0a93ab1ce33793e878b",
-                            "userId": "bb9f8bdf-13b1-40b9-9134-f15bdae8a946",
                             "ensname": null
                         }
                     ]
@@ -29588,24 +29588,6 @@
         "authors": [
             {
                 "proposalId": "d2cd2175-e383-4a72-bd48-a43159b49a5e",
-                "userId": "78a0dfd3-88ac-4dd1-8185-3f7ce3a036df",
-                "author": {
-                    "id": "78a0dfd3-88ac-4dd1-8185-3f7ce3a036df",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "d2cd2175-e383-4a72-bd48-a43159b49a5e",
-                "userId": "ae6d5809-768a-4f3d-96ee-e7591da79a6f",
-                "author": {
-                    "id": "ae6d5809-768a-4f3d-96ee-e7591da79a6f",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "d2cd2175-e383-4a72-bd48-a43159b49a5e",
                 "userId": "c8424370-fcd1-482a-8f4b-77569fee9aa8",
                 "author": {
                     "id": "c8424370-fcd1-482a-8f4b-77569fee9aa8",
@@ -29624,6 +29606,24 @@
                             "ensname": null
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "d2cd2175-e383-4a72-bd48-a43159b49a5e",
+                "userId": "ae6d5809-768a-4f3d-96ee-e7591da79a6f",
+                "author": {
+                    "id": "ae6d5809-768a-4f3d-96ee-e7591da79a6f",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "d2cd2175-e383-4a72-bd48-a43159b49a5e",
+                "userId": "78a0dfd3-88ac-4dd1-8185-3f7ce3a036df",
+                "author": {
+                    "id": "78a0dfd3-88ac-4dd1-8185-3f7ce3a036df",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -29724,15 +29724,6 @@
         "authors": [
             {
                 "proposalId": "d5660fbc-6e34-4cca-b00f-060b976ba325",
-                "userId": "6416fccb-309e-42c3-aa35-9b08addd5327",
-                "author": {
-                    "id": "6416fccb-309e-42c3-aa35-9b08addd5327",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "d5660fbc-6e34-4cca-b00f-060b976ba325",
                 "userId": "a72092a1-636a-44ac-9c32-f172726a01a4",
                 "author": {
                     "id": "a72092a1-636a-44ac-9c32-f172726a01a4",
@@ -29745,6 +29736,15 @@
                             "ensname": "brittm.eth"
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "d5660fbc-6e34-4cca-b00f-060b976ba325",
+                "userId": "6416fccb-309e-42c3-aa35-9b08addd5327",
+                "author": {
+                    "id": "6416fccb-309e-42c3-aa35-9b08addd5327",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -29950,18 +29950,18 @@
         "authors": [
             {
                 "proposalId": "d6304cd1-3de7-45fa-b6f2-e8df0ed7cf63",
-                "userId": "d7a8a0a1-7735-4429-8a18-659af3427b9e",
+                "userId": "ea156c0d-1b42-44c4-b33a-4e251a1fb51a",
                 "author": {
-                    "id": "d7a8a0a1-7735-4429-8a18-659af3427b9e",
+                    "id": "ea156c0d-1b42-44c4-b33a-4e251a1fb51a",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "d6304cd1-3de7-45fa-b6f2-e8df0ed7cf63",
-                "userId": "ea156c0d-1b42-44c4-b33a-4e251a1fb51a",
+                "userId": "d7a8a0a1-7735-4429-8a18-659af3427b9e",
                 "author": {
-                    "id": "ea156c0d-1b42-44c4-b33a-4e251a1fb51a",
+                    "id": "d7a8a0a1-7735-4429-8a18-659af3427b9e",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -30064,22 +30064,6 @@
         "authors": [
             {
                 "proposalId": "d7002315-0fb8-4193-99da-33bee2443d00",
-                "userId": "0101e2fa-736e-40fa-99c2-8013acc98565",
-                "author": {
-                    "id": "0101e2fa-736e-40fa-99c2-8013acc98565",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "0430e824-2d6e-43a2-bded-3651a62e0671",
-                            "address": "0x827d2f5ecd0b2674e80d8aa4786fa3600af60b74",
-                            "userId": "0101e2fa-736e-40fa-99c2-8013acc98565",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "d7002315-0fb8-4193-99da-33bee2443d00",
                 "userId": "32e602bc-a490-4a9b-8ccd-477a1d69adfc",
                 "author": {
                     "id": "32e602bc-a490-4a9b-8ccd-477a1d69adfc",
@@ -30112,6 +30096,15 @@
             },
             {
                 "proposalId": "d7002315-0fb8-4193-99da-33bee2443d00",
+                "userId": "f96fff93-5f2c-4f3e-83e4-f30dc1a65a9b",
+                "author": {
+                    "id": "f96fff93-5f2c-4f3e-83e4-f30dc1a65a9b",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "d7002315-0fb8-4193-99da-33bee2443d00",
                 "userId": "85b122dc-bc48-4782-9c4f-12b14785366d",
                 "author": {
                     "id": "85b122dc-bc48-4782-9c4f-12b14785366d",
@@ -30128,11 +30121,18 @@
             },
             {
                 "proposalId": "d7002315-0fb8-4193-99da-33bee2443d00",
-                "userId": "f96fff93-5f2c-4f3e-83e4-f30dc1a65a9b",
+                "userId": "0101e2fa-736e-40fa-99c2-8013acc98565",
                 "author": {
-                    "id": "f96fff93-5f2c-4f3e-83e4-f30dc1a65a9b",
+                    "id": "0101e2fa-736e-40fa-99c2-8013acc98565",
                     "primaryWallet": null,
-                    "wallets": []
+                    "wallets": [
+                        {
+                            "id": "0430e824-2d6e-43a2-bded-3651a62e0671",
+                            "address": "0x827d2f5ecd0b2674e80d8aa4786fa3600af60b74",
+                            "userId": "0101e2fa-736e-40fa-99c2-8013acc98565",
+                            "ensname": null
+                        }
+                    ]
                 }
             }
         ],
@@ -30438,7 +30438,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "fail",
+            "result": "in_progress",
             "id": "3e9a881c-1caf-4854-bc36-03071a064a15",
             "index": 3,
             "requiredReviews": 5,
@@ -30769,6 +30769,31 @@
         "authors": [
             {
                 "proposalId": "dbdde0a6-a141-497e-a089-4575959ce22d",
+                "userId": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
+                "author": {
+                    "id": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "b716ab88-7273-4e0c-8c15-9f2c092f54ee",
+                            "address": "0x17640d0d8c93bf710b6ee4208997bb727b5b7bc2",
+                            "userId": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
+                            "ensname": "findnemo.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "dbdde0a6-a141-497e-a089-4575959ce22d",
+                "userId": "506f075c-f959-430a-a784-39d66131ce35",
+                "author": {
+                    "id": "506f075c-f959-430a-a784-39d66131ce35",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "dbdde0a6-a141-497e-a089-4575959ce22d",
                 "userId": "4a5996db-b137-40fe-9be7-18e8a4d10768",
                 "author": {
                     "id": "4a5996db-b137-40fe-9be7-18e8a4d10768",
@@ -30785,36 +30810,11 @@
             },
             {
                 "proposalId": "dbdde0a6-a141-497e-a089-4575959ce22d",
-                "userId": "506f075c-f959-430a-a784-39d66131ce35",
-                "author": {
-                    "id": "506f075c-f959-430a-a784-39d66131ce35",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "dbdde0a6-a141-497e-a089-4575959ce22d",
                 "userId": "7e961604-c9ca-411d-835a-3461807f43e9",
                 "author": {
                     "id": "7e961604-c9ca-411d-835a-3461807f43e9",
                     "primaryWallet": null,
                     "wallets": []
-                }
-            },
-            {
-                "proposalId": "dbdde0a6-a141-497e-a089-4575959ce22d",
-                "userId": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
-                "author": {
-                    "id": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "b716ab88-7273-4e0c-8c15-9f2c092f54ee",
-                            "address": "0x17640d0d8c93bf710b6ee4208997bb727b5b7bc2",
-                            "userId": "d69a0fa5-52ce-4ae7-b16a-a9b34a9b1a93",
-                            "ensname": "findnemo.eth"
-                        }
-                    ]
                 }
             },
             {
@@ -31036,6 +31036,28 @@
         "authors": [
             {
                 "proposalId": "dc6ee6a6-a2f8-4d6e-a216-c079d4167940",
+                "userId": "c608c499-2958-4cdd-be86-284c7dbe7457",
+                "author": {
+                    "id": "c608c499-2958-4cdd-be86-284c7dbe7457",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "4969bac6-f4c2-436b-ab59-7a6cfd73ce20",
+                            "address": "0x6b9bd00ac672cbd939f5ea88b9e5cf1a4013f6ef",
+                            "userId": "c608c499-2958-4cdd-be86-284c7dbe7457",
+                            "ensname": null
+                        },
+                        {
+                            "id": "0dcf6580-a2fe-4d64-801b-ec8156d957f3",
+                            "address": "0xd74ca3c430ae5f567d545530d218f30e11e5422c",
+                            "userId": "c608c499-2958-4cdd-be86-284c7dbe7457",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "dc6ee6a6-a2f8-4d6e-a216-c079d4167940",
                 "userId": "7f1e06d3-2302-4583-b254-43897c17febd",
                 "author": {
                     "id": "7f1e06d3-2302-4583-b254-43897c17febd",
@@ -31067,28 +31089,6 @@
                             "id": "1b53b6e6-0477-403b-864e-7ae95f1d379d",
                             "address": "0x91af6cab9b5115bd2ff7b7fc14309267937e4380",
                             "userId": "9dda6775-db5b-4cb2-a1b0-0532b2ffe95e",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "dc6ee6a6-a2f8-4d6e-a216-c079d4167940",
-                "userId": "c608c499-2958-4cdd-be86-284c7dbe7457",
-                "author": {
-                    "id": "c608c499-2958-4cdd-be86-284c7dbe7457",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "4969bac6-f4c2-436b-ab59-7a6cfd73ce20",
-                            "address": "0x6b9bd00ac672cbd939f5ea88b9e5cf1a4013f6ef",
-                            "userId": "c608c499-2958-4cdd-be86-284c7dbe7457",
-                            "ensname": null
-                        },
-                        {
-                            "id": "0dcf6580-a2fe-4d64-801b-ec8156d957f3",
-                            "address": "0xd74ca3c430ae5f567d545530d218f30e11e5422c",
-                            "userId": "c608c499-2958-4cdd-be86-284c7dbe7457",
                             "ensname": null
                         }
                     ]
@@ -31457,16 +31457,16 @@
         "authors": [
             {
                 "proposalId": "e2fbf7d3-8ce4-4303-a843-f937a7f0b84a",
-                "userId": "22a714d7-207e-43e7-bd97-bc42834dbfb0",
+                "userId": "ff53d143-0845-416e-adf2-a255c801fa9b",
                 "author": {
-                    "id": "22a714d7-207e-43e7-bd97-bc42834dbfb0",
+                    "id": "ff53d143-0845-416e-adf2-a255c801fa9b",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "9744415b-8419-49c3-88ab-7ec7dcf93c77",
-                            "address": "0x5cd18da4c84758319c8e1c228b48725f5e4a3506",
-                            "userId": "22a714d7-207e-43e7-bd97-bc42834dbfb0",
-                            "ensname": "superdeveloper.eth"
+                            "id": "81e0b02e-6562-487b-a21c-75927a597a15",
+                            "address": "0xe9d94a59799e3faaf115021b53a11398c91e1b41",
+                            "userId": "ff53d143-0845-416e-adf2-a255c801fa9b",
+                            "ensname": "0xkashi.eth"
                         }
                     ]
                 }
@@ -31489,6 +31489,22 @@
             },
             {
                 "proposalId": "e2fbf7d3-8ce4-4303-a843-f937a7f0b84a",
+                "userId": "22a714d7-207e-43e7-bd97-bc42834dbfb0",
+                "author": {
+                    "id": "22a714d7-207e-43e7-bd97-bc42834dbfb0",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "9744415b-8419-49c3-88ab-7ec7dcf93c77",
+                            "address": "0x5cd18da4c84758319c8e1c228b48725f5e4a3506",
+                            "userId": "22a714d7-207e-43e7-bd97-bc42834dbfb0",
+                            "ensname": "superdeveloper.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "e2fbf7d3-8ce4-4303-a843-f937a7f0b84a",
                 "userId": "fdc370b0-4796-4d5a-8f36-17ec5a546672",
                 "author": {
                     "id": "fdc370b0-4796-4d5a-8f36-17ec5a546672",
@@ -31499,22 +31515,6 @@
                             "address": "0x5037e7747faa78fc0ecf8dfc526dcd19f73076ce",
                             "userId": "fdc370b0-4796-4d5a-8f36-17ec5a546672",
                             "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "e2fbf7d3-8ce4-4303-a843-f937a7f0b84a",
-                "userId": "ff53d143-0845-416e-adf2-a255c801fa9b",
-                "author": {
-                    "id": "ff53d143-0845-416e-adf2-a255c801fa9b",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "81e0b02e-6562-487b-a21c-75927a597a15",
-                            "address": "0xe9d94a59799e3faaf115021b53a11398c91e1b41",
-                            "userId": "ff53d143-0845-416e-adf2-a255c801fa9b",
-                            "ensname": "0xkashi.eth"
                         }
                     ]
                 }
@@ -31617,28 +31617,6 @@
         "authors": [
             {
                 "proposalId": "e4558343-972a-4a83-bb75-bc7daa3064e7",
-                "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                "author": {
-                    "id": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "05bb28be-1f23-42b0-abe2-2a0466bc5bcd",
-                            "address": "0x3dbf55729abcf55f3b4f7cebfe88b7d59be3f23f",
-                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                            "ensname": null
-                        },
-                        {
-                            "id": "f4f1fa05-bf0b-4af6-a96d-52e5fa82d159",
-                            "address": "0xf9342d70a2a6eb46afd7b81138dee01d73b2e419",
-                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "e4558343-972a-4a83-bb75-bc7daa3064e7",
                 "userId": "600a7ade-4a01-41b2-b233-84d72605ba11",
                 "author": {
                     "id": "600a7ade-4a01-41b2-b233-84d72605ba11",
@@ -31648,22 +31626,6 @@
                             "id": "a9a03050-1cd5-4db9-a380-9d9a59290b1a",
                             "address": "0xf924efc8830bfa1029fa0cd7a51901a5ec03de3d",
                             "userId": "600a7ade-4a01-41b2-b233-84d72605ba11",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "e4558343-972a-4a83-bb75-bc7daa3064e7",
-                "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
-                "author": {
-                    "id": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "9a290191-b0bb-44c7-861e-daa6653cbadc",
-                            "address": "0x33041027dd8f4dc82b6e825fb37adf8f15d44053",
-                            "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
                             "ensname": null
                         }
                     ]
@@ -31697,6 +31659,44 @@
                             "address": "0x58a35cf59d5c630c057af008a78bc67cdc2ec094",
                             "userId": "f711aaed-6609-41ef-b75b-9c1cb594e43c",
                             "ensname": "macedo.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "e4558343-972a-4a83-bb75-bc7daa3064e7",
+                "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
+                "author": {
+                    "id": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "9a290191-b0bb-44c7-861e-daa6653cbadc",
+                            "address": "0x33041027dd8f4dc82b6e825fb37adf8f15d44053",
+                            "userId": "b82fa48c-97fd-4131-acd2-08c5092a7c05",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "e4558343-972a-4a83-bb75-bc7daa3064e7",
+                "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                "author": {
+                    "id": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "05bb28be-1f23-42b0-abe2-2a0466bc5bcd",
+                            "address": "0x3dbf55729abcf55f3b4f7cebfe88b7d59be3f23f",
+                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                            "ensname": null
+                        },
+                        {
+                            "id": "f4f1fa05-bf0b-4af6-a96d-52e5fa82d159",
+                            "address": "0xf9342d70a2a6eb46afd7b81138dee01d73b2e419",
+                            "userId": "0aa56d82-4901-4c29-aebc-99c9cfb97e46",
+                            "ensname": null
                         }
                     ]
                 }
@@ -32347,7 +32347,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "in_progress",
             "id": "2cf33ace-bfe4-4c36-8b75-491fa813c900",
             "index": 3,
             "requiredReviews": 5,
@@ -32507,7 +32507,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "in_progress",
             "id": "3ac0c154-d24c-4089-9eac-c784d655e2fe",
             "index": 3,
             "requiredReviews": 5,
@@ -33539,20 +33539,18 @@
         "authors": [
             {
                 "proposalId": "ee93b987-1810-4e0c-ac50-f0452528a8fa",
-                "userId": "8cae4495-61fb-4d09-9496-0295a58d11e5",
+                "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
                 "author": {
-                    "id": "8cae4495-61fb-4d09-9496-0295a58d11e5",
+                    "id": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
                     "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "ee93b987-1810-4e0c-ac50-f0452528a8fa",
-                "userId": "d5cd6fb0-e6ad-4043-93c5-b1b0a19e6846",
-                "author": {
-                    "id": "d5cd6fb0-e6ad-4043-93c5-b1b0a19e6846",
-                    "primaryWallet": null,
-                    "wallets": []
+                    "wallets": [
+                        {
+                            "id": "993e3413-81fa-4427-b4db-7cb885b38d10",
+                            "address": "0x16745c40dde19754ee354b67858271373b0ac43e",
+                            "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
+                            "ensname": null
+                        }
+                    ]
                 }
             },
             {
@@ -33573,18 +33571,20 @@
             },
             {
                 "proposalId": "ee93b987-1810-4e0c-ac50-f0452528a8fa",
-                "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
+                "userId": "8cae4495-61fb-4d09-9496-0295a58d11e5",
                 "author": {
-                    "id": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
+                    "id": "8cae4495-61fb-4d09-9496-0295a58d11e5",
                     "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "993e3413-81fa-4427-b4db-7cb885b38d10",
-                            "address": "0x16745c40dde19754ee354b67858271373b0ac43e",
-                            "userId": "ebc6436a-826f-4b57-a37c-0b3a29ebad95",
-                            "ensname": null
-                        }
-                    ]
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "ee93b987-1810-4e0c-ac50-f0452528a8fa",
+                "userId": "d5cd6fb0-e6ad-4043-93c5-b1b0a19e6846",
+                "author": {
+                    "id": "d5cd6fb0-e6ad-4043-93c5-b1b0a19e6846",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             }
         ],
@@ -33685,18 +33685,18 @@
         "authors": [
             {
                 "proposalId": "eef7bb23-da3c-4bb3-a091-8003ef1cc65e",
-                "userId": "466b7a3e-406e-4293-9537-62aeb0c64bf0",
+                "userId": "d44d17d2-3ea4-4f22-9492-ba5a9a45171b",
                 "author": {
-                    "id": "466b7a3e-406e-4293-9537-62aeb0c64bf0",
+                    "id": "d44d17d2-3ea4-4f22-9492-ba5a9a45171b",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "eef7bb23-da3c-4bb3-a091-8003ef1cc65e",
-                "userId": "d44d17d2-3ea4-4f22-9492-ba5a9a45171b",
+                "userId": "466b7a3e-406e-4293-9537-62aeb0c64bf0",
                 "author": {
-                    "id": "d44d17d2-3ea4-4f22-9492-ba5a9a45171b",
+                    "id": "466b7a3e-406e-4293-9537-62aeb0c64bf0",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -33799,15 +33799,15 @@
         "authors": [
             {
                 "proposalId": "f09228cb-8296-45df-8ff2-1a0577316864",
-                "userId": "3f5588dc-9543-47b5-bb10-9056634b2a92",
+                "userId": "e0cb3995-1051-44af-93ef-78b58a3f48e3",
                 "author": {
-                    "id": "3f5588dc-9543-47b5-bb10-9056634b2a92",
+                    "id": "e0cb3995-1051-44af-93ef-78b58a3f48e3",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "8cfdde16-cf3d-41ff-a838-9dcea5314398",
-                            "address": "0xbe4feae32210f682a41e1c41e3eaf4f8204cd29e",
-                            "userId": "3f5588dc-9543-47b5-bb10-9056634b2a92",
+                            "id": "e18f007f-4889-4577-912a-f89d4e67354f",
+                            "address": "0x3994537274f3ff3eefc413e0d669b05d6446d46b",
+                            "userId": "e0cb3995-1051-44af-93ef-78b58a3f48e3",
                             "ensname": null
                         }
                     ]
@@ -33824,6 +33824,22 @@
                             "id": "d87f1cee-93a8-44a7-a5fe-c77993e529b1",
                             "address": "0xa184aa8488908b43ccf43b5ef13ae528693dfd00",
                             "userId": "60cf0dad-59f8-41d9-9fd8-16ec354f86a9",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "f09228cb-8296-45df-8ff2-1a0577316864",
+                "userId": "3f5588dc-9543-47b5-bb10-9056634b2a92",
+                "author": {
+                    "id": "3f5588dc-9543-47b5-bb10-9056634b2a92",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "8cfdde16-cf3d-41ff-a838-9dcea5314398",
+                            "address": "0xbe4feae32210f682a41e1c41e3eaf4f8204cd29e",
+                            "userId": "3f5588dc-9543-47b5-bb10-9056634b2a92",
                             "ensname": null
                         }
                     ]
@@ -33868,22 +33884,6 @@
                     "id": "d411cafc-f359-4c32-a5e5-f3a35024a456",
                     "primaryWallet": null,
                     "wallets": []
-                }
-            },
-            {
-                "proposalId": "f09228cb-8296-45df-8ff2-1a0577316864",
-                "userId": "e0cb3995-1051-44af-93ef-78b58a3f48e3",
-                "author": {
-                    "id": "e0cb3995-1051-44af-93ef-78b58a3f48e3",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "e18f007f-4889-4577-912a-f89d4e67354f",
-                            "address": "0x3994537274f3ff3eefc413e0d669b05d6446d46b",
-                            "userId": "e0cb3995-1051-44af-93ef-78b58a3f48e3",
-                            "ensname": null
-                        }
-                    ]
                 }
             }
         ],
@@ -34507,6 +34507,15 @@
         "authors": [
             {
                 "proposalId": "f70cd50d-3d47-46ea-8190-e5c91662a67e",
+                "userId": "4e9b09dd-0f50-4727-9fff-fb0b9612b470",
+                "author": {
+                    "id": "4e9b09dd-0f50-4727-9fff-fb0b9612b470",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "f70cd50d-3d47-46ea-8190-e5c91662a67e",
                 "userId": "12d399c9-8577-4c18-9226-51e011126b4a",
                 "author": {
                     "id": "12d399c9-8577-4c18-9226-51e011126b4a",
@@ -34519,15 +34528,6 @@
                             "ensname": null
                         }
                     ]
-                }
-            },
-            {
-                "proposalId": "f70cd50d-3d47-46ea-8190-e5c91662a67e",
-                "userId": "4e9b09dd-0f50-4727-9fff-fb0b9612b470",
-                "author": {
-                    "id": "4e9b09dd-0f50-4727-9fff-fb0b9612b470",
-                    "primaryWallet": null,
-                    "wallets": []
                 }
             },
             {
@@ -34637,18 +34637,18 @@
         "authors": [
             {
                 "proposalId": "f9a0195d-7d88-4ec1-9815-dd19625a8043",
-                "userId": "101c6c06-4544-4ee5-8141-45ce672a46ff",
+                "userId": "71b21621-b87a-4efd-8215-745502ab4cd1",
                 "author": {
-                    "id": "101c6c06-4544-4ee5-8141-45ce672a46ff",
+                    "id": "71b21621-b87a-4efd-8215-745502ab4cd1",
                     "primaryWallet": null,
                     "wallets": []
                 }
             },
             {
                 "proposalId": "f9a0195d-7d88-4ec1-9815-dd19625a8043",
-                "userId": "71b21621-b87a-4efd-8215-745502ab4cd1",
+                "userId": "101c6c06-4544-4ee5-8141-45ce672a46ff",
                 "author": {
-                    "id": "71b21621-b87a-4efd-8215-745502ab4cd1",
+                    "id": "101c6c06-4544-4ee5-8141-45ce672a46ff",
                     "primaryWallet": null,
                     "wallets": []
                 }
@@ -34731,7 +34731,7 @@
         "currentStep": {
             "title": "Full Review",
             "step": "pass_fail",
-            "result": "pass",
+            "result": "in_progress",
             "id": "81d7126d-8eb3-4afb-9a70-34f09fdd1c25",
             "index": 3,
             "requiredReviews": 5,
@@ -34799,31 +34799,6 @@
         "authors": [
             {
                 "proposalId": "f9c41c29-faa2-41cf-9c7e-765d9e8f39cd",
-                "userId": "01995eb1-1476-4e7c-8ef9-b9b3218e7b75",
-                "author": {
-                    "id": "01995eb1-1476-4e7c-8ef9-b9b3218e7b75",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "1b95de85-6331-4a17-b768-14d596e05120",
-                            "address": "0xb6343d5effe59518acad6290690831fb072a88fd",
-                            "userId": "01995eb1-1476-4e7c-8ef9-b9b3218e7b75",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "f9c41c29-faa2-41cf-9c7e-765d9e8f39cd",
-                "userId": "40b8ac47-fda3-4aa5-b499-268cad38dc25",
-                "author": {
-                    "id": "40b8ac47-fda3-4aa5-b499-268cad38dc25",
-                    "primaryWallet": null,
-                    "wallets": []
-                }
-            },
-            {
-                "proposalId": "f9c41c29-faa2-41cf-9c7e-765d9e8f39cd",
                 "userId": "b602dfe0-3e4a-4cd5-aa05-6207a970fa15",
                 "author": {
                     "id": "b602dfe0-3e4a-4cd5-aa05-6207a970fa15",
@@ -34843,6 +34818,31 @@
                             "address": "0xe773382a7574de1c82b1f67099e680c043048708",
                             "userId": "ee3eb773-ac5b-4297-ba49-30fed8cbfe79",
                             "ensname": "tpae.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "f9c41c29-faa2-41cf-9c7e-765d9e8f39cd",
+                "userId": "40b8ac47-fda3-4aa5-b499-268cad38dc25",
+                "author": {
+                    "id": "40b8ac47-fda3-4aa5-b499-268cad38dc25",
+                    "primaryWallet": null,
+                    "wallets": []
+                }
+            },
+            {
+                "proposalId": "f9c41c29-faa2-41cf-9c7e-765d9e8f39cd",
+                "userId": "01995eb1-1476-4e7c-8ef9-b9b3218e7b75",
+                "author": {
+                    "id": "01995eb1-1476-4e7c-8ef9-b9b3218e7b75",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "1b95de85-6331-4a17-b768-14d596e05120",
+                            "address": "0xb6343d5effe59518acad6290690831fb072a88fd",
+                            "userId": "01995eb1-1476-4e7c-8ef9-b9b3218e7b75",
+                            "ensname": null
                         }
                     ]
                 }
@@ -35057,18 +35057,27 @@
         "authors": [
             {
                 "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
-                "userId": "055c8510-79d2-4455-945b-c81f99cd2714",
+                "userId": "6aca94ab-9ab9-4487-959a-a0a56963a174",
                 "author": {
-                    "id": "055c8510-79d2-4455-945b-c81f99cd2714",
+                    "id": "6aca94ab-9ab9-4487-959a-a0a56963a174",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "43fe8e96-cd2f-4e51-b276-8a715a5babdb",
-                            "address": "0x38f80f8f76b1c44b2beefb63bb561f570fb6ddb6",
-                            "userId": "055c8510-79d2-4455-945b-c81f99cd2714",
-                            "ensname": "freshelle.eth"
+                            "id": "1c66ac90-bdcf-49bb-87c5-ac11693cd0f4",
+                            "address": "0x839395e20bbb182fa440d08f850e6c7a8f6f0780",
+                            "userId": "6aca94ab-9ab9-4487-959a-a0a56963a174",
+                            "ensname": "griff.eth"
                         }
                     ]
+                }
+            },
+            {
+                "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
+                "userId": "8ab5a14e-10e9-4fcc-b624-f49c3688b783",
+                "author": {
+                    "id": "8ab5a14e-10e9-4fcc-b624-f49c3688b783",
+                    "primaryWallet": null,
+                    "wallets": []
                 }
             },
             {
@@ -35089,11 +35098,18 @@
             },
             {
                 "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
-                "userId": "5d220b79-0a02-4b24-8c94-35b71a1669b8",
+                "userId": "055c8510-79d2-4455-945b-c81f99cd2714",
                 "author": {
-                    "id": "5d220b79-0a02-4b24-8c94-35b71a1669b8",
+                    "id": "055c8510-79d2-4455-945b-c81f99cd2714",
                     "primaryWallet": null,
-                    "wallets": []
+                    "wallets": [
+                        {
+                            "id": "43fe8e96-cd2f-4e51-b276-8a715a5babdb",
+                            "address": "0x38f80f8f76b1c44b2beefb63bb561f570fb6ddb6",
+                            "userId": "055c8510-79d2-4455-945b-c81f99cd2714",
+                            "ensname": "freshelle.eth"
+                        }
+                    ]
                 }
             },
             {
@@ -35114,16 +35130,32 @@
             },
             {
                 "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
-                "userId": "6aca94ab-9ab9-4487-959a-a0a56963a174",
+                "userId": "e55bb71d-1b64-4cb9-a62f-aaabd729e72e",
                 "author": {
-                    "id": "6aca94ab-9ab9-4487-959a-a0a56963a174",
+                    "id": "e55bb71d-1b64-4cb9-a62f-aaabd729e72e",
                     "primaryWallet": null,
                     "wallets": [
                         {
-                            "id": "1c66ac90-bdcf-49bb-87c5-ac11693cd0f4",
-                            "address": "0x839395e20bbb182fa440d08f850e6c7a8f6f0780",
-                            "userId": "6aca94ab-9ab9-4487-959a-a0a56963a174",
-                            "ensname": "griff.eth"
+                            "id": "979240af-62ba-4df0-9e9d-cc0a2754d826",
+                            "address": "0x6d97d65adff6771b31671443a6b9512104312d3d",
+                            "userId": "e55bb71d-1b64-4cb9-a62f-aaabd729e72e",
+                            "ensname": "markoprljic.eth"
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
+                "userId": "c7d6dc43-a83f-4d64-9c17-dcf3ff83438b",
+                "author": {
+                    "id": "c7d6dc43-a83f-4d64-9c17-dcf3ff83438b",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "f52b7db1-5748-45cd-9802-e3b78300d79c",
+                            "address": "0xc46c67bb7e84490d7ebdd0b8ecdaca68cf3823f4",
+                            "userId": "c7d6dc43-a83f-4d64-9c17-dcf3ff83438b",
+                            "ensname": "karmaticacid.eth"
                         }
                     ]
                 }
@@ -35146,27 +35178,11 @@
             },
             {
                 "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
-                "userId": "8ab5a14e-10e9-4fcc-b624-f49c3688b783",
+                "userId": "5d220b79-0a02-4b24-8c94-35b71a1669b8",
                 "author": {
-                    "id": "8ab5a14e-10e9-4fcc-b624-f49c3688b783",
+                    "id": "5d220b79-0a02-4b24-8c94-35b71a1669b8",
                     "primaryWallet": null,
                     "wallets": []
-                }
-            },
-            {
-                "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
-                "userId": "c7d6dc43-a83f-4d64-9c17-dcf3ff83438b",
-                "author": {
-                    "id": "c7d6dc43-a83f-4d64-9c17-dcf3ff83438b",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "f52b7db1-5748-45cd-9802-e3b78300d79c",
-                            "address": "0xc46c67bb7e84490d7ebdd0b8ecdaca68cf3823f4",
-                            "userId": "c7d6dc43-a83f-4d64-9c17-dcf3ff83438b",
-                            "ensname": "karmaticacid.eth"
-                        }
-                    ]
                 }
             },
             {
@@ -35176,22 +35192,6 @@
                     "id": "d41397d6-3715-47fb-ae40-261fde01ccac",
                     "primaryWallet": null,
                     "wallets": []
-                }
-            },
-            {
-                "proposalId": "fb1ecd33-fc44-4f37-8f0b-370542f93b03",
-                "userId": "e55bb71d-1b64-4cb9-a62f-aaabd729e72e",
-                "author": {
-                    "id": "e55bb71d-1b64-4cb9-a62f-aaabd729e72e",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "979240af-62ba-4df0-9e9d-cc0a2754d826",
-                            "address": "0x6d97d65adff6771b31671443a6b9512104312d3d",
-                            "userId": "e55bb71d-1b64-4cb9-a62f-aaabd729e72e",
-                            "ensname": "markoprljic.eth"
-                        }
-                    ]
                 }
             }
         ],
@@ -35404,22 +35404,6 @@
         "authors": [
             {
                 "proposalId": "fbcadfcb-b8a3-4e0b-9d80-0bad2ba7030c",
-                "userId": "7abf1ce8-59da-4a5c-bdaf-f040dab49079",
-                "author": {
-                    "id": "7abf1ce8-59da-4a5c-bdaf-f040dab49079",
-                    "primaryWallet": null,
-                    "wallets": [
-                        {
-                            "id": "d62958ff-2460-44d7-b1a1-c7130e12d21e",
-                            "address": "0x2f03695b8133b0f0223ac44d655a0b3c2abbc60c",
-                            "userId": "7abf1ce8-59da-4a5c-bdaf-f040dab49079",
-                            "ensname": null
-                        }
-                    ]
-                }
-            },
-            {
-                "proposalId": "fbcadfcb-b8a3-4e0b-9d80-0bad2ba7030c",
                 "userId": "b34754ec-3573-4aaf-bc2b-d43583286637",
                 "author": {
                     "id": "b34754ec-3573-4aaf-bc2b-d43583286637",
@@ -35429,6 +35413,22 @@
                             "id": "0e009194-b463-4d93-9b76-a258c6062cf5",
                             "address": "0x565b93a15d38acd79c120b15432d21e21ed274d6",
                             "userId": "b34754ec-3573-4aaf-bc2b-d43583286637",
+                            "ensname": null
+                        }
+                    ]
+                }
+            },
+            {
+                "proposalId": "fbcadfcb-b8a3-4e0b-9d80-0bad2ba7030c",
+                "userId": "7abf1ce8-59da-4a5c-bdaf-f040dab49079",
+                "author": {
+                    "id": "7abf1ce8-59da-4a5c-bdaf-f040dab49079",
+                    "primaryWallet": null,
+                    "wallets": [
+                        {
+                            "id": "d62958ff-2460-44d7-b1a1-c7130e12d21e",
+                            "address": "0x2f03695b8133b0f0223ac44d655a0b3c2abbc60c",
+                            "userId": "7abf1ce8-59da-4a5c-bdaf-f040dab49079",
                             "ensname": null
                         }
                     ]

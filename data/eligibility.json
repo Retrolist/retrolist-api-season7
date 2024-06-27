@@ -531,7 +531,7 @@
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
     "projectRefUID": "0xb908ea18fd164cf089649ba95887c221f5e8b93a08235dff43e33bd6617239dc",
     "name": "Ambire",
-    "status": "in_progress"
+    "status": "pass"
   },
   {
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
@@ -753,7 +753,7 @@
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
     "projectRefUID": "0x5316b19c17eba417d70b924baa6a1c467b14069968424d14fcf1409f2a308873",
     "name": "Bored Town",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
@@ -1179,7 +1179,7 @@
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
     "projectRefUID": "0x913ca97cfc8b587734059e4df9cc6de28ef590727e13e1b30ae9a57bea881731",
     "name": "April Token",
-    "status": "in_progress"
+    "status": "fail"
   },
   {
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
@@ -1329,7 +1329,7 @@
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
     "projectRefUID": "0xc506dc86a256154dbc2adf313bdaab0ecd679824d5cea5bbc43f843eb8916ead",
     "name": "BLOBz",
-    "status": "in_progress"
+    "status": "fail"
   },
   {
     "charmverseId": "1e777ef4-06d8-49f8-9986-321f6b29cd0a",
