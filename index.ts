@@ -70,6 +70,7 @@ const variablesR4 = {
 
 // Initialize caches
 // const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
+const fastCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
 const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
 
@@ -442,7 +443,7 @@ async function fetchProjectCount() {
 // Fetch comments hash
 async function fetchFarcasterComments(fid: number, hash: string) {
   const cacheKey = `COMMENTS_${fid}_${hash}`;
-  const cachedData = mainCache.get(cacheKey);
+  const cachedData = fastCache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
