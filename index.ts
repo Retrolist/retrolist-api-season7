@@ -21,6 +21,7 @@ interface FarcasterComment {
 }
 
 const eligibility = JSON.parse(fs.readFileSync("data/eligibility.json", "utf-8"))
+const farcasterCommentThreads = JSON.parse(fs.readFileSync("data/farcasterCommentThreads.json", "utf-8"))
 
 // PostgreSQL connection setup
 const pool = new Pool({
@@ -491,12 +492,24 @@ async function fetchFarcasterComments(fid: number, hash: string) {
 
 async function fetchProjectComments(projectId: string) {
   // TODO: Get project farcaster thread hash
-  const hash = '0x5e1d985aa9a9969af96d0a4d45a12ccaf55f4db3'
+  const hash = farcasterCommentThreads[projectId]
 
-  return {
-    hash,
-    comments: await fetchFarcasterComments(702265, hash),
+  if (!hash) {
+    throw new Error("Project not found")
   }
+
+  try {
+    return {
+      hash,
+      comments: await fetchFarcasterComments(702265, hash),
+    }
+  } catch (err) {
+    return {
+      hash,
+      comments: [],
+    }
+  }
+
 }
 
 // Create an Express app
