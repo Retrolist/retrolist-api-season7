@@ -437,16 +437,20 @@ async function fetchProject(id: string): Promise<Project> {
   let osoProjectContracts = []
 
   if (attestation.body?.osoSlug) {
-    const response = await axios.get(`https://raw.githubusercontent.com/opensource-observer/oss-directory/main/data/projects/${attestation.body.osoSlug[0]}/${attestation.body.osoSlug}.yaml`)
-    const data = YAML.parse(response.data)
-    osoProjectContracts = (
-      data.blockchain?.filter((contract: any) => contract.tags.indexOf('contract') != -1)
-        .map((contract: any) => ({
-          description: contract.address,
-          type: osoChainId(contract.networks[0]).toString(),
-          url: etherscanUrl(contract.address, osoChainId(contract.networks[0])),
-        }))
-    )
+    try {
+      const response = await axios.get(`https://raw.githubusercontent.com/opensource-observer/oss-directory/main/data/projects/${attestation.body.osoSlug[0].toLowerCase()}/${attestation.body.osoSlug.toLowerCase()}.yaml`)
+      const data = YAML.parse(response.data)
+      osoProjectContracts = (
+        data.blockchain?.filter((contract: any) => contract.tags.indexOf('contract') != -1)
+          .map((contract: any) => ({
+            description: contract.address,
+            type: osoChainId(contract.networks[0]).toString(),
+            url: etherscanUrl(contract.address, osoChainId(contract.networks[0])),
+          }))
+      )
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   const project = {
