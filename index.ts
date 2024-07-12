@@ -16,7 +16,7 @@ import {
   ProjectMetadata,
 } from "./types/projects";
 import { Pool } from "pg";
-import { groupBy, uniq, uniqBy } from "lodash";
+import { chain, groupBy, uniq, uniqBy } from "lodash";
 
 interface FarcasterComment {
   fid: number;
@@ -434,20 +434,27 @@ async function fetchProject(id: string): Promise<Project> {
   //   url: etherscanUrl(contract.contract_address, osoChainId(contract.network)),
   // }));
 
-  let osoProjectContracts = []
+  const osoProjectContracts = []
 
   if (attestation.body?.osoSlug) {
     try {
       const response = await axios.get(`https://raw.githubusercontent.com/opensource-observer/oss-directory/main/data/projects/${attestation.body.osoSlug[0].toLowerCase()}/${attestation.body.osoSlug.toLowerCase()}.yaml`)
       const data = YAML.parse(response.data)
-      osoProjectContracts = (
-        data.blockchain?.filter((contract: any) => contract.tags.indexOf('contract') != -1)
-          .map((contract: any) => ({
-            description: contract.address,
-            type: osoChainId(contract.networks[0]).toString(),
-            url: etherscanUrl(contract.address, osoChainId(contract.networks[0])),
-          }))
-      )
+      const filtered = data.blockchain?.filter((contract: any) => contract.tags.indexOf('contract') != -1)
+      if (filtered) {
+        for (const contract of filtered) {
+          for (const network of contract.networks) {
+            const chainId = osoChainId(network)
+            if (chainId) {
+              osoProjectContracts.push({
+                description: contract.address,
+                type: chainId.toString(),
+                url: etherscanUrl(contract.address, chainId),
+              })
+            }
+          }
+        }
+      }
     } catch (err) {
       console.error(err)
     }
