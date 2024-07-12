@@ -54,6 +54,8 @@ export interface Project {
   packages: string[]
 
   osoSlug: string
+
+  metrics: ProjectMetrics | null
 }
 
 export interface ProjectApplicant {
@@ -95,4 +97,26 @@ export interface ProjectFundingSource {
   amount: string
   description: string
   url?: string
+}
+
+export interface ProjectMetrics {
+  project_name: string;
+  application_id: string;
+  is_oss: boolean;
+  gas_fees: number;
+  transaction_count: number;
+  trusted_transaction_count: number;
+  trusted_transaction_share: number;
+  trusted_users_onboarded: number;
+  daily_active_addresses: number;
+  trusted_daily_active_users: number;
+  monthly_active_addresses: number;
+  trusted_monthly_active_users: number;
+  recurring_addresses: number;
+  trusted_recurring_users: number;
+  power_user_addresses: number;
+  openrank_trusted_users_count: number;
+  log_gas_fees: number;
+  log_transaction_count: number;
+  log_trusted_transaction_count: number;
 }
