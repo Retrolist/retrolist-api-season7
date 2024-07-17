@@ -33,6 +33,7 @@ const farcasterCommentThreads = JSON.parse(
 );
 const metrics = groupBy(JSON.parse(fs.readFileSync("data/metrics.json", "utf-8")), 'application_id');
 const agoraMetrics = JSON.parse(fs.readFileSync("data/agora_metrics.json", "utf-8"))
+const rewardData = JSON.parse(fs.readFileSync("data/reward.json", "utf-8"))
 // const osoContracts = JSON.parse(
 //   fs.readFileSync("data/oso_contracts.json", "utf-8")
 // );
@@ -270,6 +271,17 @@ function getPrelimResult(projectId: string): string {
   return "#N/A";
 }
 
+function projectReward(projectRefUID: string) {
+  const index = rewardData.findIndex((x: any) => x.application_id == projectRefUID)
+
+  if (index == -1) return {}
+
+  return {
+    totalOP: rewardData[index].final_score,
+    rank: index + 1,
+  }
+}
+
 async function fetchProjects(): Promise<ProjectMetadata[]> {
   const cacheKey = "projects";
   const cachedData = mainCache.get(cacheKey);
@@ -281,7 +293,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
   const attestations = await fetchAndProcessData();
   const submissions = await fetchAndProcessR4Submissions();
 
-  let projects = attestations.map((attestation) => ({
+  let projects: ProjectMetadata[] = attestations.map((attestation) => ({
     id: attestation.parsedData.projectRefUID,
     name: attestation.parsedData.name,
     displayName: attestation.parsedData.name,
@@ -296,9 +308,12 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: "",
     includedInBallots: 0,
+
+    ...projectReward(attestation.parsedData.projectRefUID),
   }))
 
   projects = projects.filter(project => farcasterCommentThreads[project.id])
+  projects = projects.sort((a, b) => (b.totalOP || 0) - (a.totalOP || 0))
 
   mainCache.set(cacheKey, projects);
 
@@ -512,6 +527,8 @@ async function fetchProject(id: string): Promise<Project> {
     osoSlug: attestation.body?.osoSlug || "",
     metrics: projectMetrics,
     metricsPercent: projectMetricsPercent,
+
+    ...projectReward(attestation.parsedData.projectRefUID),
   };
 
   mainCache.set(cacheKey, project);

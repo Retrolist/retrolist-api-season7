@@ -50,6 +50,9 @@ export interface Project {
   reportReason: string
   includedInBallots?: number
 
+  totalOP?: number
+  rank?: number
+
   github: string[]
   packages: string[]
 
