@@ -281,7 +281,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
   const attestations = await fetchAndProcessData();
   const submissions = await fetchAndProcessR4Submissions();
 
-  const projects = attestations.map((attestation) => ({
+  let projects = attestations.map((attestation) => ({
     id: attestation.parsedData.projectRefUID,
     name: attestation.parsedData.name,
     displayName: attestation.parsedData.name,
@@ -296,7 +296,9 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: "",
     includedInBallots: 0,
-  }));
+  }))
+
+  projects = projects.filter(project => farcasterCommentThreads[project.id])
 
   mainCache.set(cacheKey, projects);
 
@@ -525,7 +527,8 @@ async function fetchProjectCount() {
     return cachedData;
   }
 
-  const projects = await fetchProjects();
+  let projects = await fetchProjects()
+  projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
 
   const countMap = projects.reduce((result, currentItem) => {
     const groupKey = currentItem.impactCategory[0];
