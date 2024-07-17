@@ -56,6 +56,7 @@ export interface Project {
   osoSlug: string
 
   metrics: ProjectMetrics | null
+  metricsPercent: ProjectMetrics | null
 }
 
 export interface ProjectApplicant {

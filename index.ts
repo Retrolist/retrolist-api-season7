@@ -32,6 +32,7 @@ const farcasterCommentThreads = JSON.parse(
   fs.readFileSync("data/farcasterCommentThreads.json", "utf-8")
 );
 const metrics = groupBy(JSON.parse(fs.readFileSync("data/metrics.json", "utf-8")), 'application_id');
+const agoraMetrics = JSON.parse(fs.readFileSync("data/agora_metrics.json", "utf-8"))
 // const osoContracts = JSON.parse(
 //   fs.readFileSync("data/oso_contracts.json", "utf-8")
 // );
@@ -460,6 +461,13 @@ async function fetchProject(id: string): Promise<Project> {
     }
   }
 
+  const projectMetrics = metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0] : null
+  const projectMetricsPercent = {...projectMetrics}
+
+  for (const m of agoraMetrics) {
+    projectMetricsPercent[m.metric_id] = parseFloat(m.allocations_per_project.find((x: any) => x.project_id == attestation.parsedData.projectRefUID)?.allocation || '0')
+  }
+
   const project = {
     id: attestation.parsedData.projectRefUID,
     displayName: attestation.parsedData.name,
@@ -500,7 +508,8 @@ async function fetchProject(id: string): Promise<Project> {
     packages: attestation.body?.packages || [],
 
     osoSlug: attestation.body?.osoSlug || "",
-    metrics: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0] : null,
+    metrics: projectMetrics,
+    metricsPercent: projectMetricsPercent,
   };
 
   mainCache.set(cacheKey, project);
