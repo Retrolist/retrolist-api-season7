@@ -33,6 +33,8 @@ const farcasterCommentThreads = JSON.parse(
 );
 const metrics = groupBy(JSON.parse(fs.readFileSync("data/metrics.json", "utf-8")), 'application_id');
 const agoraMetrics = JSON.parse(fs.readFileSync("data/agora_metrics.json", "utf-8"))
+const rewardMetrics = JSON.parse(fs.readFileSync("data/reward_metrics.json", "utf-8"))
+const rewardMetricsOss = JSON.parse(fs.readFileSync("data/reward_metrics_oss.json", "utf-8"))
 const rewardData = JSON.parse(fs.readFileSync("data/reward.json", "utf-8"))
 // const osoContracts = JSON.parse(
 //   fs.readFileSync("data/oso_contracts.json", "utf-8")
@@ -479,11 +481,12 @@ async function fetchProject(id: string): Promise<Project> {
   }
 
   const projectMetrics = metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0] : null
-  const projectMetricsPercent = {...projectMetrics}
+  const projectMetricsPercent = rewardMetrics.find((x: any) => x.application_id == attestation.parsedData.projectRefUID) || projectMetrics
+  const projectMetricsPercentOss = rewardMetricsOss.find((x: any) => x.application_id == attestation.parsedData.projectRefUID) || projectMetrics
 
-  for (const m of agoraMetrics) {
-    projectMetricsPercent[m.metric_id] = parseFloat(m.allocations_per_project.find((x: any) => x.project_id == attestation.parsedData.projectRefUID)?.allocation || '0')
-  }
+  // for (const m of agoraMetrics) {
+  //   projectMetricsPercent[m.metric_id] = parseFloat(m.allocations_per_project.find((x: any) => x.project_id == attestation.parsedData.projectRefUID)?.allocation || '0')
+  // }
 
   const project = {
     id: attestation.parsedData.projectRefUID,
@@ -527,6 +530,7 @@ async function fetchProject(id: string): Promise<Project> {
     osoSlug: attestation.body?.osoSlug || "",
     metrics: projectMetrics,
     metricsPercent: projectMetricsPercent,
+    metricsPercentOss: projectMetricsPercentOss,
 
     ...projectReward(attestation.parsedData.projectRefUID),
   };

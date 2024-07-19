@@ -60,6 +60,7 @@ export interface Project {
 
   metrics: ProjectMetrics | null
   metricsPercent: ProjectMetrics | null
+  metricsPercentOss: ProjectMetrics | null
 }
 
 export interface ProjectApplicant {
