@@ -29,6 +29,7 @@ export interface ProjectMetadata {
   includedInBallots?: number
   totalOP?: number
   rank?: number
+  isOss: boolean
 }
 
 export interface Project {

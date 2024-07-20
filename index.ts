@@ -310,6 +310,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: "",
     includedInBallots: 0,
+    isOss: (metrics[attestation.parsedData.projectRefUID] && metrics[attestation.parsedData.projectRefUID][0]?.is_oss) ?? false,
 
     ...projectReward(attestation.parsedData.projectRefUID),
   }))
