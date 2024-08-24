@@ -322,6 +322,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
 
   let projects: ProjectMetadata[] = attestations.map((attestation) => ({
     id: attestation.parsedData.projectRefUID,
+    metadataId: attestation.id,
     name: attestation.parsedData.name,
     displayName: attestation.parsedData.name,
     description: attestation.body?.description || "",
@@ -516,6 +517,7 @@ async function fetchProject(id: string): Promise<Project> {
 
   const project = {
     id: attestation.parsedData.projectRefUID,
+    metadataId: attestation.id,
     displayName: attestation.parsedData.name,
     contributionDescription: attestation.body?.description || "",
     impactDescription: "",
@@ -559,6 +561,8 @@ async function fetchProject(id: string): Promise<Project> {
     metrics: projectMetrics,
     metricsPercent: projectMetricsPercent,
     metricsPercentOss: projectMetricsPercentOss,
+
+    attestationBody: attestation.body,
 
     ...projectReward(attestation.parsedData.projectRefUID),
   };

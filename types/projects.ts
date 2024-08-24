@@ -16,6 +16,7 @@ export interface ProjectMetadataSimple {
 
 export interface ProjectMetadata {
   id: string
+  metadataId: string
   displayName: string
   impactCategory: string[]
   bio: string
@@ -33,6 +34,8 @@ export interface ProjectMetadata {
 }
 
 export interface Project {
+  id: string
+  metadataId: string
   bio: string
   impactCategory: string[]
   displayName: string
@@ -46,7 +49,6 @@ export interface Project {
   impactMetrics: ProjectImpactMetric[]
   fundingSources: ProjectFundingSource[]
   lists: any[]
-  id: string
   prelimResult: string
   reportReason: string
   includedInBallots?: number
@@ -57,6 +59,7 @@ export interface Project {
   github: string[]
   packages: string[]
 
+  attestationBody?: any
   osoSlug: string
 
   metrics: ProjectMetrics | null
