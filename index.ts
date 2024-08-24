@@ -190,6 +190,8 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
 
       const body = await fetchMetadata(metadataUrl);
 
+      if (!body) continue;
+
       if (!allAttestationsMap[projectRefUID]) {
         allAttestationsMap[projectRefUID] = [];
       }
