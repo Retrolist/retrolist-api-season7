@@ -174,6 +174,8 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
     const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
+    // console.log(attestations.slice(0,10))
+
     // Map to store the latest attestation for each projectRefUID
     const latestAttestationsMap: { [key: string]: any } = {};
     const allAttestationsMap: { [key: string]: any[] } = {};
@@ -190,7 +192,9 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
 
       const body = await fetchMetadata(metadataUrl);
 
-      if (!body) continue;
+      if (!body) {
+        continue;
+      }
 
       if (!allAttestationsMap[projectRefUID]) {
         allAttestationsMap[projectRefUID] = [];
@@ -230,6 +234,7 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
     const processedData: ProcessedAttestation[] = Object.values(
       latestAttestationsMap
     );
+
     processedData.sort((a, b) => b.time - a.time);
     mainCache.set(cacheKey, processedData);
     return processedData;
@@ -265,6 +270,9 @@ async function fetchAndProcessRoundSubmissions(): Promise<[Set<string>, Set<stri
       const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
 
       if (parseInt(parsedData.round) == CURRENT_ROUND) {
+        // console.log('proj', parsedData.projectRefUID)
+        // console.log('meta', parsedData.metadataSnapshotRefUID)
+
         projectRefUIDs.add(parsedData.projectRefUID);
         metadataSnapshotUIDs.add(parsedData.metadataSnapshotRefUID)
       }
@@ -332,8 +340,8 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     // ...projectReward(attestation.parsedData.projectRefUID),
   }))
 
-  projects = projects.filter(project => farcasterCommentThreads[project.id])
-  projects = projects.sort((a, b) => (b.totalOP || 0) - (a.totalOP || 0))
+  // projects = projects.filter(project => farcasterCommentThreads[project.id])
+  // projects = projects.sort((a, b) => (b.totalOP || 0) - (a.totalOP || 0))
 
   mainCache.set(cacheKey, projects);
 
