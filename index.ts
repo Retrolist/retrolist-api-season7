@@ -55,7 +55,7 @@ const url = "https://optimism.easscan.org/graphql";
 // Define the query
 const query = gql`
   query Attestations($where: AttestationWhereInput) {
-    attestations(where: $where) {
+    attestations(where: $where, orderBy: { time: desc }) {
       id
       decodedDataJson
       time
@@ -89,11 +89,13 @@ const variablesR4 = {
 };
 
 // Initialize caches
-// const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
+const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
+const slowCache = new NodeCache({ stdTTL: 300 }); // 5 minute TTL for slow cache for background project downloading
 const fastCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
-const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
+// const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
 
+const CURRENT_ROUND = 5
 const CACHE_DIR = "./cache/projects";
 
 // Ensure cache directory exists
@@ -160,6 +162,8 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
     return cachedData as ProcessedAttestation[];
   }
 
+  const submissions = await fetchAndProcessRoundSubmissions();
+
   try {
     const data: { attestations: RawAttestation[] } = await request(
       url,
@@ -179,6 +183,11 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
       const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
       const projectRefUID = parsedData["projectRefUID"];
       const metadataUrl = parsedData["metadataUrl"];
+
+      // Filter only submitted to current round for time saving
+      if (!submissions[0].has(projectRefUID)) continue;
+      if (!submissions[1].has(attestation.id)) continue;
+
       const body = await fetchMetadata(metadataUrl);
 
       if (!allAttestationsMap[projectRefUID]) {
@@ -228,12 +237,12 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
   }
 }
 
-async function fetchAndProcessR4Submissions(): Promise<Set<string>> {
-  const cacheKey = "attestationsR4Submissions";
+async function fetchAndProcessRoundSubmissions(): Promise<[Set<string>, Set<string>]> {
+  const cacheKey = "attestationsRoundSubmissions";
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
-    return cachedData as Set<string>;
+    return cachedData as [Set<string>, Set<string>];
   }
 
   try {
@@ -246,16 +255,21 @@ async function fetchAndProcessR4Submissions(): Promise<Set<string>> {
     const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
-    const processedData: Set<string> = new Set();
+    const projectRefUIDs: Set<string> = new Set();
+    const metadataSnapshotUIDs: Set<string> = new Set();
 
     // Process each attestation
     for (const attestation of attestations) {
       const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
-      processedData.add(parsedData.projectRefUID);
+
+      if (parseInt(parsedData.round) == CURRENT_ROUND) {
+        projectRefUIDs.add(parsedData.projectRefUID);
+        metadataSnapshotUIDs.add(parsedData.metadataSnapshotRefUID)
+      }
     }
 
-    mainCache.set(cacheKey, processedData);
-    return processedData;
+    mainCache.set(cacheKey, [projectRefUIDs, metadataSnapshotUIDs]);
+    return [projectRefUIDs, metadataSnapshotUIDs];
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
@@ -263,14 +277,16 @@ async function fetchAndProcessR4Submissions(): Promise<Set<string>> {
 }
 
 function getPrelimResult(projectId: string): string {
-  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
-
-  if (!project) return "Missing";
-
-  if (project.status == "pass") return "Keep";
-  if (project.status == "fail") return "Remove";
-
   return "#N/A";
+
+  // const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+
+  // if (!project) return "Missing";
+
+  // if (project.status == "pass") return "Keep";
+  // if (project.status == "fail") return "Remove";
+
+  // return "#N/A";
 }
 
 function projectReward(projectRefUID: string) {
@@ -293,7 +309,6 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
   }
 
   const attestations = await fetchAndProcessData();
-  const submissions = await fetchAndProcessR4Submissions();
 
   let projects: ProjectMetadata[] = attestations.map((attestation) => ({
     id: attestation.parsedData.projectRefUID,
@@ -312,7 +327,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     includedInBallots: 0,
     isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
 
-    ...projectReward(attestation.parsedData.projectRefUID),
+    // ...projectReward(attestation.parsedData.projectRefUID),
   }))
 
   projects = projects.filter(project => farcasterCommentThreads[project.id])
@@ -403,7 +418,7 @@ async function fetchProject(id: string): Promise<Project> {
     throw new Error(`Project not found`);
   }
 
-  // const submissions = await fetchAndProcessR4Submissions();
+  // const submissions = await fetchAndProcessRoundSubmissions();
 
   const fundingSources: ProjectFundingSource[] = [];
 
