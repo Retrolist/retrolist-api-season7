@@ -542,7 +542,9 @@ async function fetchProject(id: string): Promise<Project> {
     fundingSources,
     impactMetrics: [],
 
-    github: attestation.body?.github || [],
+    github: attestation.body?.github.map(github => (
+      typeof github === 'string' ? github : github.url
+    )) || [],
     packages: attestation.body?.packages || [],
 
     osoSlug: attestation.body?.osoSlug || "",

@@ -37,6 +37,12 @@ interface GrantsAndFunding {
   revenue: Revenue[];
 }
 
+interface Github {
+  url: string
+  name: string | null
+  description: string | null
+}
+
 export interface AttestationBody {
   name: string;
   description: string;
@@ -46,7 +52,7 @@ export interface AttestationBody {
   osoSlug: string;
   socialLinks: SocialLinks;
   team: string[];
-  github: string[];
+  github: string[] | Github[];
   packages: string[];
   contracts: Contract[];
   grantsAndFunding: GrantsAndFunding;
