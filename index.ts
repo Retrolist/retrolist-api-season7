@@ -279,7 +279,7 @@ async function fetchAndProcessRoundSubmissions(): Promise<[Set<string>, Set<stri
 }
 
 function getPrelimResult(projectId: string): string {
-  return "#N/A";
+  return "Keep";
 
   // const project = eligibility.find((x: any) => x.projectRefUID == projectId);
 
