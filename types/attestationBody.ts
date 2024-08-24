@@ -43,6 +43,12 @@ interface Github {
   description: string | null
 }
 
+interface Package {
+  url: string
+  name: string | null
+  description: string | null
+}
+
 export interface AttestationBody {
   name: string;
   description: string;
@@ -53,7 +59,7 @@ export interface AttestationBody {
   socialLinks: SocialLinks;
   team: string[];
   github: string[] | Github[];
-  packages: string[];
+  packages: string[] | Package[];
   contracts: Contract[];
   grantsAndFunding: GrantsAndFunding;
 }

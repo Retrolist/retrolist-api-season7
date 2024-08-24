@@ -555,7 +555,9 @@ async function fetchProject(id: string): Promise<Project> {
     github: attestation.body?.github.map(github => (
       typeof github === 'string' ? github : github.url
     )) || [],
-    packages: attestation.body?.packages || [],
+    packages: attestation.body?.packages.map(p => (
+      typeof p === 'string' ? p : p.url
+    )) || [],
 
     osoSlug: attestation.body?.osoSlug || "",
     metrics: projectMetrics,
