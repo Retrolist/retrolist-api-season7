@@ -95,7 +95,6 @@ const fastCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
 // const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
 
-const CURRENT_ROUND = 5
 const CACHE_DIR = "./cache/projects";
 
 // Ensure cache directory exists
@@ -154,15 +153,15 @@ async function fetchMetadata(url: string) {
 }
 
 // Function to fetch and process data
-async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
-  const cacheKey = "attestations";
+async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[]> {
+  const cacheKey = "attestations" + (round ? "Round" + round : "");
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
     return cachedData as ProcessedAttestation[];
   }
 
-  const submissions = await fetchAndProcessRoundSubmissions();
+  const submissions = await fetchAndProcessRoundSubmissions(round);
 
   try {
     const data: { attestations: RawAttestation[] } = await request(
@@ -244,8 +243,8 @@ async function fetchAndProcessData(): Promise<ProcessedAttestation[]> {
   }
 }
 
-async function fetchAndProcessRoundSubmissions(): Promise<[Set<string>, Set<string>]> {
-  const cacheKey = "attestationsRoundSubmissions";
+async function fetchAndProcessRoundSubmissions(round: number): Promise<[Set<string>, Set<string>]> {
+  const cacheKey = "attestationsRoundSubmissions" + (round ? "Round" + round : "");
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
@@ -269,7 +268,7 @@ async function fetchAndProcessRoundSubmissions(): Promise<[Set<string>, Set<stri
     for (const attestation of attestations) {
       const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
 
-      if (parseInt(parsedData.round) == CURRENT_ROUND) {
+      if (parseInt(parsedData.round) == round || !round) {
         // console.log('proj', parsedData.projectRefUID)
         // console.log('meta', parsedData.metadataSnapshotRefUID)
 
@@ -287,16 +286,15 @@ async function fetchAndProcessRoundSubmissions(): Promise<[Set<string>, Set<stri
 }
 
 function getPrelimResult(projectId: string): string {
-  return "Keep";
-
-  // const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
 
   // if (!project) return "Missing";
+  if (!project) return "#N/A";
 
-  // if (project.status == "pass") return "Keep";
-  // if (project.status == "fail") return "Remove";
+  if (project.status == "pass") return "Keep";
+  if (project.status == "fail") return "Remove";
 
-  // return "#N/A";
+  return "#N/A";
 }
 
 function projectReward(projectRefUID: string) {
@@ -310,15 +308,15 @@ function projectReward(projectRefUID: string) {
   }
 }
 
-async function fetchProjects(): Promise<ProjectMetadata[]> {
-  const cacheKey = "projects";
+async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
+  const cacheKey = "projects" + (round ? "Round" + round : round);
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
     return cachedData as ProjectMetadata[];
   }
 
-  const attestations = await fetchAndProcessData();
+  const attestations = await fetchAndProcessData(round);
 
   let projects: ProjectMetadata[] = attestations.map((attestation) => ({
     id: attestation.parsedData.projectRefUID,
@@ -328,7 +326,7 @@ async function fetchProjects(): Promise<ProjectMetadata[]> {
     description: attestation.body?.description || "",
     bio: attestation.body?.description || "",
     address: attestation.parsedData.farcasterID.hex,
-    bannerImageUrl: attestation.body?.proejctCoverImageUrl || "",
+    bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
     profileImageUrl: attestation.body?.projectAvatarUrl || "",
     impactCategory: [attestation.parsedData.category],
     primaryCategory: attestation.parsedData.category,
@@ -420,7 +418,7 @@ async function fetchProject(id: string): Promise<Project> {
     return cachedData as Project;
   }
 
-  const attestations = await fetchAndProcessData();
+  const attestations = await fetchAndProcessData(0);
   const attestation = attestations.find(
     (attestation) =>
       attestation.id === id || attestation.parsedData?.projectRefUID === id
@@ -574,16 +572,20 @@ async function fetchProject(id: string): Promise<Project> {
   return project;
 }
 
-async function fetchProjectCount() {
-  const cacheKey = "projectCount";
+async function fetchProjectCount(round: number) {
+  const cacheKey = "projectCount" + (round ? "Round" + round : "");
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
   }
 
-  let projects = await fetchProjects()
-  projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
+  let projects = await fetchProjects(round)
+
+  // TODO: elibility switch
+  if (round < 5) {
+    projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
+  }
 
   const countMap = projects.reduce((result, currentItem) => {
     const groupKey = currentItem.impactCategory[0];
@@ -694,25 +696,25 @@ app.use(express.json());
 app.use(cors());
 
 // Define the endpoint
-app.get("/attestations", async (req, res) => {
+app.get("/:round/attestations", async (req, res) => {
   try {
-    const attestations = await fetchAndProcessData();
+    const attestations = await fetchAndProcessData(parseInt(req.params.round));
     res.json(attestations);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch attestations" });
   }
 });
 
-app.get("/projects/count", async (req, res) => {
+app.get("/:round/projects/count", async (req, res) => {
   try {
-    const count = await fetchProjectCount();
+    const count = await fetchProjectCount(parseInt(req.params.round));
     res.json(count);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch project count" });
   }
 });
 
-app.get("/projects/:id/comments", async (req, res) => {
+app.get("/:round/projects/:id/comments", async (req, res) => {
   try {
     const comments = await fetchProjectComments(req.params.id);
     res.json(comments);
@@ -739,9 +741,9 @@ app.get("/projects/:id", async (req, res) => {
   }
 });
 
-app.get("/projects", async (req, res) => {
+app.get("/:round/projects", async (req, res) => {
   try {
-    const projects = await fetchProjects();
+    const projects = await fetchProjects(parseInt(req.params.round));
     res.json(projects);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch projects" });
@@ -851,4 +853,4 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-fetchAndProcessData();
+fetchAndProcessData(0);
