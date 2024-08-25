@@ -88,6 +88,17 @@ const variablesR4 = {
   },
 };
 
+const TEST_PROJECTS = [
+  '0x83b46efce8ff1937a49883b323b22d3483d1843522f614ab4f20cc20545067bb',
+  '0xbdd994bf9b06072f6f8603591c8907ca5a09a21fa14dcda0cebeaaea4e074d9b',
+  '0x52d53d44856f5a356053e55e3ad339d7207486b0210fe48aa2c1a0ec79c55d9c',
+  '0x54eef6526ed4a28f771e2bc9b4a18884afcd92437cbee5ea4175c0a6b8970ac2',
+  '0xf2da6b1d4ab4bcc61b5318f3b2f2f7d568fb0e6a9fbf0ca240130160953ea8fa',
+  '0xc1311ae4d779bb4a627759aaf66dfcd6da029a770adf015035d86e4c682f6a35',
+  '0x1c0db0217d2aafd77b89d864fb87ef9d52bca0a2fc05e6faabe22ac81ec49503',
+  '0xb199463048fa09ea0bf66027e2e9b73c6268b342aaf77d5aa1088a0afd801e12',
+]
+
 // Initialize caches
 const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
 const slowCache = new NodeCache({ stdTTL: 300 }); // 5 minute TTL for slow cache for background project downloading
@@ -338,6 +349,8 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
 
     // ...projectReward(attestation.parsedData.projectRefUID),
   }))
+
+  projects = projects.filter(project => !TEST_PROJECTS.includes(project.id))
 
   // projects = projects.filter(project => farcasterCommentThreads[project.id])
   // projects = projects.sort((a, b) => (b.totalOP || 0) - (a.totalOP || 0))
