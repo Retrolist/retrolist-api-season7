@@ -523,7 +523,7 @@ async function fetchProject(id: string): Promise<Project> {
     impactDescription: "",
     bio: attestation.body?.description || "",
     profile: {
-      bannerImageUrl: attestation.body?.proejctCoverImageUrl || "",
+      bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
       profileImageUrl: attestation.body?.projectAvatarUrl || "",
       id: attestation.id,
     },

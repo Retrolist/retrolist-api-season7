@@ -53,7 +53,8 @@ export interface AttestationBody {
   name: string;
   description: string;
   projectAvatarUrl: string;
-  proejctCoverImageUrl: string;
+  proejctCoverImageUrl?: string;
+  projectCoverImageUrl?: string;
   category: string;
   osoSlug: string;
   socialLinks: SocialLinks;
