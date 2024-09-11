@@ -17,6 +17,7 @@ export interface ProjectMetadataSimple {
 export interface ProjectMetadata {
   id: string
   metadataId: string
+  applicationId: string
   displayName: string
   impactCategory: string[]
   bio: string
@@ -36,6 +37,8 @@ export interface ProjectMetadata {
 export interface Project {
   id: string
   metadataId: string
+  applicationId: string
+  round: number
   bio: string
   impactCategory: string[]
   displayName: string
@@ -60,6 +63,7 @@ export interface Project {
   packages: string[]
 
   attestationBody?: any
+  agoraBody?: any
   osoSlug: string
 
   metrics: ProjectMetrics | null

@@ -21,6 +21,7 @@ export interface DecodedData {
 
 export interface ProcessedAttestation {
   id: string;
+  applicationId: string;
   time: number;
   parsedData: DecodedData;
   body: AttestationBody | null;

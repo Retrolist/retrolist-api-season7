@@ -1,7 +1,7 @@
 import { config as dotenv } from "dotenv";
 dotenv();
 
-import express from "express";
+import express, { application } from "express";
 import axios from "axios";
 import YAML from 'yaml';
 import { gql, request } from "graphql-request";
@@ -98,6 +98,8 @@ const TEST_PROJECTS = [
   '0x1c0db0217d2aafd77b89d864fb87ef9d52bca0a2fc05e6faabe22ac81ec49503',
   '0xb199463048fa09ea0bf66027e2e9b73c6268b342aaf77d5aa1088a0afd801e12',
 ]
+
+let applicationRound: {[applicationId: string]: number} = {};
 
 // Initialize caches
 const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
@@ -214,6 +216,7 @@ async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[
         ...attestation,
         parsedData,
         body,
+        applicationId: submissions[0].get(projectRefUID),
       });
 
       if (
@@ -224,6 +227,7 @@ async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[
           ...attestation,
           parsedData,
           body,
+          applicationId: submissions[0].get(projectRefUID),
           revisions: [],
         };
       }
@@ -254,12 +258,12 @@ async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[
   }
 }
 
-async function fetchAndProcessRoundSubmissions(round: number): Promise<[Set<string>, Set<string>]> {
+async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<string, string>, Set<string>]> {
   const cacheKey = "attestationsRoundSubmissions" + (round ? "Round" + round : "");
   const cachedData = mainCache.get(cacheKey);
 
   if (cachedData) {
-    return cachedData as [Set<string>, Set<string>];
+    return cachedData as [Map<string, string>, Set<string>];
   }
 
   try {
@@ -272,7 +276,7 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Set<stri
     const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
-    const projectRefUIDs: Set<string> = new Set();
+    const projectRefUIDs: Map<string, string> = new Map();
     const metadataSnapshotUIDs: Set<string> = new Set();
 
     // Process each attestation
@@ -283,7 +287,10 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Set<stri
         // console.log('proj', parsedData.projectRefUID)
         // console.log('meta', parsedData.metadataSnapshotRefUID)
 
-        projectRefUIDs.add(parsedData.projectRefUID);
+        if (!projectRefUIDs.has(parsedData.projectRefUID)) {
+          projectRefUIDs.set(parsedData.projectRefUID, attestation.id);
+          applicationRound[attestation.id] = parsedData.round
+        }
         metadataSnapshotUIDs.add(parsedData.metadataSnapshotRefUID)
       }
     }
@@ -332,6 +339,7 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
   let projects: ProjectMetadata[] = attestations.map((attestation) => ({
     id: attestation.parsedData.projectRefUID,
     metadataId: attestation.id,
+    applicationId: attestation.applicationId,
     name: attestation.parsedData.name,
     displayName: attestation.parsedData.name,
     description: attestation.body?.description || "",
@@ -421,6 +429,27 @@ function hyphenToCapitalize(input: string): string {
   let result = parseFloat(words[0]) ? words.join(" - ") : words.join(" ");
 
   return result;
+}
+
+async function fetchAgoraProject(id: string) {
+  try {
+    const cacheKey = "project-agora-" + id;
+    const cachedData = slowCache.get(cacheKey);
+  
+    if (cachedData) {
+      return cachedData;
+    }
+  
+    const response = await axios.get(`https://vote.optimism.io/api/v1/retrofunding/rounds/${applicationRound[id]}/projects/${id}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.AGORA_API_KEY}`
+      }
+    })
+  
+    return response.data
+  } catch (err) {
+    return undefined
+  }
 }
 
 async function fetchProject(id: string): Promise<Project> {
@@ -526,9 +555,13 @@ async function fetchProject(id: string): Promise<Project> {
   //   projectMetricsPercent[m.metric_id] = parseFloat(m.allocations_per_project.find((x: any) => x.project_id == attestation.parsedData.projectRefUID)?.allocation || '0')
   // }
 
+  const agoraBody = await fetchAgoraProject(attestation.applicationId)
+
   const project = {
     id: attestation.parsedData.projectRefUID,
     metadataId: attestation.id,
+    applicationId: attestation.applicationId,
+    round: applicationRound[attestation.applicationId],
     displayName: attestation.parsedData.name,
     contributionDescription: attestation.body?.description || "",
     impactDescription: "",
@@ -576,6 +609,7 @@ async function fetchProject(id: string): Promise<Project> {
     metricsPercentOss: projectMetricsPercentOss,
 
     attestationBody: attestation.body,
+    agoraBody,
 
     ...projectReward(attestation.parsedData.projectRefUID),
   };
