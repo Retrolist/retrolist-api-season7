@@ -315,6 +315,11 @@ function getPrelimResult(projectId: string): string {
   return "#N/A";
 }
 
+function getCharmverseLink(projectId: string): string | undefined {
+  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+  return project?.charmverseLink
+}
+
 function projectReward(projectRefUID: string) {
   const index = rewardData.findIndex((x: any) => x.application_id == projectRefUID)
 
@@ -607,6 +612,8 @@ async function fetchProject(id: string): Promise<Project> {
     metrics: projectMetrics,
     metricsPercent: projectMetricsPercent,
     metricsPercentOss: projectMetricsPercentOss,
+
+    charmverseLink: getCharmverseLink(attestation.parsedData.projectRefUID),
 
     attestationBody: attestation.body,
     agoraBody,

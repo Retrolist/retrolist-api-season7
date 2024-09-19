@@ -64,7 +64,9 @@ export interface Project {
 
   attestationBody?: any
   agoraBody?: any
+  
   osoSlug: string
+  charmverseLink?: string
 
   metrics: ProjectMetrics | null
   metricsPercent: ProjectMetrics | null
