@@ -98,6 +98,7 @@ const TEST_PROJECTS = [
   '0xc1311ae4d779bb4a627759aaf66dfcd6da029a770adf015035d86e4c682f6a35',
   '0x1c0db0217d2aafd77b89d864fb87ef9d52bca0a2fc05e6faabe22ac81ec49503',
   '0xb199463048fa09ea0bf66027e2e9b73c6268b342aaf77d5aa1088a0afd801e12',
+  '0x965d10dd8af44d0286af95744897ac7e066f92114c080c021e628f4af3eda298',
 ]
 
 let applicationRound: {[applicationId: string]: number} = {};
