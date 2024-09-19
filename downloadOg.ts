@@ -34,11 +34,11 @@ async function downloadImage(
 }
 
 async function downloadAllImages() {
-  const response = await axios.get('https://round4-api-eas.retrolist.app/projects')
+  const response = await axios.get('https://round5-api-eas.retrolist.app/5/projects')
   const projects: ProjectMetadataSimple[] = response.data
 
   for (const project of projects) {
-    await downloadImage(`http://localhost:3001/api/retro4-voting?projectId=${project.id}`, 'og', project.id + '.png')
+    await downloadImage(`http://localhost:3000/api/retro5-voting?projectId=${project.id}`, 'og', project.id + '.png')
   }
 }
 
