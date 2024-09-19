@@ -643,7 +643,7 @@ async function fetchProjectCount(round: number) {
   }
 
   const countMap = projects.reduce((result, currentItem) => {
-    const groupKey = currentItem.impactCategory[0];
+    const groupKey = currentItem.impactCategory[currentItem.impactCategory.length - 1];
     if (!result[groupKey]) {
       result[groupKey] = 0;
     }
