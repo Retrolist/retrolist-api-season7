@@ -36,6 +36,7 @@ const agoraMetrics = JSON.parse(fs.readFileSync("data/agora_metrics.json", "utf-
 const rewardMetrics = JSON.parse(fs.readFileSync("data/reward_metrics.json", "utf-8"))
 const rewardMetricsOss = JSON.parse(fs.readFileSync("data/reward_metrics_oss.json", "utf-8"))
 const rewardData = JSON.parse(fs.readFileSync("data/reward.json", "utf-8"))
+const categoryR5 = JSON.parse(fs.readFileSync("data/category_r5.json", "utf-8"))
 // const osoContracts = JSON.parse(
 //   fs.readFileSync("data/oso_contracts.json", "utf-8")
 // );
@@ -352,7 +353,7 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
     address: attestation.parsedData.farcasterID.hex,
     bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
     profileImageUrl: attestation.body?.projectAvatarUrl || "",
-    impactCategory: [attestation.parsedData.category],
+    impactCategory: [attestation.parsedData.category, categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
     primaryCategory: attestation.parsedData.category,
     recategorization: attestation.parsedData.category,
     prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
@@ -588,7 +589,7 @@ async function fetchProject(id: string): Promise<Project> {
       id: attestation.parsedData.farcasterID.hex,
     },
     applicantType: "PROJECT",
-    impactCategory: [attestation.parsedData.category],
+    impactCategory: [attestation.parsedData.category, categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
     prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: "",
     includedInBallots: 0,
