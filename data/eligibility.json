@@ -237,7 +237,7 @@
   {
     "projectRefUID": "0xa17b3d5e5ef47fe50e56d9fea3c4c90e72b0c9127b8eab54058e5ca82111378c",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-49034128083389406",
-    "status": "pass"
+    "status": "fail"
   },
   {
     "projectRefUID": "0x6830f24e2e893931d62d8118146a7bbffb5cd1f78945318865a52bd6a6cbe245",
@@ -277,7 +277,7 @@
   {
     "projectRefUID": "0xd97260a3e245900619162288374fe95a901e462c2429a44bea21ff68ad7c0174",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-068315024562146",
-    "status": "pass"
+    "status": "fail"
   },
   {
     "projectRefUID": "0xe2f742ea351ea741e95f8cf4b2434317d8365c532b97601e8a27854003c2e396",
@@ -322,42 +322,42 @@
   {
     "projectRefUID": "0x8ec88058175ef4c1c9b1f26910c4d4f2cfa733d6fcd1dbd9385476a313d9e12d",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-05726078312248517",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x15888c525d6efc5ca1d66714644aace3d2e8598cecd7e37be1e6fd57fd958c07",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-0832220014215701",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xdf1bb03d08808e2d789f5eac8462bdc560f1bb5b0877f0cf8c66ab53a0bc2f5c",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-6403338836521273",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x7504e494cb8d227193182e083128912173c14eaeecec9b90fa453de28377b269",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-39538511999964765",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xcd9dfcace81ae28b29b10c4ddf36bcb8db6d705cbb92e7d885e5b946a9f77910",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9238888019480882",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xc71faa1bcb4ceb785816c3f22823377e9e5e7c48649badd9f0a0ce491f20d4b3",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-3108413683803737",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x0be3a0fa062180bdfbfdefa993b09acd9edcae93ba0d8d5829dd01c138268f40",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9012758214470937",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x5a7e7c7acb21521e99021d746740b368801cbfe531301e50bdbaafdc24a0aac5",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9986161403821792",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xbdd994bf9b06072f6f8603591c8907ca5a09a21fa14dcda0cebeaaea4e074d9b",
@@ -457,7 +457,7 @@
   {
     "projectRefUID": "0xf839a585342327848d4541a6fcc315404e879537a60a1370f2cd45a94283a1ba",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-17106887752262234",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x959c370aa6c127bdd45ba3fcf97242457ac09f0e3e12457b01f345bd10843c1c",
@@ -522,7 +522,7 @@
   {
     "projectRefUID": "0xc1899658402b1373d1beb84e069a3eca066aaf01c0654502dbba51b66aeb6214",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-5341265831937978",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x9b6e73ac9e887b808c56aba853cfadad39df635d11bd5a9d6697f2e2658f4b5c",
@@ -562,7 +562,7 @@
   {
     "projectRefUID": "0x881736756bdcc544ef526f7719608161ca00c6aed5d8f9b8837bdc1914f2abc6",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-4458355342099378",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x7c2460f0e048edd08abb4279db8fc5318168145672399cb37c9f19c9381d5273",
@@ -587,7 +587,7 @@
   {
     "projectRefUID": "0x7f1256b007e1156494e43b58d5e85e6ec20f4fcf1e5cac6ebb17b702e9c0b5fb",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-36819965071482996",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x0242f727cd5dc0878cfc297be8046e3527563cc12f28021ea1eeb6611d86eb0e",
@@ -622,17 +622,17 @@
   {
     "projectRefUID": "0x80393c05d524b7a6f7a78b0c141eadf0759642ae8d7e718134318cd2d73d5464",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-12530274621671955",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xc9561ba3e4eca5483b40f8b1a254a73c91fefe4f8aee32dc20c0d96dcf33fe80",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-8601465057070028",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xf00518dc6abc147a7c46675cb76946afdd16868d7d4ab4689df0c48467158c26",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-19867120166449714",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xa9860e1ba61461740831e00d03eb22660e47e8e9087b2ea2e4441f21210fb786",
@@ -692,7 +692,7 @@
   {
     "projectRefUID": "0x66a3f6245dc3ac966d3ed9dd8c076a723cfc3aaaf5ea3721c634d46c3be46331",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-31033114896946357",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0xd8012752e512ed8c6a47e61293bbad8cd942c9d016de1dc78d64d2248373444a",
@@ -707,7 +707,7 @@
   {
     "projectRefUID": "0x5759249c433d67eeb2ca1b6ff827feec164b60b92e849d6ce0db0974cedc4a89",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-5979242917795435",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "projectRefUID": "0x356eee43066d2e12c46f06eb710b8d33d6655db061cb3b24d7a38433f228a45b",
