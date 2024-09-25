@@ -639,7 +639,7 @@ async function fetchProjectCount(round: number) {
   let projects = await fetchProjects(round)
 
   // TODO: elibility switch
-  if (round < 5) {
+  if (round < 6) {
     projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
   }
 
