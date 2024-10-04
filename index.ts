@@ -777,7 +777,7 @@ async function fetchProjectComments(projectId: string) {
 
 // Create an Express app
 const app = express();
-const port = 4202;
+const port = 4203;
 
 // Use CORS middleware
 app.use(express.json());
