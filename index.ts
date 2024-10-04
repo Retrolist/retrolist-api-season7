@@ -81,7 +81,7 @@ const variablesR4 = {
   where: {
     schemaId: {
       equals:
-        "0x88b62595c76fbcd261710d0930b5f1cc2e56758e155dea537f82bf0baadd9a32",
+        "0x2169b74bfcb5d10a6616bbc8931dc1c56f8d1c305319a9eeca77623a991d4b80",
     },
     attester: {
       equals: "0xF6872D315CC2E1AfF6abae5dd814fd54755fE97C",
@@ -164,6 +164,32 @@ async function fetchMetadata(url: string) {
   } catch (error) {
     console.error(`Error fetching metadata from ${url}:`, error);
     return null;
+  }
+}
+
+async function fetchSnapshot2ProjectRefUid() {
+  try {
+    const result: {[snapshotId: string]: string} = {}
+
+    const data: { attestations: RawAttestation[] } = await request(
+      url,
+      query,
+      variables
+    );
+
+    const attestations = data.attestations;
+    attestations.sort((a, b) => b.time - a.time);
+
+    for (const attestation of attestations) {
+      const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
+      const projectRefUID = parsedData["projectRefUID"];
+      result[attestation.id] = projectRefUID
+    }
+
+    return result
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 }
 
@@ -268,6 +294,8 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
     return cachedData as [Map<string, string>, Set<string>];
   }
 
+  const snapshotProjectRefUid = await fetchSnapshot2ProjectRefUid()
+
   try {
     const data: { attestations: RawAttestation[] } = await request(
       url,
@@ -289,8 +317,12 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
         // console.log('proj', parsedData.projectRefUID)
         // console.log('meta', parsedData.metadataSnapshotRefUID)
 
-        if (!projectRefUIDs.has(parsedData.projectRefUID)) {
-          projectRefUIDs.set(parsedData.projectRefUID, attestation.id);
+        const projectRefUID = snapshotProjectRefUid[parsedData.metadataSnapshotRefUID]
+
+        if (!projectRefUID) continue
+
+        if (!projectRefUIDs.has(projectRefUID)) {
+          projectRefUIDs.set(projectRefUID, attestation.id);
           applicationRound[attestation.id] = parsedData.round
         }
         metadataSnapshotUIDs.add(parsedData.metadataSnapshotRefUID)
