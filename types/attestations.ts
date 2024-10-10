@@ -4,6 +4,7 @@ export interface RawAttestation {
   id: string;
   decodedDataJson: string;
   time: number;
+  refUID: string;
 }
 
 export interface DecodedData {

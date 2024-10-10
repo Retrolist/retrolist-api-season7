@@ -12,6 +12,7 @@ import path from "path";
 import { ProcessedAttestation, RawAttestation } from "./types/attestations";
 import {
   Project,
+  ProjectApplication,
   ProjectFundingSource,
   ProjectMetadata,
 } from "./types/projects";
@@ -60,6 +61,7 @@ const query = gql`
       id
       decodedDataJson
       time
+      refUID
     }
   }
 `;
@@ -89,6 +91,18 @@ const variablesR4 = {
   },
 };
 
+const variablesApplication = {
+  where: {
+    schemaId: {
+      equals:
+        "0x2169b74bfcb5d10a6616bbc8931dc1c56f8d1c305319a9eeca77623a991d4b80",
+    },
+    attester: {
+      equals: "0xF6872D315CC2E1AfF6abae5dd814fd54755fE97C",
+    },
+  },
+};
+
 const TEST_PROJECTS = [
   '0x83b46efce8ff1937a49883b323b22d3483d1843522f614ab4f20cc20545067bb',
   '0xbdd994bf9b06072f6f8603591c8907ca5a09a21fa14dcda0cebeaaea4e074d9b',
@@ -102,6 +116,7 @@ const TEST_PROJECTS = [
 ]
 
 let applicationRound: {[applicationId: string]: number} = {};
+let applicationData: {[projectRefUid: string]: {[round: number]: ProjectApplication}} = {};
 
 // Initialize caches
 const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
@@ -296,6 +311,9 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
 
   const snapshotProjectRefUid = await fetchSnapshot2ProjectRefUid()
 
+  const projectRefUIDs: Map<string, string> = new Map();
+  const metadataSnapshotUIDs: Set<string> = new Set();
+
   try {
     const data: { attestations: RawAttestation[] } = await request(
       url,
@@ -305,9 +323,6 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
 
     const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
-
-    const projectRefUIDs: Map<string, string> = new Map();
-    const metadataSnapshotUIDs: Set<string> = new Set();
 
     // Process each attestation
     for (const attestation of attestations) {
@@ -330,11 +345,45 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
     }
 
     mainCache.set(cacheKey, [projectRefUIDs, metadataSnapshotUIDs]);
-    return [projectRefUIDs, metadataSnapshotUIDs];
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
+
+  try {
+    const data: { attestations: RawAttestation[] } = await request(
+      url,
+      query,
+      variablesApplication,
+    );
+
+    const attestations = data.attestations;
+    attestations.sort((a, b) => b.time - a.time);
+
+    const projectRefUIDs2: Set<string> = new Set();
+
+    // Process each attestation
+    for (const attestation of attestations) {
+      const projectRefUid = attestation.refUID
+      const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
+
+      if (parseInt(parsedData.round) == round || !round) {
+        if (!projectRefUIDs2.has(projectRefUid)) {
+          const metadata = await fetchMetadata(parsedData.metadataUrl)
+          applicationData[projectRefUid] = applicationData[projectRefUid] ?? {}
+          applicationData[projectRefUid][parsedData.round] = metadata
+          projectRefUIDs2.add(projectRefUid)
+        }
+      }
+    }
+
+    mainCache.set(cacheKey, [projectRefUIDs, metadataSnapshotUIDs]);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+
+  return [projectRefUIDs, metadataSnapshotUIDs];
 }
 
 function getPrelimResult(projectId: string): string {
@@ -491,7 +540,21 @@ async function fetchAgoraProject(id: string) {
   }
 }
 
-async function fetchProject(id: string): Promise<Project> {
+function decodeAgoraProjectApplication(data: any, round: number): ProjectApplication | null {
+  if (data?.impactStatement) {
+    const statement = data.impactStatement.statement.create ?? data.impactStatement.statement
+    return {
+      category: data.impactStatement.category,
+      subcategory: data.impactStatement.subcategory,
+      impactStatement: statement,
+      round,
+    }
+  }
+
+  return null
+}
+
+async function fetchProject(id: string, round: number): Promise<Project> {
   const cacheKey = "project-" + id;
   const cachedData = mainCache.get(cacheKey);
 
@@ -499,7 +562,7 @@ async function fetchProject(id: string): Promise<Project> {
     return cachedData as Project;
   }
 
-  const attestations = await fetchAndProcessData(0);
+  const attestations = await fetchAndProcessData(round);
   const attestation = attestations.find(
     (attestation) =>
       attestation.id === id || attestation.parsedData?.projectRefUID === id
@@ -596,6 +659,8 @@ async function fetchProject(id: string): Promise<Project> {
 
   const agoraBody = await fetchAgoraProject(attestation.applicationId)
 
+  const projectApplicationData = applicationData[attestation.parsedData.projectRefUID]
+
   const project = {
     id: attestation.parsedData.projectRefUID,
     metadataId: attestation.id,
@@ -651,6 +716,8 @@ async function fetchProject(id: string): Promise<Project> {
 
     attestationBody: attestation.body,
     agoraBody,
+
+    application: (projectApplicationData && projectApplicationData[round]) ?? decodeAgoraProjectApplication(agoraBody, round),
 
     ...projectReward(attestation.parsedData.projectRefUID),
   };
@@ -817,7 +884,7 @@ app.get("/:round/projects/:id/comments", async (req, res) => {
 
 app.get("/projects/:id", async (req, res) => {
   try {
-    const project = await fetchProject(req.params.id);
+    const project = await fetchProject(req.params.id, 6);
     res.json(project);
   } catch (error: any) {
     if (error.message == "Project not found") {
@@ -835,6 +902,20 @@ app.get("/:round/projects", async (req, res) => {
     res.json(projects);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch projects" });
+  }
+});
+
+app.get("/:round/projects/:id", async (req, res) => {
+  try {
+    const project = await fetchProject(req.params.id, parseInt(req.params.round));
+    res.json(project);
+  } catch (error: any) {
+    if (error.message == "Project not found") {
+      res.status(404).json({ error: "Project not found" });
+    } else {
+      console.error(error)
+      res.status(500).json({ error: "Failed to fetch project" });
+    }
   }
 });
 

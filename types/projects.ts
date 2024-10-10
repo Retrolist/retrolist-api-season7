@@ -71,6 +71,8 @@ export interface Project {
   metrics: ProjectMetrics | null
   metricsPercent: ProjectMetrics | null
   metricsPercentOss: ProjectMetrics | null
+
+  application: ProjectApplication | null
 }
 
 export interface ProjectApplicant {
@@ -134,4 +136,16 @@ export interface ProjectMetrics {
   log_gas_fees: number;
   log_transaction_count: number;
   log_trusted_transaction_count: number;
+}
+
+export interface ImpactStatement {
+  question: string;
+  answer: string;
+}
+
+export interface ProjectApplication {
+  round: number;
+  category: string;
+  subcategory: string[];
+  impactStatement: ImpactStatement[];
 }
