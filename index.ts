@@ -424,27 +424,32 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
 
   const attestations = await fetchAndProcessData(round);
 
-  let projects: ProjectMetadata[] = attestations.map((attestation) => ({
-    id: attestation.parsedData.projectRefUID,
-    metadataId: attestation.id,
-    applicationId: attestation.applicationId,
-    name: attestation.parsedData.name,
-    displayName: attestation.parsedData.name,
-    description: attestation.body?.description || "",
-    bio: attestation.body?.description || "",
-    address: attestation.parsedData.farcasterID.hex,
-    bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
-    profileImageUrl: attestation.body?.projectAvatarUrl || "",
-    impactCategory: [attestation.parsedData.category, categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
-    primaryCategory: attestation.parsedData.category,
-    recategorization: attestation.parsedData.category,
-    prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
-    reportReason: "",
-    includedInBallots: 0,
-    isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
+  let projects: ProjectMetadata[] = attestations.map((attestation) => {
+    const projectApplicationDataUpper = applicationData[attestation.parsedData.projectRefUID]
+    const projectApplicationData = projectApplicationDataUpper && projectApplicationDataUpper[round]  
 
-    // ...projectReward(attestation.parsedData.projectRefUID),
-  }))
+    return {
+      id: attestation.parsedData.projectRefUID,
+      metadataId: attestation.id,
+      applicationId: attestation.applicationId,
+      name: attestation.parsedData.name,
+      displayName: attestation.parsedData.name,
+      description: attestation.body?.description || "",
+      bio: attestation.body?.description || "",
+      address: attestation.parsedData.farcasterID.hex,
+      bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
+      profileImageUrl: attestation.body?.projectAvatarUrl || "",
+      impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
+      primaryCategory: attestation.parsedData.category,
+      recategorization: attestation.parsedData.category,
+      prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
+      reportReason: "",
+      includedInBallots: 0,
+      isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
+
+      // ...projectReward(attestation.parsedData.projectRefUID),
+    }
+  })
 
   projects = projects.filter(project => !TEST_PROJECTS.includes(project.id))
 
@@ -659,7 +664,8 @@ async function fetchProject(id: string, round: number): Promise<Project> {
 
   const agoraBody = await fetchAgoraProject(attestation.applicationId)
 
-  const projectApplicationData = applicationData[attestation.parsedData.projectRefUID]
+  const projectApplicationDataUpper = applicationData[attestation.parsedData.projectRefUID]
+  const projectApplicationData = projectApplicationDataUpper && projectApplicationDataUpper[round]
 
   const project = {
     id: attestation.parsedData.projectRefUID,
@@ -687,7 +693,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       id: attestation.parsedData.farcasterID.hex,
     },
     applicantType: "PROJECT",
-    impactCategory: [attestation.parsedData.category, categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
+    impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
     prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: "",
     includedInBallots: 0,
@@ -717,7 +723,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     attestationBody: attestation.body,
     agoraBody,
 
-    application: (projectApplicationData && projectApplicationData[round]) ?? decodeAgoraProjectApplication(agoraBody, round),
+    application: projectApplicationData ?? decodeAgoraProjectApplication(agoraBody, round),
 
     ...projectReward(attestation.parsedData.projectRefUID),
   };
