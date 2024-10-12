@@ -471,6 +471,8 @@ function parseGrantType(grantType: string): [string, string] {
       return ["Foundation Grant", "OP"];
     case "token-house-mission":
       return ["Token House Mission", "OP"];
+    case "retro-funding":
+      return ["Retro Funding", "OP"];
     default:
       return [grantType, "USD"];
   }
@@ -604,6 +606,16 @@ async function fetchProject(id: string, round: number): Promise<Project> {
 
     for (const grant of attestation.body.grantsAndFunding.revenue) {
       const [type, currency] = parseGrantType("revenue");
+      fundingSources.push({
+        type,
+        currency,
+        amount: hyphenToCapitalize(grant.amount),
+        description: grant.details,
+      });
+    }
+
+    for (const grant of attestation.body.grantsAndFunding.retroFunding) {
+      const [type, currency] = parseGrantType("retro-funding");
       fundingSources.push({
         type,
         currency,

@@ -31,10 +31,19 @@ interface Revenue {
   details: string;
 }
 
+interface RetroFundingGrant {
+  grant: string;
+  link: string | null;
+  amount: string;
+  date: string;
+  details: string;
+}
+
 interface GrantsAndFunding {
   ventureFunding: Funding[];
   grants: Grant[];
   revenue: Revenue[];
+  retroFunding: RetroFundingGrant[];
 }
 
 interface Github {
