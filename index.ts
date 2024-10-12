@@ -19,6 +19,8 @@ import {
 import { Pool } from "pg";
 import { chain, groupBy, uniq, uniqBy } from "lodash";
 
+const CURRENT_ROUND = 6
+
 interface FarcasterComment {
   fid: number;
   timestamp: number;
@@ -1040,4 +1042,5 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-fetchAndProcessData(0);
+fetchAndProcessData(CURRENT_ROUND);
+setInterval(() => fetchAndProcessData(CURRENT_ROUND), 300_000)
