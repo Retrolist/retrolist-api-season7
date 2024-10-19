@@ -127,16 +127,19 @@ const fastCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
 // const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
 
-const CACHE_DIR = "./cache/projects";
+let cachedSmartAttestations: {[name: string]: RawAttestation[]} = {}
+let smartAttestationStarted: Set<String> = new Set()
+
+const PROJECT_CACHE_DIR = "./cache/projects";
+const ATTESTATION_CACHE_DIR = "./cache/attestations";
 
 // Ensure cache directory exists
-if (!fs.existsSync(CACHE_DIR)) {
-  fs.mkdirSync(CACHE_DIR, { recursive: true });
-}
+if (!fs.existsSync(PROJECT_CACHE_DIR)) fs.mkdirSync(PROJECT_CACHE_DIR, { recursive: true });
+if (!fs.existsSync(ATTESTATION_CACHE_DIR)) fs.mkdirSync(ATTESTATION_CACHE_DIR, { recursive: true });
 
 // Load metadata cache from file if it exists
-fs.readdirSync(CACHE_DIR).forEach((file) => {
-  const filePath = path.join(CACHE_DIR, file);
+fs.readdirSync(PROJECT_CACHE_DIR).forEach((file) => {
+  const filePath = path.join(PROJECT_CACHE_DIR, file);
   const fileData = fs.readFileSync(filePath, "utf8");
   const key = `https://storage.retrofunding.optimism.io/ipfs/${file.replace(
     ".json",
@@ -145,13 +148,79 @@ fs.readdirSync(CACHE_DIR).forEach((file) => {
   const data = JSON.parse(fileData);
   metadataCache.set(key, data);
 });
+fs.readdirSync(ATTESTATION_CACHE_DIR).forEach((file) => {
+  const filePath = path.join(ATTESTATION_CACHE_DIR, file);
+  const fileData = fs.readFileSync(filePath, "utf8");
+  cachedSmartAttestations[file.replace('.json', '')] = JSON.parse(fileData)
+});
+
+async function smartFetchAttestations(name: string, url: string, query: any, variables: any): Promise<RawAttestation[]> {
+  if (cachedSmartAttestations[name] && cachedSmartAttestations[name].length && smartAttestationStarted.has(name)) return cachedSmartAttestations[name]
+  if (!cachedSmartAttestations[name]) cachedSmartAttestations[name] = []
+
+  smartAttestationStarted.add(name)
+
+  async function fetchAttestations() {
+    if (!cachedSmartAttestations[name].length) {
+      const { attestations }: { attestations: RawAttestation[] } = await request(
+        url,
+        query,
+        variables
+      );
+  
+      cachedSmartAttestations[name] = attestations
+  
+      return attestations
+    } else {
+      if (!variables.where) variables.where = {}
+
+      // Fetch latest time
+      const latestTime = Number(cachedSmartAttestations[name][0].time)
+      const latestUid = cachedSmartAttestations[name][0].id
+
+      variables.where.time = {
+        gte: latestTime
+      }
+
+      const { attestations }: { attestations: RawAttestation[] } = await request(
+        url,
+        query,
+        variables
+      );
+
+      // console.log(attestations)
+      // console.log(latestTime)
+
+      const newAttestations: RawAttestation[] = []
+
+      for (const a of attestations) {
+        if (a.id == latestUid) break;
+        newAttestations.push(a)
+      }
+
+      for (const a of cachedSmartAttestations[name]) {
+        newAttestations.push(a)
+      }
+
+      cachedSmartAttestations[name] = newAttestations
+      fs.writeFileSync(`${ATTESTATION_CACHE_DIR}/${name}.json`, JSON.stringify(newAttestations, null, 2));
+
+      return newAttestations
+    }
+  }
+
+  await fetchAttestations()
+  setInterval(() => fetchAttestations().catch(console.error), 10_000)
+  
+  return cachedSmartAttestations[name]
+}
 
 // Save metadata cache to file
 function saveMetadataCacheToFile(url: string, data: any) {
   const hash = url.split("/").pop();
   if (!hash) return;
 
-  const filePath = path.join(CACHE_DIR, `${hash}.json`);
+  const filePath = path.join(PROJECT_CACHE_DIR, `${hash}.json`);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
@@ -188,13 +257,13 @@ async function fetchSnapshot2ProjectRefUid() {
   try {
     const result: {[snapshotId: string]: string} = {}
 
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'metadataSnapshots',
       url,
       query,
       variables
-    );
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     for (const attestation of attestations) {
@@ -222,13 +291,13 @@ async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[
   const submissions = await fetchAndProcessRoundSubmissions(round);
 
   try {
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'projectMetadataSnapshots',
       url,
       query,
       variables
-    );
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     // console.log(attestations.slice(0,10))
@@ -317,13 +386,13 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   const metadataSnapshotUIDs: Set<string> = new Set();
 
   try {
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'projectSubmissions',
       url,
       query,
       variablesR4
-    );
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     // Process each attestation
@@ -353,13 +422,13 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   }
 
   try {
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'projectApplications',
       url,
       query,
-      variablesApplication,
-    );
+      variablesApplication
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     const projectRefUIDs2: Set<string> = new Set();
@@ -1044,3 +1113,9 @@ app.listen(port, () => {
 
 fetchAndProcessData(CURRENT_ROUND);
 setInterval(() => fetchAndProcessData(CURRENT_ROUND), 300_000)
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.trace(reason)
+  // Optionally, you can exit the process with a non-zero code
+  // process.exit(1);
+});
