@@ -540,6 +540,8 @@ function parseGrantType(grantType: string): [string, string] {
       return ["Revenue", "USD"];
     case "foundation-grant":
       return ["Foundation Grant", "OP"];
+    case "foundation-mission":
+      return ["Foundation Mission", "OP"];
     case "token-house-mission":
       return ["Token House Mission", "OP"];
     case "retro-funding":
