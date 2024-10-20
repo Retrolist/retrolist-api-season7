@@ -18,6 +18,7 @@ import {
 } from "./types/projects";
 import { Pool } from "pg";
 import { chain, groupBy, uniq, uniqBy } from "lodash";
+import { MetricsGarden, MetricsGardenProfile } from "./types/metricsGarden";
 
 const CURRENT_ROUND = 6
 
@@ -105,6 +106,18 @@ const variablesApplication = {
   },
 };
 
+const variablesMG = {
+  where: {
+    schemaId: {
+      equals:
+        "0xc9bc703e3c48be23c1c09e2f58b2b6657e42d8794d2008e3738b4ab0e2a3a8b6",
+    },
+    attester: {
+      equals: "0x7484aABFef9f39464F332e632047983b67571C0a",
+    },
+  },
+};
+
 const TEST_PROJECTS = [
   '0x83b46efce8ff1937a49883b323b22d3483d1843522f614ab4f20cc20545067bb',
   '0xbdd994bf9b06072f6f8603591c8907ca5a09a21fa14dcda0cebeaaea4e074d9b',
@@ -121,8 +134,8 @@ let applicationRound: {[applicationId: string]: number} = {};
 let applicationData: {[projectRefUid: string]: {[round: number]: ProjectApplication}} = {};
 
 // Initialize caches
-const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
-const slowCache = new NodeCache({ stdTTL: 300 }); // 5 minute TTL for slow cache for background project downloading
+const mainCache = new NodeCache({ stdTTL: 10 }); // [improved] 10s TTL for main data
+const slowCache = new NodeCache({ stdTTL: 600 }); // 10 minute TTL for slow cache for background project downloading
 const fastCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
 // const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
@@ -141,10 +154,7 @@ if (!fs.existsSync(ATTESTATION_CACHE_DIR)) fs.mkdirSync(ATTESTATION_CACHE_DIR, {
 fs.readdirSync(PROJECT_CACHE_DIR).forEach((file) => {
   const filePath = path.join(PROJECT_CACHE_DIR, file);
   const fileData = fs.readFileSync(filePath, "utf8");
-  const key = `https://storage.retrofunding.optimism.io/ipfs/${file.replace(
-    ".json",
-    ""
-  )}`;
+  const key = `ipfs-${file.replace(".json", "")}`;
   const data = JSON.parse(fileData);
   metadataCache.set(key, data);
 });
@@ -236,15 +246,21 @@ function parseDecodedDataJson(decodedDataJson: string) {
 
 // Function to fetch metadata from URL
 async function fetchMetadata(url: string) {
-  const cachedMetadata = metadataCache.get(url);
+  let parts = url.split('/')
+  let ipfsHash = parts[parts.length - 1]
+
+  const cachedMetadata = metadataCache.get('ipfs-' + ipfsHash);
   if (cachedMetadata) {
     return cachedMetadata;
   }
 
   try {
-    const response = await axios.get(url);
+    // Replace restrictive host
+    let newUrl = url.replace('https://gateway.pinata.cloud', 'https://upnode-internal-dev.quicknode-ipfs.com')
+
+    const response = await axios.get(newUrl);
     const data = response.data;
-    metadataCache.set(url, data);
+    metadataCache.set('ipfs-' + ipfsHash, data);
     saveMetadataCacheToFile(url, data); // Save cache to file after setting new data
     return data;
   } catch (error) {
@@ -273,6 +289,150 @@ async function fetchSnapshot2ProjectRefUid() {
     }
 
     return result
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+// Function to fetch and process data
+async function fetchMGProfiles(fids: number[]) {
+  const BATCH_SIZE = 100
+
+  const profileMap: { [fid: number]: MetricsGardenProfile } = {};
+  const uncachedFids: number[] = []
+
+  for (const fid of fids) {
+    const cacheKey = "metricsGardenProfile-" + fid;
+    const cachedData = slowCache.get(cacheKey);
+
+    if (cachedData) {
+      profileMap[fid] = cachedData as MetricsGardenProfile
+    } else {
+      uncachedFids.push(fid)
+    }
+  }
+
+  if (uncachedFids.length > 0) {
+    for (let i = 0; i < uncachedFids.length; i += BATCH_SIZE) {
+      const usersResponse = await axios.get(
+        "https://api.neynar.com/v2/farcaster/user/bulk",
+        {
+          params: {
+            fids: uncachedFids.slice(i, i + BATCH_SIZE).join(","),
+          },
+          headers: {
+            api_key: process.env.NEYNAR_API_KEY,
+          },
+        }
+      );
+    
+      for (const user of usersResponse.data.users) {
+        profileMap[user.fid] = {
+          username: user.username,
+          displayName: user.display_name,
+          pfpUrl: user.pfp_url,
+        };
+    
+        const cacheKey = "metricsGardenProfile-" + user.fid;
+        slowCache.set(cacheKey, profileMap[user.fid])
+      }
+    }
+  }
+
+  return profileMap
+}
+
+async function fetchMG(): Promise<MetricsGarden[]> {
+  const cacheKey = "metricsGarden";
+  const cachedData = mainCache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData as MetricsGarden[];
+  }
+
+  try {
+    const attestations = await smartFetchAttestations(
+      'metricsGardenReview',
+      url,
+      query,
+      variablesMG
+    )
+
+    attestations.sort((a, b) => b.time - a.time);
+
+    const result: MetricsGarden[] = []
+    const fids: Set<number> = new Set()
+
+    // Process fid number of each attestation for profile fetching
+    for (const attestation of attestations) {
+      const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
+      const projectRefUid = parsedData["projectRegUID"];
+      const metadataUrl = parsedData["metadataurl"];
+
+      const body = await fetchMetadata(metadataUrl);
+
+      if (!body) {
+        continue;
+      }
+
+      const fid = body.reviewer?.userFID || body.userFid
+      if (!fid) continue;
+
+      fids.add(fid)
+    }
+
+    const profiles: {[fid: number]: MetricsGardenProfile} = await fetchMGProfiles(Array.from(fids))
+
+    // Process each attestation
+    for (const attestation of attestations) {
+      const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
+      const projectRefUid = parsedData["projectRegUID"];
+      const metadataUrl = parsedData["metadataurl"];
+
+      const body = await fetchMetadata(metadataUrl);
+
+      if (!body) {
+        continue;
+      }
+
+      const fid = body.reviewer?.userFID || body.userFid
+      if (!fid) continue;
+
+      if (body.impactAttestations) {
+        result.push({
+          impactAttestations: body.impactAttestations,
+          comment: body.impactAttestations.find((x: any) => x.name == 'Text Review')?.value || "",
+          projectRefUid,
+          fid: body.reviewer.userFID,
+          ethAddress: body.reviewer.ethAddress,
+          profile: profiles[body.reviewer.userFID],
+        })
+      } else if (body.data) {
+        result.push({
+          impactAttestations: [
+            {
+              name: "Feeling if didnt exist",
+              type: "numeric",
+              value: parseInt(body.data.feeling_if_didnt_exist),
+            },
+            {
+              name: "Text Review",
+              type: "string",
+              value: body.data.explaination,
+            },
+          ],
+          comment: body.data.explaination,
+          projectRefUid,
+          fid: body.userFid,
+          ethAddress: body.ethAddress,
+          profile: profiles[body.userFid],
+        })
+      }
+    }
+
+    mainCache.set(cacheKey, result);
+    return result;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
@@ -983,6 +1143,20 @@ app.get("/projects/:id", async (req, res) => {
     } else {
       console.error(error)
       res.status(500).json({ error: "Failed to fetch project" });
+    }
+  }
+});
+
+app.get("/projects/:id/metricsgarden", async (req, res) => {
+  try {
+    const comments = await fetchMG();
+    res.json(comments.filter(x => x.projectRefUid == req.params.id));
+  } catch (error: any) {
+    if (error.message == "Project not found") {
+      res.status(404).json({ error: "Project not found" });
+    } else {
+      console.error(error)
+      res.status(500).json({ error: "Failed to fetch project metricsgarden" });
     }
   }
 });

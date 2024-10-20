@@ -1,3 +1,5 @@
+import { AttestationBody } from "./attestationBody"
+
 export interface ProjectQueryOptions {
   search: string
   categories: string[]
@@ -62,7 +64,7 @@ export interface Project {
   github: string[]
   packages: string[]
 
-  attestationBody?: any
+  attestationBody: AttestationBody | null
   agoraBody?: any
   
   osoSlug: string
