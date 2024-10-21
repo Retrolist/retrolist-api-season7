@@ -401,15 +401,18 @@ async function fetchMG(): Promise<MetricsGarden[]> {
 
       if (body.impactAttestations) {
         result.push({
+          id: attestation.id,
           impactAttestations: body.impactAttestations,
           comment: body.impactAttestations.find((x: any) => x.name == 'Text Review')?.value || "",
           projectRefUid,
           fid: body.reviewer.userFID,
           ethAddress: body.reviewer.ethAddress,
           profile: profiles[body.reviewer.userFID],
+          time: attestation.time,
         })
       } else if (body.data) {
         result.push({
+          id: attestation.id,
           impactAttestations: [
             {
               name: "Feeling if didnt exist",
@@ -427,6 +430,7 @@ async function fetchMG(): Promise<MetricsGarden[]> {
           fid: body.userFid,
           ethAddress: body.ethAddress,
           profile: profiles[body.userFid],
+          time: attestation.time,
         })
       }
     }
@@ -1180,6 +1184,24 @@ app.get("/:round/projects/:id", async (req, res) => {
     } else {
       console.error(error)
       res.status(500).json({ error: "Failed to fetch project" });
+    }
+  }
+});
+
+app.get("/metricsgarden", async (req, res) => {
+  try {
+    const comments = await fetchMG();
+
+    const skip = parseInt(req.query.skip as string || '0')
+    const limit = parseInt(req.query.limit as string || '20')
+
+    res.json(comments.slice(skip, skip + limit));
+  } catch (error: any) {
+    if (error.message == "Project not found") {
+      res.status(404).json({ error: "Project not found" });
+    } else {
+      console.error(error)
+      res.status(500).json({ error: "Failed to fetch project metricsgarden" });
     }
   }
 });

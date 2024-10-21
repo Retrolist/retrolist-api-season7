@@ -12,10 +12,12 @@ export interface MetricsGardenProfile {
 }
 
 export interface MetricsGarden {
+  id: string
   impactAttestations: MetricaGardenImpact[]
   comment: string
   projectRefUid: string
   fid: number
   ethAddress: string
   profile: MetricsGardenProfile
+  time: number
 }
