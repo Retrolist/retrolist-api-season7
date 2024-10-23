@@ -621,8 +621,8 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   return [projectRefUIDs, metadataSnapshotUIDs];
 }
 
-function getPrelimResult(projectId: string): string {
-  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+function getPrelimResult(applicationId: string): string {
+  const project = eligibility.find((x: any) => x.applicationId == applicationId);
 
   // if (!project) return "Missing";
   if (!project) return "#N/A";
@@ -633,13 +633,13 @@ function getPrelimResult(projectId: string): string {
   return "#N/A";
 }
 
-function getCharmverseLink(projectId: string): string | undefined {
-  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+function getCharmverseLink(applicationId: string): string | undefined {
+  const project = eligibility.find((x: any) => x.applicationId == applicationId);
   return project?.charmverseLink
 }
 
-function projectReward(projectRefUID: string) {
-  const index = rewardData.findIndex((x: any) => x.application_id == projectRefUID)
+function projectReward(applicationId: string) {
+  const index = rewardData.findIndex((x: any) => x.application_id == applicationId)
 
   if (index == -1) return {}
 
@@ -677,12 +677,12 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
       impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
       primaryCategory: attestation.parsedData.category,
       recategorization: attestation.parsedData.category,
-      prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
+      prelimResult: getPrelimResult(attestation.applicationId),
       reportReason: "",
       includedInBallots: 0,
       isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
 
-      // ...projectReward(attestation.parsedData.projectRefUID),
+      // ...projectReward(attestation.applicationId),
     }
   })
 
@@ -943,7 +943,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     },
     applicantType: "PROJECT",
     impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
-    prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
+    prelimResult: getPrelimResult(attestation.applicationId),
     reportReason: "",
     includedInBallots: 0,
     lists: [],
@@ -967,14 +967,14 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     metricsPercent: projectMetricsPercent,
     metricsPercentOss: projectMetricsPercentOss,
 
-    charmverseLink: getCharmverseLink(attestation.parsedData.projectRefUID),
+    charmverseLink: getCharmverseLink(attestation.applicationId),
 
     attestationBody: attestation.body,
     agoraBody,
 
     application: projectApplicationData ?? decodeAgoraProjectApplication(agoraBody, round),
 
-    ...projectReward(attestation.parsedData.projectRefUID),
+    ...projectReward(attestation.applicationId),
   };
 
   mainCache.set(cacheKey, project);
