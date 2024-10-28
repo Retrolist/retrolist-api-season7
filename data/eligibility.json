@@ -387,22 +387,22 @@
   {
     "applicationId": "0x565c0d3fa78d5952f578158607bbcaa3ad6dbd50901b2ac68153185344a5403c",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-5669300083094528",
-    "status": "in_progress"
+    "status": "pass"
   },
   {
     "applicationId": "0x97309e9ea07e7b0a1c964e0d77c2cf097b943175ee12a2b63ff257c660adf9f1",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9656057907182609",
-    "status": "in_progress"
+    "status": "pass"
   },
   {
     "applicationId": "0xf53e131123b0572c3703272b7af125997e74cbf0e26d80e99ea355701b3e3d6d",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-6152135551162488",
-    "status": "in_progress"
+    "status": "pass"
   },
   {
     "applicationId": "0xd264c3fe17c32401c69449b04efe9efa9d83dacea99272cb4ae4fb3cfa274087",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9893847298521721",
-    "status": "in_progress"
+    "status": "fail"
   },
   {
     "applicationId": "0x4904c0e72694d140f5f3e3024c1438e9bf71a87849908883fd2777f788c51221",
@@ -432,12 +432,12 @@
   {
     "applicationId": "0x7cd33b33b9613b99777adca81c61ca0014122882b85c76cb9a97d9ab3452a487",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9266991507239235",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "applicationId": "0x02801e8c789e9e80b518e06306062db04812dce557c961cfa0ff25928b7154af",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-9366754740870502",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "applicationId": "0x855e310f335efbaadb6b96b350aad53e4558b3e242a7f0e5aec8d8eee9a48f5d",
@@ -527,7 +527,7 @@
   {
     "applicationId": "0x65fad5486329a6f1e265621e766707da911becd6468ad9608621652d239865d5",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-6894795277239063",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "applicationId": "0x808d79c93f07ec4911a14f4d04d481163cb8d6dace026ae8b080bb64235d8829",
@@ -572,7 +572,7 @@
   {
     "applicationId": "0xfff56c5353549a3386322a5dfa17c259c3b6728d94f102deee5daf7aa6d5ddbf",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-3304493037443186",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "applicationId": "0x98d3c3725665e50341f2814df8df074fc73bbcc3e92a89663cc2d9f2ee8c5e09",
@@ -637,7 +637,7 @@
   {
     "applicationId": "0x70423a2432b563cf49cd814ff84c34b55fe94d368a8369f3b6128eb4a048ac55",
     "charmverseLink": "https://app.charmverse.io/op-retrofunding-review-process/page-6559373830829529",
-    "status": "fail"
+    "status": "pass"
   },
   {
     "applicationId": "0xba4aafcd7e362e81326f332c12801462b8251ca6bfb07ae8c1092563809def88",
