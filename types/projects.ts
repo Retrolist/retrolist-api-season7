@@ -34,6 +34,13 @@ export interface ProjectMetadata {
   totalOP?: number
   rank?: number
   isOss?: boolean
+
+  metricsGarden: ProjectMetadatMetricsGarden
+}
+
+export interface ProjectMetadatMetricsGarden {
+  reviewerCount: number
+  star: number
 }
 
 export interface Project {

@@ -663,10 +663,15 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
   }
 
   const attestations = await fetchAndProcessData(round);
+  const comments = await fetchMG();
 
   let projects: ProjectMetadata[] = attestations.map((attestation) => {
     const projectApplicationDataUpper = applicationData[attestation.parsedData.projectRefUID]
     const projectApplicationData = projectApplicationDataUpper && projectApplicationDataUpper[round]  
+
+    const filteredComments = comments.filter(comment => comment.projectRefUid == attestation.parsedData.projectRefUID)
+    const hasStar = filteredComments.filter(comment => comment.impactAttestations.find(x => x.name == 'Likely to Recommend'))
+    const star = hasStar.length == 0 ? 0 : hasStar.reduce((acc, curr) => acc + curr.impactAttestations.find(x => x.name == 'Likely to Recommend')!.value, 0) / hasStar.length
 
     return {
       id: attestation.parsedData.projectRefUID,
@@ -686,6 +691,11 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
       reportReason: "",
       includedInBallots: 0,
       isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
+
+      metricsGarden: {
+        reviewerCount: filteredComments.length,
+        star,
+      },
 
       // ...projectReward(attestation.applicationId),
     }
