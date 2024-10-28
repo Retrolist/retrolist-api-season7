@@ -132,6 +132,7 @@ const TEST_PROJECTS = [
 
 let applicationRound: {[applicationId: string]: number} = {};
 let applicationData: {[projectRefUid: string]: {[round: number]: ProjectApplication}} = {};
+let projectApplications: {[projectRefUid: string]: Set<string>} = {};
 
 // Initialize caches
 const mainCache = new NodeCache({ stdTTL: 10 }); // [improved] 10s TTL for main data
@@ -610,6 +611,9 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
           projectRefUIDs2.add(projectRefUid)
         }
       }
+
+      if (!projectApplications[projectRefUid]) projectApplications[projectRefUid] = new Set()
+      projectApplications[projectRefUid].add(attestation.id)
     }
 
     mainCache.set(cacheKey, [projectRefUIDs, metadataSnapshotUIDs]);
@@ -621,14 +625,15 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   return [projectRefUIDs, metadataSnapshotUIDs];
 }
 
-function getPrelimResult(applicationId: string): string {
-  const project = eligibility.find((x: any) => x.applicationId == applicationId);
+function getPrelimResult(projectRefUid: string): string {
+  for (const applicationId of projectApplications[projectRefUid]) {
+    const project = eligibility.find((x: any) => x.applicationId == applicationId);
+  
+    if (!project) continue
 
-  // if (!project) return "Missing";
-  if (!project) return "#N/A";
-
-  if (project.status == "pass") return "Keep";
-  if (project.status == "fail") return "Remove";
+    if (project.status == "pass") return "Keep";
+    if (project.status == "fail") return "Remove";
+  }
 
   return "#N/A";
 }
@@ -677,7 +682,7 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
       impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
       primaryCategory: attestation.parsedData.category,
       recategorization: attestation.parsedData.category,
-      prelimResult: getPrelimResult(attestation.applicationId),
+      prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
       reportReason: "",
       includedInBallots: 0,
       isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
@@ -943,7 +948,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     },
     applicantType: "PROJECT",
     impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
-    prelimResult: getPrelimResult(attestation.applicationId),
+    prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
     reportReason: "",
     includedInBallots: 0,
     lists: [],
@@ -1111,6 +1116,7 @@ app.get("/:round/attestations", async (req, res) => {
     const attestations = await fetchAndProcessData(parseInt(req.params.round));
     res.json(attestations);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: "Failed to fetch attestations" });
   }
 });
@@ -1129,6 +1135,7 @@ app.get("/:round/projects/:id/comments", async (req, res) => {
     const comments = await fetchProjectComments(req.params.id);
     res.json(comments);
   } catch (error: any) {
+    console.error(error)
     if (error.message == "Project not found") {
       res.status(404).json({ error: "Project not found" });
     } else {
@@ -1170,6 +1177,7 @@ app.get("/:round/projects", async (req, res) => {
     const projects = await fetchProjects(parseInt(req.params.round));
     res.json(projects);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: "Failed to fetch projects" });
   }
 });
