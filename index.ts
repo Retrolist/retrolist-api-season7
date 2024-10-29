@@ -670,8 +670,8 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
     const projectApplicationData = projectApplicationDataUpper && projectApplicationDataUpper[round]  
 
     const filteredComments = comments.filter(comment => comment.projectRefUid == attestation.parsedData.projectRefUID)
-    const hasStar = filteredComments.filter(comment => comment.impactAttestations.find(x => x.name == 'Likely to Recommend')?.value)
-    const star = hasStar.length == 0 ? 0 : hasStar.reduce((acc, curr) => acc + curr.impactAttestations.find(x => x.name == 'Likely to Recommend')!.value, 0) / hasStar.length
+    const hasStar = filteredComments.filter(comment => comment.impactAttestations.find(x => x.name == 'Likely to Recommend'))
+    const star = hasStar.length == 0 ? 0 : hasStar.reduce((acc, curr) => acc + curr.impactAttestations.find(x => x.name == 'Likely to Recommend')!.value || 0, 0) / hasStar.length
 
     return {
       id: attestation.parsedData.projectRefUID,
