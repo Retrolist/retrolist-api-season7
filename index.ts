@@ -845,7 +845,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       });
     }
 
-    for (const grant of attestation.body.grantsAndFunding.grants) {
+    for (const grant of attestation.body.grantsAndFunding.grants || []) {
       const [type, currency] = parseGrantType(grant.grant);
       fundingSources.push({
         type,
@@ -856,7 +856,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       });
     }
 
-    for (const grant of attestation.body.grantsAndFunding.revenue) {
+    for (const grant of attestation.body.grantsAndFunding.revenue || []) {
       const [type, currency] = parseGrantType("revenue");
       fundingSources.push({
         type,
@@ -866,7 +866,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       });
     }
 
-    for (const grant of attestation.body.grantsAndFunding.retroFunding) {
+    for (const grant of attestation.body.grantsAndFunding.retroFunding || []) {
       const [type, currency] = parseGrantType("retro-funding");
       fundingSources.push({
         type,
