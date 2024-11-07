@@ -673,6 +673,8 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
     const hasStar = filteredComments.filter(comment => comment.impactAttestations.find(x => x.name == 'Likely to Recommend'))
     const star = hasStar.length == 0 ? 0 : hasStar.reduce((acc, curr) => acc + (curr.impactAttestations.find(x => x.name == 'Likely to Recommend')!.value || 0), 0) / hasStar.length
 
+    const impactCategory = [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x)
+
     return {
       id: attestation.parsedData.projectRefUID,
       metadataId: attestation.id,
@@ -684,8 +686,8 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
       address: attestation.parsedData.farcasterID.hex,
       bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
       profileImageUrl: attestation.body?.projectAvatarUrl || "",
-      impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
-      primaryCategory: attestation.parsedData.category,
+      impactCategory,
+      primaryCategory: impactCategory[impactCategory.length - 1],
       recategorization: attestation.parsedData.category,
       prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
       reportReason: "",
