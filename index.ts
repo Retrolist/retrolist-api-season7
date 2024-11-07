@@ -1008,13 +1008,18 @@ async function fetchProjectCount(round: number) {
   }
 
   let projects = await fetchProjects(round)
+  const eligible = projects.filter((x) => x.prelimResult == "Keep").length
 
   // TODO: elibility switch
-  if (round < 6) {
-    projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
-  }
+  // if (round < 6) {
+  //   projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
+  // }
 
   const countMap = projects.reduce((result, currentItem) => {
+    if (eligible && currentItem.prelimResult.toLowerCase() != 'keep') {
+      return result
+    }
+
     const groupKey = currentItem.impactCategory[currentItem.impactCategory.length - 1];
     if (!result[groupKey]) {
       result[groupKey] = 0;
@@ -1029,7 +1034,7 @@ async function fetchProjectCount(round: number) {
 
   const result = {
     total: projects.length,
-    eligible: projects.filter((x) => x.prelimResult == "Keep").length,
+    eligible,
     categories,
   };
 
