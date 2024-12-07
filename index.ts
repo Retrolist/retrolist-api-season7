@@ -449,7 +449,7 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
       includedInBallots: 0,
       isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
 
-      // ...projectReward(attestation.parsedData.projectRefUID),
+      ...projectReward(attestation.applicationId),
     }
   })
 
@@ -739,7 +739,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
 
     application: projectApplicationData ?? decodeAgoraProjectApplication(agoraBody, round),
 
-    ...projectReward(attestation.parsedData.projectRefUID),
+    ...projectReward(attestation.applicationId),
   };
 
   mainCache.set(cacheKey, project);
