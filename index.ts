@@ -18,6 +18,7 @@ import {
 } from "./types/projects";
 import { Pool } from "pg";
 import { chain, groupBy, uniq, uniqBy } from "lodash";
+import { MetricsGarden, MetricsGardenProfile } from "./types/metricsGarden";
 
 const CURRENT_ROUND = 6
 
@@ -105,6 +106,18 @@ const variablesApplication = {
   },
 };
 
+const variablesMG = {
+  where: {
+    schemaId: {
+      equals:
+        "0xc9bc703e3c48be23c1c09e2f58b2b6657e42d8794d2008e3738b4ab0e2a3a8b6",
+    },
+    attester: {
+      equals: "0x7484aABFef9f39464F332e632047983b67571C0a",
+    },
+  },
+};
+
 const TEST_PROJECTS = [
   '0x83b46efce8ff1937a49883b323b22d3483d1843522f614ab4f20cc20545067bb',
   '0xbdd994bf9b06072f6f8603591c8907ca5a09a21fa14dcda0cebeaaea4e074d9b',
@@ -119,39 +132,106 @@ const TEST_PROJECTS = [
 
 let applicationRound: {[applicationId: string]: number} = {};
 let applicationData: {[projectRefUid: string]: {[round: number]: ProjectApplication}} = {};
+let projectApplications: {[projectRefUid: string]: Set<string>} = {};
 
 // Initialize caches
-const mainCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
-const slowCache = new NodeCache({ stdTTL: 300 }); // 5 minute TTL for slow cache for background project downloading
+const mainCache = new NodeCache({ stdTTL: 10 }); // [improved] 10s TTL for main data
+const slowCache = new NodeCache({ stdTTL: 600 }); // 10 minute TTL for slow cache for background project downloading
 const fastCache = new NodeCache({ stdTTL: 60 }); // 1 minute TTL for main data
 // const mainCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for finalized main data
 const metadataCache = new NodeCache({ stdTTL: 0 }); // Infinite TTL for metadata
 
-const CACHE_DIR = "./cache/projects";
+let cachedSmartAttestations: {[name: string]: RawAttestation[]} = {}
+let smartAttestationStarted: Set<String> = new Set()
+
+const PROJECT_CACHE_DIR = "./cache/projects";
+const ATTESTATION_CACHE_DIR = "./cache/attestations";
 
 // Ensure cache directory exists
-if (!fs.existsSync(CACHE_DIR)) {
-  fs.mkdirSync(CACHE_DIR, { recursive: true });
-}
+if (!fs.existsSync(PROJECT_CACHE_DIR)) fs.mkdirSync(PROJECT_CACHE_DIR, { recursive: true });
+if (!fs.existsSync(ATTESTATION_CACHE_DIR)) fs.mkdirSync(ATTESTATION_CACHE_DIR, { recursive: true });
 
 // Load metadata cache from file if it exists
-fs.readdirSync(CACHE_DIR).forEach((file) => {
-  const filePath = path.join(CACHE_DIR, file);
+fs.readdirSync(PROJECT_CACHE_DIR).forEach((file) => {
+  const filePath = path.join(PROJECT_CACHE_DIR, file);
   const fileData = fs.readFileSync(filePath, "utf8");
-  const key = `https://storage.retrofunding.optimism.io/ipfs/${file.replace(
-    ".json",
-    ""
-  )}`;
+  const key = `ipfs-${file.replace(".json", "")}`;
   const data = JSON.parse(fileData);
   metadataCache.set(key, data);
 });
+fs.readdirSync(ATTESTATION_CACHE_DIR).forEach((file) => {
+  const filePath = path.join(ATTESTATION_CACHE_DIR, file);
+  const fileData = fs.readFileSync(filePath, "utf8");
+  cachedSmartAttestations[file.replace('.json', '')] = JSON.parse(fileData)
+});
+
+async function smartFetchAttestations(name: string, url: string, query: any, variables: any): Promise<RawAttestation[]> {
+  if (cachedSmartAttestations[name] && cachedSmartAttestations[name].length && smartAttestationStarted.has(name)) return cachedSmartAttestations[name]
+  if (!cachedSmartAttestations[name]) cachedSmartAttestations[name] = []
+
+  smartAttestationStarted.add(name)
+
+  async function fetchAttestations() {
+    if (!cachedSmartAttestations[name].length) {
+      const { attestations }: { attestations: RawAttestation[] } = await request(
+        url,
+        query,
+        variables
+      );
+  
+      cachedSmartAttestations[name] = attestations
+  
+      return attestations
+    } else {
+      if (!variables.where) variables.where = {}
+
+      // Fetch latest time
+      const latestTime = Number(cachedSmartAttestations[name][0].time)
+      const latestUid = cachedSmartAttestations[name][0].id
+
+      variables.where.time = {
+        gte: latestTime
+      }
+
+      const { attestations }: { attestations: RawAttestation[] } = await request(
+        url,
+        query,
+        variables
+      );
+
+      // console.log(attestations)
+      // console.log(latestTime)
+
+      const newAttestations: RawAttestation[] = []
+
+      for (const a of attestations) {
+        if (a.id == latestUid) break;
+        newAttestations.push(a)
+      }
+
+      for (const a of cachedSmartAttestations[name]) {
+        newAttestations.push(a)
+      }
+
+      cachedSmartAttestations[name] = newAttestations
+      fs.writeFileSync(`${ATTESTATION_CACHE_DIR}/${name}.json`, JSON.stringify(newAttestations, null, 2));
+
+      return newAttestations
+    }
+  }
+
+  await fetchAttestations()
+  setInterval(() => fetchAttestations().catch(console.error), 10_000)
+  
+  return cachedSmartAttestations[name]
+}
 
 // Save metadata cache to file
 function saveMetadataCacheToFile(url: string, data: any) {
   const hash = url.split("/").pop();
   if (!hash) return;
 
-  const filePath = path.join(CACHE_DIR, `${hash}.json`);
+  const filePath = path.join(PROJECT_CACHE_DIR, `${hash}.json`);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
@@ -167,15 +247,21 @@ function parseDecodedDataJson(decodedDataJson: string) {
 
 // Function to fetch metadata from URL
 async function fetchMetadata(url: string) {
-  const cachedMetadata = metadataCache.get(url);
+  let parts = url.split('/')
+  let ipfsHash = parts[parts.length - 1]
+
+  const cachedMetadata = metadataCache.get('ipfs-' + ipfsHash);
   if (cachedMetadata) {
     return cachedMetadata;
   }
 
   try {
-    const response = await axios.get(url);
+    // Replace restrictive host
+    let newUrl = url.replace('https://gateway.pinata.cloud', 'https://upnode-internal-dev.quicknode-ipfs.com')
+
+    const response = await axios.get(newUrl);
     const data = response.data;
-    metadataCache.set(url, data);
+    metadataCache.set('ipfs-' + ipfsHash, data);
     saveMetadataCacheToFile(url, data); // Save cache to file after setting new data
     return data;
   } catch (error) {
@@ -188,13 +274,13 @@ async function fetchSnapshot2ProjectRefUid() {
   try {
     const result: {[snapshotId: string]: string} = {}
 
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'metadataSnapshots',
       url,
       query,
       variables
-    );
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     for (const attestation of attestations) {
@@ -204,6 +290,154 @@ async function fetchSnapshot2ProjectRefUid() {
     }
 
     return result
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+// Function to fetch and process data
+async function fetchMGProfiles(fids: number[]) {
+  const BATCH_SIZE = 100
+
+  const profileMap: { [fid: number]: MetricsGardenProfile } = {};
+  const uncachedFids: number[] = []
+
+  for (const fid of fids) {
+    const cacheKey = "metricsGardenProfile-" + fid;
+    const cachedData = slowCache.get(cacheKey);
+
+    if (cachedData) {
+      profileMap[fid] = cachedData as MetricsGardenProfile
+    } else {
+      uncachedFids.push(fid)
+    }
+  }
+
+  if (uncachedFids.length > 0) {
+    for (let i = 0; i < uncachedFids.length; i += BATCH_SIZE) {
+      const usersResponse = await axios.get(
+        "https://api.neynar.com/v2/farcaster/user/bulk",
+        {
+          params: {
+            fids: uncachedFids.slice(i, i + BATCH_SIZE).join(","),
+          },
+          headers: {
+            api_key: process.env.NEYNAR_API_KEY,
+          },
+        }
+      );
+    
+      for (const user of usersResponse.data.users) {
+        profileMap[user.fid] = {
+          username: user.username,
+          displayName: user.display_name,
+          pfpUrl: user.pfp_url,
+        };
+    
+        const cacheKey = "metricsGardenProfile-" + user.fid;
+        slowCache.set(cacheKey, profileMap[user.fid])
+      }
+    }
+  }
+
+  return profileMap
+}
+
+async function fetchMG(): Promise<MetricsGarden[]> {
+  const cacheKey = "metricsGarden";
+  const cachedData = mainCache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData as MetricsGarden[];
+  }
+
+  try {
+    const attestations = await smartFetchAttestations(
+      'metricsGardenReview',
+      url,
+      query,
+      variablesMG
+    )
+
+    attestations.sort((a, b) => b.time - a.time);
+
+    const result: MetricsGarden[] = []
+    const fids: Set<number> = new Set()
+
+    // Process fid number of each attestation for profile fetching
+    for (const attestation of attestations) {
+      const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
+      const projectRefUid = parsedData["projectRegUID"];
+      const metadataUrl = parsedData["metadataurl"];
+
+      const body = await fetchMetadata(metadataUrl);
+
+      if (!body) {
+        continue;
+      }
+
+      const fid = body.reviewer?.userFID || body.userFid
+      if (!fid) continue;
+
+      fids.add(fid)
+    }
+
+    const profiles: {[fid: number]: MetricsGardenProfile} = await fetchMGProfiles(Array.from(fids))
+
+    // Process each attestation
+    for (const attestation of attestations) {
+      const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
+      const projectRefUid = parsedData["projectRegUID"];
+      const metadataUrl = parsedData["metadataurl"];
+
+      const body = await fetchMetadata(metadataUrl);
+
+      if (!body) {
+        continue;
+      }
+
+      const fid = body.reviewer?.userFID || body.userFid
+      if (!fid) continue;
+
+      if (body.impactAttestations) {
+        result.push({
+          id: attestation.id,
+          impactAttestations: body.impactAttestations,
+          comment: body.impactAttestations.find((x: any) => x.name == 'Text Review')?.value || "",
+          projectRefUid,
+          fid: body.reviewer.userFID,
+          ethAddress: body.reviewer.ethAddress,
+          profile: profiles[body.reviewer.userFID],
+          time: attestation.time,
+        })
+      } else if (body.data) {
+        result.push({
+          id: attestation.id,
+          impactAttestations: [
+            {
+              name: "Feeling if didnt exist",
+              type: "numeric",
+              value: parseInt(body.data.feeling_if_didnt_exist),
+            },
+            {
+              name: "Text Review",
+              type: "string",
+              value: body.data.explaination,
+            },
+          ],
+          comment: body.data.explaination,
+          projectRefUid,
+          fid: body.userFid,
+          ethAddress: body.ethAddress,
+          profile: profiles[body.userFid],
+          time: attestation.time,
+        })
+      }
+    }
+
+    mainCache.set(cacheKey, result);
+    return result;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
@@ -222,13 +456,13 @@ async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[
   const submissions = await fetchAndProcessRoundSubmissions(round);
 
   try {
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'projectMetadataSnapshots',
       url,
       query,
       variables
-    );
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     // console.log(attestations.slice(0,10))
@@ -317,13 +551,13 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   const metadataSnapshotUIDs: Set<string> = new Set();
 
   try {
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'projectSubmissions',
       url,
       query,
       variablesR4
-    );
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     // Process each attestation
@@ -353,13 +587,13 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   }
 
   try {
-    const data: { attestations: RawAttestation[] } = await request(
+    const attestations = await smartFetchAttestations(
+      'projectApplications',
       url,
       query,
-      variablesApplication,
-    );
+      variablesApplication
+    )
 
-    const attestations = data.attestations;
     attestations.sort((a, b) => b.time - a.time);
 
     const projectRefUIDs2: Set<string> = new Set();
@@ -377,6 +611,9 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
           projectRefUIDs2.add(projectRefUid)
         }
       }
+
+      if (!projectApplications[projectRefUid]) projectApplications[projectRefUid] = new Set()
+      projectApplications[projectRefUid].add(attestation.id)
     }
 
     mainCache.set(cacheKey, [projectRefUIDs, metadataSnapshotUIDs]);
@@ -388,25 +625,26 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
   return [projectRefUIDs, metadataSnapshotUIDs];
 }
 
-function getPrelimResult(projectId: string): string {
-  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+function getPrelimResult(projectRefUid: string): string {
+  for (const applicationId of projectApplications[projectRefUid]) {
+    const project = eligibility.find((x: any) => x.applicationId == applicationId);
+  
+    if (!project) continue
 
-  // if (!project) return "Missing";
-  if (!project) return "#N/A";
-
-  if (project.status == "pass") return "Keep";
-  if (project.status == "fail") return "Remove";
+    if (project.status == "pass") return "Keep";
+    if (project.status == "fail") return "Remove";
+  }
 
   return "#N/A";
 }
 
-function getCharmverseLink(projectId: string): string | undefined {
-  const project = eligibility.find((x: any) => x.projectRefUID == projectId);
+function getCharmverseLink(applicationId: string): string | undefined {
+  const project = eligibility.find((x: any) => x.applicationId == applicationId);
   return project?.charmverseLink
 }
 
-function projectReward(projectRefUID: string) {
-  const index = rewardData.findIndex((x: any) => x.application_id == projectRefUID)
+function projectReward(applicationId: string) {
+  const index = rewardData.findIndex((x: any) => x.application_id == applicationId)
 
   if (index == -1) return {}
 
@@ -425,10 +663,17 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
   }
 
   const attestations = await fetchAndProcessData(round);
+  const comments = await fetchMG();
 
   let projects: ProjectMetadata[] = attestations.map((attestation) => {
     const projectApplicationDataUpper = applicationData[attestation.parsedData.projectRefUID]
     const projectApplicationData = projectApplicationDataUpper && projectApplicationDataUpper[round]  
+
+    const filteredComments = comments.filter(comment => comment.projectRefUid == attestation.parsedData.projectRefUID)
+    const hasStar = filteredComments.filter(comment => comment.impactAttestations.find(x => x.name == 'Likely to Recommend'))
+    const star = hasStar.length == 0 ? 0 : hasStar.reduce((acc, curr) => acc + (curr.impactAttestations.find(x => x.name == 'Likely to Recommend')!.value || 0), 0) / hasStar.length
+
+    const impactCategory = [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x)
 
     return {
       id: attestation.parsedData.projectRefUID,
@@ -441,13 +686,18 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
       address: attestation.parsedData.farcasterID.hex,
       bannerImageUrl: attestation.body?.projectCoverImageUrl || attestation.body?.proejctCoverImageUrl || "",
       profileImageUrl: attestation.body?.projectAvatarUrl || "",
-      impactCategory: [attestation.parsedData.category, projectApplicationData?.category ?? categoryR5[attestation.parsedData.projectRefUID]].filter(x => x),
-      primaryCategory: attestation.parsedData.category,
+      impactCategory,
+      primaryCategory: impactCategory[impactCategory.length - 1],
       recategorization: attestation.parsedData.category,
       prelimResult: getPrelimResult(attestation.parsedData.projectRefUID),
       reportReason: "",
       includedInBallots: 0,
       isOss: metrics[attestation.parsedData.projectRefUID] ? metrics[attestation.parsedData.projectRefUID][0]?.is_oss : undefined,
+
+      metricsGarden: {
+        reviewerCount: filteredComments.length,
+        star,
+      },
 
       ...projectReward(attestation.applicationId),
     }
@@ -471,6 +721,8 @@ function parseGrantType(grantType: string): [string, string] {
       return ["Revenue", "USD"];
     case "foundation-grant":
       return ["Foundation Grant", "OP"];
+    case "foundation-mission":
+      return ["Foundation Mission", "OP"];
     case "token-house-mission":
       return ["Token House Mission", "OP"];
     case "retro-funding":
@@ -595,7 +847,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       });
     }
 
-    for (const grant of attestation.body.grantsAndFunding.grants) {
+    for (const grant of attestation.body.grantsAndFunding.grants || []) {
       const [type, currency] = parseGrantType(grant.grant);
       fundingSources.push({
         type,
@@ -606,7 +858,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       });
     }
 
-    for (const grant of attestation.body.grantsAndFunding.revenue) {
+    for (const grant of attestation.body.grantsAndFunding.revenue || []) {
       const [type, currency] = parseGrantType("revenue");
       fundingSources.push({
         type,
@@ -616,7 +868,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
       });
     }
 
-    for (const grant of attestation.body.grantsAndFunding.retroFunding) {
+    for (const grant of attestation.body.grantsAndFunding.retroFunding || []) {
       const [type, currency] = parseGrantType("retro-funding");
       fundingSources.push({
         type,
@@ -732,7 +984,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     metricsPercent: projectMetricsPercent,
     metricsPercentOss: projectMetricsPercentOss,
 
-    charmverseLink: getCharmverseLink(attestation.parsedData.projectRefUID),
+    charmverseLink: getCharmverseLink(attestation.applicationId),
 
     attestationBody: attestation.body,
     agoraBody,
@@ -756,13 +1008,18 @@ async function fetchProjectCount(round: number) {
   }
 
   let projects = await fetchProjects(round)
+  const eligible = projects.filter((x) => x.prelimResult == "Keep").length
 
   // TODO: elibility switch
-  if (round < 6) {
-    projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
-  }
+  // if (round < 6) {
+  //   projects = projects.filter(project => project.prelimResult.toLowerCase() == 'keep');
+  // }
 
   const countMap = projects.reduce((result, currentItem) => {
+    if (eligible && currentItem.prelimResult.toLowerCase() != 'keep') {
+      return result
+    }
+
     const groupKey = currentItem.impactCategory[currentItem.impactCategory.length - 1];
     if (!result[groupKey]) {
       result[groupKey] = 0;
@@ -777,7 +1034,7 @@ async function fetchProjectCount(round: number) {
 
   const result = {
     total: projects.length,
-    eligible: projects.filter((x) => x.prelimResult == "Keep").length,
+    eligible,
     categories,
   };
 
@@ -876,6 +1133,7 @@ app.get("/:round/attestations", async (req, res) => {
     const attestations = await fetchAndProcessData(parseInt(req.params.round));
     res.json(attestations);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: "Failed to fetch attestations" });
   }
 });
@@ -894,6 +1152,7 @@ app.get("/:round/projects/:id/comments", async (req, res) => {
     const comments = await fetchProjectComments(req.params.id);
     res.json(comments);
   } catch (error: any) {
+    console.error(error)
     if (error.message == "Project not found") {
       res.status(404).json({ error: "Project not found" });
     } else {
@@ -916,11 +1175,26 @@ app.get("/projects/:id", async (req, res) => {
   }
 });
 
+app.get("/projects/:id/metricsgarden", async (req, res) => {
+  try {
+    const comments = await fetchMG();
+    res.json(comments.filter(x => x.projectRefUid == req.params.id));
+  } catch (error: any) {
+    if (error.message == "Project not found") {
+      res.status(404).json({ error: "Project not found" });
+    } else {
+      console.error(error)
+      res.status(500).json({ error: "Failed to fetch project metricsgarden" });
+    }
+  }
+});
+
 app.get("/:round/projects", async (req, res) => {
   try {
     const projects = await fetchProjects(parseInt(req.params.round));
     res.json(projects);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: "Failed to fetch projects" });
   }
 });
@@ -935,6 +1209,24 @@ app.get("/:round/projects/:id", async (req, res) => {
     } else {
       console.error(error)
       res.status(500).json({ error: "Failed to fetch project" });
+    }
+  }
+});
+
+app.get("/metricsgarden", async (req, res) => {
+  try {
+    const comments = await fetchMG();
+
+    const skip = parseInt(req.query.skip as string || '0')
+    const limit = parseInt(req.query.limit as string || '20')
+
+    res.json(comments.slice(skip, skip + limit));
+  } catch (error: any) {
+    if (error.message == "Project not found") {
+      res.status(404).json({ error: "Project not found" });
+    } else {
+      console.error(error)
+      res.status(500).json({ error: "Failed to fetch project metricsgarden" });
     }
   }
 });
@@ -1044,3 +1336,9 @@ app.listen(port, () => {
 
 fetchAndProcessData(CURRENT_ROUND);
 setInterval(() => fetchAndProcessData(CURRENT_ROUND), 300_000)
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.trace(reason)
+  // Optionally, you can exit the process with a non-zero code
+  // process.exit(1);
+});

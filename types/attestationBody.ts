@@ -46,13 +46,13 @@ interface GrantsAndFunding {
   retroFunding: RetroFundingGrant[];
 }
 
-interface Github {
+export interface Github {
   url: string
   name: string | null
   description: string | null
 }
 
-interface Package {
+export interface Package {
   url: string
   name: string | null
   description: string | null
@@ -69,6 +69,7 @@ export interface AttestationBody {
   socialLinks: SocialLinks;
   team: string[];
   github: string[] | Github[];
+  links?: Github[];
   packages: string[] | Package[];
   contracts: Contract[];
   grantsAndFunding: GrantsAndFunding;
