@@ -20,7 +20,14 @@ import { Pool } from "pg";
 import { chain, groupBy, uniq, uniqBy } from "lodash";
 import { MetricsGarden, MetricsGardenProfile } from "./types/metricsGarden";
 
-const CURRENT_ROUND = 6
+const CURRENT_ROUND = [7, 8]
+
+const ROUND_SLUG_MAPPING: {[round: number]: string} = {
+  5: "5",
+  6: "6",
+  7: "S7 Dev Tooling",
+  8: "S7 Onchain Builders",
+}
 
 interface FarcasterComment {
   fid: number;
@@ -444,6 +451,20 @@ async function fetchMG(): Promise<MetricsGarden[]> {
   }
 }
 
+function fetchMGFromCache(): MetricsGarden[] {
+  const cacheKey = "metricsGarden";
+  const cachedData = metadataCache.get(cacheKey);
+
+  fetchMG().then((data) => {
+    metadataCache.set(cacheKey, data)
+  }).catch((error) => {
+    console.error("Error fetching MG:", error);
+    throw error;
+  })
+
+  return (cachedData || []) as MetricsGarden[]
+}
+
 // Function to fetch and process data
 async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[]> {
   const cacheKey = "attestations" + (round ? "Round" + round : "");
@@ -479,7 +500,7 @@ async function fetchAndProcessData(round: number): Promise<ProcessedAttestation[
 
       // Filter only submitted to current round for time saving
       if (!submissions[0].has(projectRefUID)) continue;
-      if (!submissions[1].has(attestation.id)) continue;
+      // if (!submissions[1].has(attestation.id)) continue; // Disable for now because metadataSnapshotRefUID is not available
 
       const body = await fetchMetadata(metadataUrl);
 
@@ -564,11 +585,11 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
     for (const attestation of attestations) {
       const parsedData = parseDecodedDataJson(attestation.decodedDataJson);
 
-      if (parseInt(parsedData.round) == round || !round) {
-        // console.log('proj', parsedData.projectRefUID)
+      if (parsedData.round == ROUND_SLUG_MAPPING[round] || !round) {
+        // console.log('proj', attestation.refUID)
         // console.log('meta', parsedData.metadataSnapshotRefUID)
 
-        const projectRefUID = snapshotProjectRefUid[parsedData.metadataSnapshotRefUID]
+        const projectRefUID = snapshotProjectRefUid[parsedData.metadataSnapshotRefUID] || attestation.refUID
 
         if (!projectRefUID) continue
 
@@ -576,7 +597,10 @@ async function fetchAndProcessRoundSubmissions(round: number): Promise<[Map<stri
           projectRefUIDs.set(projectRefUID, attestation.id);
           applicationRound[attestation.id] = parsedData.round
         }
-        metadataSnapshotUIDs.add(parsedData.metadataSnapshotRefUID)
+
+        if (parsedData.metadataSnapshotRefUID && parsedData.metadataSnapshotRefUID != '0x0000000000000000000000000000000000000000000000000000000000000000') {
+          metadataSnapshotUIDs.add(parsedData.metadataSnapshotRefUID)
+        }
       }
     }
 
@@ -663,7 +687,7 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
   }
 
   const attestations = await fetchAndProcessData(round);
-  const comments = await fetchMG();
+  const comments = fetchMGFromCache();
 
   let projects: ProjectMetadata[] = attestations.map((attestation) => {
     const projectApplicationDataUpper = applicationData[attestation.parsedData.projectRefUID]
@@ -1121,7 +1145,7 @@ async function fetchProjectComments(projectId: string) {
 
 // Create an Express app
 const app = express();
-const port = 4203;
+const port = 4204;
 
 // Use CORS middleware
 app.use(express.json());
@@ -1334,8 +1358,12 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-fetchAndProcessData(CURRENT_ROUND);
-setInterval(() => fetchAndProcessData(CURRENT_ROUND), 300_000)
+for (const round of CURRENT_ROUND) {
+  fetchAndProcessData(round);
+  setInterval(() => fetchAndProcessData(round), 300_000)
+}
+
+setInterval(() => fetchMG(), 300_000)
 
 process.on('unhandledRejection', (reason, promise) => {
   console.trace(reason)
