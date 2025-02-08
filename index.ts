@@ -939,8 +939,10 @@ async function fetchProject(id: string, round: number): Promise<Project> {
           }
         }
       }
-    } catch (err) {
-      console.error(err)
+    } catch (err: any) {
+      if (!err.response || err.response.status != 404) {
+        console.error(err)
+      }
     }
   }
 
