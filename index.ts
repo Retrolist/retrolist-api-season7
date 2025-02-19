@@ -904,7 +904,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
   }
 
   const attestationContracts =
-    attestation.body?.contracts.map((contract) => ({
+    attestation.body?.contracts?.map((contract) => ({
       description: contract.address,
       type: contract.chainId.toString(),
       url: etherscanUrl(contract.address, contract.chainId),
