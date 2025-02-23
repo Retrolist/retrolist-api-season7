@@ -86,7 +86,7 @@ async function indexContracts() {
         await client.query(
           `INSERT INTO contracts (
             project_uid,
-            contract_address,
+            contract_address, 
             chain_id,
             deployer,
             deployment_tx,
@@ -96,7 +96,24 @@ async function indexContracts() {
             attestation_uid,
             attestation_timestamp
           ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-          ON CONFLICT DO NOTHING`,
+          ON CONFLICT (project_uid, contract_address, chain_id) DO UPDATE
+          SET
+            deployer = EXCLUDED.deployer,
+            deployment_tx = EXCLUDED.deployment_tx,
+            signature = EXCLUDED.signature, 
+            verification_chain_id = EXCLUDED.verification_chain_id,
+            farcaster_id = EXCLUDED.farcaster_id,
+            attestation_uid = EXCLUDED.attestation_uid,
+            attestation_timestamp = EXCLUDED.attestation_timestamp
+          WHERE (
+            contracts.deployer IS DISTINCT FROM EXCLUDED.deployer OR
+            contracts.deployment_tx IS DISTINCT FROM EXCLUDED.deployment_tx OR 
+            contracts.signature IS DISTINCT FROM EXCLUDED.signature OR
+            contracts.verification_chain_id IS DISTINCT FROM EXCLUDED.verification_chain_id OR
+            contracts.farcaster_id IS DISTINCT FROM EXCLUDED.farcaster_id OR
+            contracts.attestation_uid IS DISTINCT FROM EXCLUDED.attestation_uid OR
+            contracts.attestation_timestamp IS DISTINCT FROM EXCLUDED.attestation_timestamp
+          )`,
           [
             a.refUID,
             decodedData.contract,
