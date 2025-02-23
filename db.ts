@@ -1,3 +1,6 @@
+import { config as dotenv } from "dotenv";
+dotenv();
+
 import { Pool } from "pg";
 
 // PostgreSQL connection setup
