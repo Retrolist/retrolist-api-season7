@@ -67,6 +67,7 @@ async function indexContracts() {
     indexing = true;
 
     const lastIndexedTimestamp = await fetchLastIndexedContract();
+    console.log('lastIndexedTimestamp', lastIndexedTimestamp)
 
     variables.where.time.gte = parseInt(lastIndexedTimestamp);
   
