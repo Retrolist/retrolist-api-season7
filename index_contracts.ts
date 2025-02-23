@@ -33,7 +33,7 @@ const variables = {
       gte: 0,
     },
   },
-  take: 1000,
+  take: 2000,
 };
 
 let indexing = false;
