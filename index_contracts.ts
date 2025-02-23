@@ -149,4 +149,4 @@ export async function fetchContracts(projectUid: string) {
 }
 
 indexContracts();
-setInterval(indexContracts, 1000 * 10 * 10);
+setInterval(indexContracts, 1000 * 10);
