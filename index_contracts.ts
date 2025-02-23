@@ -32,8 +32,10 @@ const variables = {
     time: {
       gte: 0,
     },
+    revocationTime: {
+      equals: 0,
+    },
   },
-  take: 2000,
 };
 
 let indexing = false;
@@ -67,7 +69,6 @@ async function indexContracts() {
     indexing = true;
 
     const lastIndexedTimestamp = await fetchLastIndexedContract();
-    console.log('lastIndexedTimestamp', lastIndexedTimestamp)
 
     variables.where.time.gte = parseInt(lastIndexedTimestamp);
   
@@ -95,14 +96,7 @@ async function indexContracts() {
             attestation_uid,
             attestation_timestamp
           ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-          ON CONFLICT (project_uid, contract_address, chain_id) DO UPDATE SET
-            deployer = EXCLUDED.deployer,
-            deployment_tx = EXCLUDED.deployment_tx,
-            signature = EXCLUDED.signature,
-            verification_chain_id = EXCLUDED.verification_chain_id,
-            farcaster_id = EXCLUDED.farcaster_id,
-            attestation_uid = EXCLUDED.attestation_uid,
-            attestation_timestamp = EXCLUDED.attestation_timestamp`,
+          ON CONFLICT DO NOTHING`,
           [
             a.refUID,
             decodedData.contract,
