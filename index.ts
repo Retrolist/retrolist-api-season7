@@ -19,6 +19,8 @@ import {
 import { Pool } from "pg";
 import { chain, groupBy, uniq, uniqBy } from "lodash";
 import { MetricsGarden, MetricsGardenProfile } from "./types/metricsGarden";
+import { dbClient } from "./db";
+import { fetchContracts } from "./index_contracts";
 
 const CURRENT_ROUND = [7, 8]
 
@@ -48,18 +50,10 @@ const rewardMetrics = JSON.parse(fs.readFileSync("data/reward_metrics.json", "ut
 const rewardMetricsOss = JSON.parse(fs.readFileSync("data/reward_metrics_oss.json", "utf-8"))
 const rewardData = JSON.parse(fs.readFileSync("data/reward.json", "utf-8"))
 const categoryR5 = JSON.parse(fs.readFileSync("data/category_r5.json", "utf-8"))
+const chainList = JSON.parse(fs.readFileSync("chainList.json", "utf-8"))
 // const osoContracts = JSON.parse(
 //   fs.readFileSync("data/oso_contracts.json", "utf-8")
 // );
-
-// PostgreSQL connection setup
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: 5432, // Default PostgreSQL port
-});
 
 // Define the GraphQL endpoint
 const url = "https://optimism.easscan.org/graphql";
@@ -171,6 +165,15 @@ fs.readdirSync(ATTESTATION_CACHE_DIR).forEach((file) => {
   const fileData = fs.readFileSync(filePath, "utf8");
   cachedSmartAttestations[file.replace('.json', '')] = JSON.parse(fileData)
 });
+
+// Parse chain explorer mapping from chainList
+const chainExplorers: { [chainId: number]: string } = {};
+for (const chain of require('./chainList.json')) {
+  if (chain.explorers && chain.explorers.length > 0) {
+    chainExplorers[chain.chainId] = chain.explorers[0];
+  }
+}
+
 
 async function smartFetchAttestations(name: string, url: string, query: any, variables: any): Promise<RawAttestation[]> {
   if (cachedSmartAttestations[name] && cachedSmartAttestations[name].length && smartAttestationStarted.has(name)) return cachedSmartAttestations[name]
@@ -757,20 +760,7 @@ function parseGrantType(grantType: string): [string, string] {
 }
 
 function etherscanUrl(address: string, chainId: number): string {
-  switch (chainId) {
-    case 10:
-      return `https://optimistic.etherscan.io/address/${address}`;
-    case 8453:
-      return `https://basescan.org/address/${address}`;
-    case 34443:
-      return `https://explorer.mode.network/address/${address}`;
-    case 7777777:
-      return `https://explorer.zora.energy/address/${address}`;
-    case 252:
-      return `https://fraxscan.com/address/${address}`;
-    default:
-      return "https://retrolist.app";
-  }
+  return `${chainExplorers[chainId]}/address/${address}`;
 }
 
 function osoChainId(chainName: string) {
@@ -903,12 +893,22 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     }
   }
 
-  const attestationContracts =
+  const newAttestationContracts = await fetchContracts(attestation.parsedData.projectRefUID)
+
+  let attestationContracts =
     attestation.body?.contracts?.map((contract) => ({
       description: contract.address,
       type: contract.chainId.toString(),
       url: etherscanUrl(contract.address, contract.chainId),
     })) || [];
+
+  if (newAttestationContracts.length > 0) {
+    attestationContracts = newAttestationContracts.map((contract) => ({
+      description: contract.contract_address,
+      type: contract.chain_id.toString(),
+      url: etherscanUrl(contract.contract_address, contract.chain_id),
+    }))
+  }
 
   // const osoProjectContracts = osoContracts[
   //   attestation.parsedData.projectRefUID
@@ -1297,7 +1297,7 @@ app.post("/report", async (req, res) => {
     // }
 
     // Insert message into PostgreSQL database
-    const client = await pool.connect();
+    const client = await dbClient();
     try {
       await client.query(
         "INSERT INTO reports (round, project_id, reason) VALUES ('retro-4', $1, $2)",
@@ -1318,7 +1318,7 @@ app.get("/report/:round", async (req, res) => {
   const { round } = req.params;
 
   try {
-    const client = await pool.connect();
+    const client = await dbClient();
     try {
       const result = await client.query(
         "SELECT * FROM reports WHERE round = $1",
@@ -1339,7 +1339,7 @@ app.get("/report/:round/:projectId", async (req, res) => {
   const { projectId, round } = req.params;
 
   try {
-    const client = await pool.connect();
+    const client = await dbClient();
     try {
       const result = await client.query(
         "SELECT * FROM reports WHERE round = $1 AND project_id = $2",
