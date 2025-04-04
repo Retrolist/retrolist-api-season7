@@ -721,15 +721,16 @@ function getCharmverseLink(applicationId: string): string | undefined {
   return project?.charmverseLink;
 }
 
-function projectReward(applicationId: string) {
-  const index = rewardData.findIndex(
-    (x: any) => x.application_id == applicationId
-  );
+function projectReward(applicationId: string, round: number) {
+  const data =
+    round == 7 ? rewardDataRound7 : round == 8 ? rewardDataRound8 : rewardData;
+
+  const index = data.findIndex((x: any) => x.application_id == applicationId);
 
   if (index == -1) return {};
 
   return {
-    totalOP: rewardData[index].final_score,
+    totalOP: data[index].final_score,
     rank: index + 1,
   };
 }
@@ -804,7 +805,7 @@ async function fetchProjects(round: number): Promise<ProjectMetadata[]> {
         star,
       },
 
-      ...projectReward(attestation.applicationId),
+      ...projectReward(attestation.parsedData.projectRefUID, round),
     };
   });
 
@@ -1128,7 +1129,7 @@ async function fetchProject(id: string, round: number): Promise<Project> {
     application:
       projectApplicationData ?? decodeAgoraProjectApplication(agoraBody, round),
 
-    ...projectReward(attestation.applicationId),
+    ...projectReward(attestation.parsedData.projectRefUID, round),
   };
 
   mainCache.set(cacheKey, project);
