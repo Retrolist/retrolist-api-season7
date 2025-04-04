@@ -728,6 +728,7 @@ function projectReward(applicationId: string, round: number) {
   const index = data.findIndex((x: any) => x.application_id == applicationId);
 
   if (index == -1) return {};
+  if (!data[index].final_score) return {};
 
   return {
     totalOP: data[index].final_score,
